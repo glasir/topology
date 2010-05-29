@@ -1,0 +1,135 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\B}[0]{\mathbb{B}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\U}[0]{\mathbb{U}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\W}[0]{\mathbb{W}}
+
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem*{Question}{Question}
+
+\begin{document}
+    \begin{center}
+    \LARGE{Topology Notes} \\
+    \vspace{.1in}
+    \normalsize{30 April 2010}\\
+    \vspace{.1in}
+    \normalsize{Sam Lind} \\
+    \vspace{.2in}
+    \end{center}
+   Lets begin by restating the theorem we were trying to prove last lecture.
+    \begin{Theorem}
+    \textbf{Homotopy Path Lifting Theorem}
+    Let $p\colon \tilde{X}\to X$ be a covering map. Then
+    \\ $\textbf{1})$ For any path $f$ in $X$ and $a\in \tilde{X}$ with $p(a)=f(0)$, then $\exists ! \tilde{f}$ a path in $\tilde{X}$ such that $p\circ \tilde{f}=f$ and $\tilde{f}(0)=a$. 
+    \\ $\textbf{2})$ If $F\colon I\times I\to X$ is continuous and for some $a\in \tilde{X}$ we have $p(a)=F(0,0)$, then $\exists!$ a continuous function $\tilde{F}\colon I\times I\to \tilde{X}$ such that $p\circ \tilde{F}=F$ and $\tilde{F}(0,0)=a$.
+    \end{Theorem}
+    
+    In the last lecture we proved the first part, and began a proof of the second part, which asserts that we can lift path homotopies. Here we shall finish the proof of the second part, briefly recapitulating what was done in the previous lecture.
+    \begin{proof}
+    We began by covering the unit square $I\times I$ with pre images of evenly covered sets $V_x\subseteq X$, and then employed the Lebesgue Number Lemma to tile $I\times I$ in such a way that the image of each tile under $F$ is contained in some evenly covered set $V_x$. That is, we found $n\in \N$ such that $\forall i,j<n$:
+    
+	\[F([\frac{i}{n},\frac{i+1}{n}]\times [\frac{j}{n},\frac{j+1}{n}])\subseteq V_{ij}
+\]
+Where $V_{ij}$ is evenly covered.
+
+	\par
+
+We then lifted $F$ on the ``L'' defined by $L=(I\times \left\{0\right\})\cup (\left\{0\right\} \times I)$ using the first part of the theorem, and so defined $\tilde{F}$ on this $L$ such that $\tilde{F}(0,0)=a$. Now we will extend $\tilde{F}$ to the tile in the lower left hand corner.
+	\par
+	Begin by observing that $V_{11}$ is evenly covered by hypothesis, and $F(I_1\times J_1)\subseteq V_{11}$. This means that $p^{-1}(V_{11})=\bigcup_{\alpha \in A_{11}}V_\alpha$ where the $V_\alpha$ are disjoint open sets and $A_{11}$ is some index set. Since $F(0,0)\in V_{11}$, and since $\tilde{F}(0,0)=a$, it follows that there exists some $\alpha_{11}\in A_{11}$ such that $a\in V_{\alpha_ {11}}$.
+	\par
+	Now we worry that this choice of $V_{\alpha_{11}}$ will agree with how we defined $\tilde{F}$ on the set $L$. Worry not! For $L$ is connected, and $L\cap (I_1\times J_1)$ is connected, and since $\tilde{F}$ is continuous, $\tilde{F}(L\cap (I_1\times J_1))$ is connected. Since the $V_\alpha$ are open and disjoint, we may therefore conclude that $\tilde{F}(L\cap (I_1\times J_1))\subseteq V_{\alpha_{11}}$ (otherwise it would be disconnected).
+	\par
+	Since $V_11$ was evenly covered, we know that $p\mid V_{\alpha_{11}}$ is a homeomorphism, so we may define $\tilde{F}\colon I_1\times J_1\to \tilde{X}$ by:
+	\[ \tilde{F}(s,t)=(p\mid V_{\alpha_{11}})^{-1}\circ F(s,t)
+	\]
+	\newpage
+	This is a composition of continuous functions, so is continuous. Furthermore, $\tilde{F}\colon L\cup (I_1\times J_1)\to \tilde{X}$ is continuous since we showed that $\tilde{F}(L\cap (I_1\times J_1))\subseteq V_{\alpha_{11}}$, so we apply the Pasting Lemma.
+	\par
+    Now we want to extend $\tilde{F}$ to the rest of $I\times I$, and so we move to $I_2\times J_1$. Here we have an analogous situation as before: We want to choose the appropriate $V_\alpha$ associated with $V_{21}$ so that our extension of $\tilde{F}$ agrees with what we had previously. But again, $\tilde{F}((I_2\times J_1)\cap (L\cup (I_1\times J_1)))$ is connected, so following the argument from above there will be an appropriate choice of $V\alpha$ to make it ``work''. So we inductively define $\tilde{F}\colon I\times I\to \tilde{X}$ such that it is continuous as before, and $p\circ \tilde{F}=F$ and $\tilde{F}(0,0)=a$. That $\tilde{F}$ is unique follows from our Uniqueness of Lifts Lemma (lecture 33).
+  \par We iterate this argument finitely many times for each tile $I_i\times J_j$, and so inductively define a unique lift of $F$: $\tilde{F}\colon I\times I\to \tilde{X}$ such that $\tilde{F}(0,0)=a$.
+  \end{proof}
+  \medskip
+  
+  The natural intuition is that our new function $\tilde{F}$ is a path homotopy when $F$ is a path homotopy. This intuition provides a delightful segue to the next theorem:
+  \begin{Theorem}
+  \textbf{Monodromy Theorem}\\
+  Let $p\colon \tilde{X}\to X$ be a covering map, and let $a\in \tilde{X}$. Let $x_1,x_2\in X$. Suppose that $p(a)=x_1$, and that $f,g$ are paths in $X$ from $x_1$ to $x_2$. Let $\tilde{f}, \tilde{g}$ be the unique lifts of $f,g$ beginning at $a$. Then if $f\sim g$, $\tilde{f}(1)=\tilde{g}(1)$ and $\tilde{f}\sim \tilde{g}$.
+  \end{Theorem}
+   \par
+   Before beginning the proof, we observe with relish the etymology of monodromy. Mono being the prefix for one, and dromy being some sort of Greek for a race track. E.g. hippodrome, airdrome, palindrome (examples courtesy of dictionary.com). Let us race towards the proof!
+    \begin{proof}
+    $f\sim g$ means that there exists a path homotopy $F\colon I\times I\to X$, and so by the previous theorem there exists a unique lifting of $F$, whose name is $\tilde{F}\colon I\times I\to \tilde{X}$, and $\tilde{F}$ has the property that $\tilde{F}(0,0)=a$ and $p\circ \tilde{F}=F$. Now $\tilde{f}, \tilde{g}$ are lifts of $f,g$ respectively. Consider $\tilde{F}\mid (I\times \left\{0\right\})$. This is a path in $\tilde{X}$ from $a$ to $\tilde{F}(1,0)$. Observe that:
+    \[p\circ \tilde{F}\mid (I\times \left\{0\right\})=F\mid (I\times \left\{0\right\})=f
+    \]
+since $F$ was a path homotopy, and on the other hand:
+	\[p\circ \tilde{F}\mid (I\times \left\{1\right\})=F\mid (I\times \left\{1\right\})=g
+\]
+The first observation allows us to conclude that $\tilde{F}\mid (I\times \left\{0\right\})$ is a lift of $f$ beginning at $a$. By the uniqueness of lifts, we conclude that $\tilde{F}\mid (I\times \left\{0\right\})=\tilde{f}$. We want to say the same for $\tilde{F}\mid (I\times \left\{1\right\})$, but we do not know that $\tilde{F}(0,1)=a$, so we cannot immediately conclude that this is equal to $\tilde{g}$ since it could possibly be a lift of $g$ originating at some other point.
+\par
+We claim: $\tilde{F}\mid (\left\{0\right\} \times I)=a$. To see that this is the case, we know:
+	\[p\circ \tilde{F}\mid (\left\{0\right\} \times I)=F\mid(\left\{0\right\} \times I)=x_1.
+\]
+    Which implies that:
+    
+	\[\tilde{F}\mid (\left\{0\right\} \times I)\subseteq p^{-1}(F\mid (\left\{0\right\} \times I)=p^{-1}(x_1)
+\]
+    Now we know that since $p$ is a covering map, $p^{-1}(x_1)$ has the discrete topology. Also, $\tilde{F} (\left\{0\right\} \times I)$ is connected, so must contain only a single point of $p^{-1}(x_1)$. Certainly $a\in \tilde{F}(\left\{0\right\} \times I)$, so we may say that $a=\tilde{F}(\left\{0\right\} \times I)$ as desired.
+    \par
+    The previous consideration tells us that $\tilde{F}\mid (I\times \left\{1\right\})=\tilde{g}$, since the left hand side is a lift of $g$ originating at $a$, and by the uniqueness of lifts this must be $\tilde{g}$. To finish off proving that $\tilde{F}$ is a path homotopy, we need to show that the endpoints are constant as well. That is, we want to show that $\tilde{F}(\left\{1\right\} \times I)=a'$ for some $a'\in \tilde{X}$. But for this, the same argument as above applies, replacing every instance of $x_1$ with $x_2$. So we conclude that: 
+    
+	\[\tilde{F}(1,0)=\tilde{f}(1)=\tilde{g}(1)=\tilde{F}(1,1)
+\]
+    Which was part of what we were trying to prove. All these considerations together tell us that $\tilde{F}$ is a path homotopy between $\tilde f$ and $\tilde{g}$, so $\tilde{f}\sim \tilde{g}$ and we are done.
+    \end{proof}
+    
+    \par
+   	Apparently our ultimate goal is to prove that the fundamental group of $S^1$ is isomorphic to $\mathbb{Z}$ (with addition). But we need just a teensy bit more machinery, and introduce a new function.
+   	\begin{Definition}
+   	Let $p\colon \mathbb{R}\to S^1$ be the covering map $p(x)=(\cos 2\pi x, \sin 2\pi x)$. Let $x_0=(1,0)$, let $f$ be a loop in $S^1$ with base point $x_0$. Define the \textbf{degree} of $f$, denoted $deg(f)$, as $\tilde{f}(1)$ where $\tilde{f}$ is the unique lift of $f$ starting at $0$.
+   	\end{Definition}
+        
+    \begin{Remark}
+    Firstly, observe that $deg(f)$ is well defined. That is, it is irrespective of which lift we select, because there is only one lift! Also, convince yourself that $p^{-1}(\left\{x_0\right\})=\mathbb{Z}$.
+    \end{Remark}
+    
+This leads us to the theorem we have been clamoring for:
+
+\begin{Theorem}
+Let $x_0\in S^1$. Then $\pi_1(S^1,x_0)\cong (\mathbb{Z},+)$.
+\end{Theorem}
+
+\begin{proof}
+Since $S^1$ is path connected, it doesn't matter what we choose as a base point since they all have isomorphic fundamental groups, so choose $x_0=(1,0)$. Define $\phi \colon \pi_1(S^1,x_0)\to \mathbb{Z}$ by $\phi[f]=deg(f)$.
+
+\end{proof}
+
+We will finish on Monday.
+\end{document}

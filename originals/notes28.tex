@@ -1,0 +1,172 @@
+\documentclass[reqno]{amsart}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%Reset Margins
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+
+%set line spacing
+\linespread{1.3}
+
+%Define commands
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}{{}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\rtwo}{\mathbb{R}^{2}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\Q}{\rationals}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\algebraic}{\mathbb{A}}
+\newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\xnot}{x_{0}}
+\newcommand{\seqlim}{\lim_{n\to\infty}}
+\newcommand{\torus}{\mathbb{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\half}[1]{\frac{#1}{2}}
+\newcommand{\ip}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{||#1||}
+\newcommand{\pdx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fracpart}[1]{\langle #1 \rangle}
+\newcommand{\matr}{\mathbb{M}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\zmodnz}[1]{\integers / #1 \integers}
+\newcommand{\inv}{^{-1}}
+\newcommand{\modu}[1]{(\text{mod }\,#1)}
+\newcommand{\cyc}[1]{\langle #1 \rangle}
+\newcommand{\nil}{\mathcal{N}}
+\newcommand{\polyz}[1]{\integers[#1]}
+\newcommand{\polyq}[1]{\rationals[#1]}
+\newcommand{\Z}{\integers}
+\newcommand{\Rx}{\reals[x]}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Fix}{\text{Fix}}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\nottingham}{\mathcal{N}(K)}
+\newcommand{\nottinghamQuotient}{\mathcal{N}/\equiv_n}
+\newcommand{\depthMoreThanN}[1]{K_n(#1)}
+\newcommand{\nequiv}{\equiv_n}
+\newcommand{\numShrubs}{\widetilde{t_n}(h,l) = |S_n(h,l)|}
+\newcommand{\sumShrubWeights}{_A\Gamma_n(h,l)}
+\newcommand{\shrubCollection}{S_n(h,l)}
+\newcommand{\formalAut}{\mathcal{A}(K)}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{irrevquestion}[theorem]{Irrelevant Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{implemma}[theorem]{Important Lemma}
+
+%Define environments
+\newcounter{probnum}
+\setcounter{probnum}{1}
+\newenvironment{problem}{\noindent\textbf{Problem} \arabic{probnum}: \\}{\addtocounter{probnum}{1}\bigskip}
+\newenvironment{solution}{\medskip\emph{Solution: }}{\medskip}
+
+\begin{document}
+\noindent Teddy Einstein\\Math 147\\
+\begin{center}
+Path Components and the Fundamental Group\\
+April 12, 2010 \\
+\end{center}
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
+\medskip
+
+The following theorem relates the fundamental group at a point within a path component to the fundamental group of that point in the ambient space:
+\begin{theorem}
+Let $A$ be a path component of a topological space $X$, and let $x_0\in A$. Then:
+\[\pi_1(A,x_0)\cong \pi_1(X,x_0)\]
+(Note that $\cong$ denotes a group isomorphism and not a homeomorphism)
+\end{theorem}
+
+Before proving the theorem, we will cover two quick non-examples of cases where the theorem could break down.
+
+
+Recall the circle $S^1$ which we can consider as a subspace of $\reals^2$. Since $\reals^2$ is a simply connected space, the fundamental group at every point is trivial. On the other hand, picking some point $x_0\in S^1$, the loop around the circle cannot be deformed in $S^1$ to the point $x_0$, so $\pi_1(S^1,x_0)$ is non-trivial and hence not isomorphic to $\pi_1(\reals^2,x_0)$ if we embed $S^1$ in $\reals^2$. The following picture illustrates $S^1$ with the point $x_0$:
+
+\begin{center}
+\begin{picture}(50,50)
+\put(0,20){\circle*{3}}
+\put(0,25){$x_0$}
+\put(0,0){\circle{100}}
+\end{picture}
+\vspace{10mm}
+\end{center}
+
+This may seem like a counterexample to the theorem, but in $\reals^2$, $S^1$ is not a distinct path component of $\reals^2$, so the theorem does not apply. Intuitively, by embedding $S^1$ in $\reals^2$, the interior of the circle is part of $\reals^2$, so we can deform a loop around $S^1$ based at $x_0$ to the trivial loop by ``pulling'' the loop through the middle of the circle, which we could not do when $S^1$ was considered as a space in its own right.
+
+Consider the following diagram:
+\begin{center}
+\begin{picture}(50,50)
+\put(0,20){\circle*{3}}
+\put(0,25){$x_0$}
+\put(0,0){\circle{100}}
+\put(45,0){\circle*{10}}
+\put(50,5){A}
+\put(-45,0){\circle*{10}}
+\put(-53,5){B}
+\end{picture}
+\vspace{10mm}
+\end{center}
+where we have the space $\reals^2$ with $A,B$ removed, so loops based at $x_0$ that run around $A,B$ cannot be deformed into the trivial loop. However, when we consider this space embedded in $\reals^2$ as a subspace, it is not an entire path component in $\reals^2$, so our theorem does not apply. 
+
+We now prove the theorem:
+\begin{proof}
+Define $\varphi:\pi_1(A,x_0)\to \pi_1(X,x_0)$ by:
+\[\varphi([f]_A) = [f]_X\]
+We claim that $\varphi$ is a \emph{group isomorphism}, i.e. that $\varphi$ is a bijection and a group homomorphism. In other words, we need to show that $\varphi$ is injective, surjective and that if $a,b\in\pi_1(A,x_0)$, then $\varphi(ab) = \varphi(a)\varphi(b)$. 
+For those who have not had algebra, the existence of an isomorphism between two groups means that while the two groups may not have the same elements, they have the same algebraic structure. 
+
+Before we actually prove that $\varphi$ satisfies the properties of an isomoprhism, we have to show $\varphi$ is well defined because $\varphi$ is defined in terms of equivalence classes. 
+First, let $f,g$ be loops in $A$ based at $x_0\in A$ such that $f\sim_A g$. Thus there exists a path homotopy in $A$, $F:I\times I\to A,$ from $f$ to $g$.
+Recall the inclusion map $i:A\to X$ where $i$ is the identity map on $X$ restricted to $A$ and is trivially continuous.
+ Thus we can extend $F$ to the continuous map $i\circ F:I\times I \to X$, and it is easy to see that $i\circ F$ is a path homotopy in $X$ from $f$ to $g$, so $f\sim_X g$. Thus if $[f]_A = [g]_A$, $\varphi([f]_A) = \varphi([g]_A)$, and $\varphi$ is well defined.
+ 
+We now prove $\varphi$ is injective. Suppose $[f]_A,[g]_A\in \pi_1(A,x_0)$ such that $\varphi([f]_A) = \varphi([g]_A) \Rightarrow [f]_X = [g]_X$. Then there exists $F:I\times I \to X$, a path homotopy from $f$ to $g$ in $X$. Suppose toward a contradiction there exists $(s_0,t_0)\in I\times I$ such that $F(s_0,t_0)\notin A$. Now take a restriction of $F$, $\alpha:[0,s_0] \to X$ defined by $\alpha(s) = F(s,t_0)$. 
+Since $[0,s_0]\cong I$, we can easily reparameterize $\alpha$ over the unit interval as $\beta:I\to X$, giving a path from $x_0$ to $F(s_0,t_0)$, since $F(0,t_0)=x_0$. Consequently, $\alpha(s_0) = \beta(1)\in A$ because $A$ is a path component, so we have a contradiction. Thus every point in $F(I\times I)$ is contained in $A$, so we can define $G:I\times I\to A$ by $G(s,t)=F(s,t)$, so $G$ is a homotopy from $f$ to $g$ in $A$. Consequently, $f\sim_A g \Rightarrow [f]_A = [g]_A$. Thus $\varphi$ is injective.
+
+Next we prove $\varphi$ is surjective. Let $[f]_X\in \pi_1(X,x_0)$, so $f$ is a loop in $X$ based at $x_0$. In other words, $f:I\to X$ is a path containing $x_0$. Since $A$ is a path component, $f(I)\subseteq A$ since we can easily use $f$ to find a path between any two points in $f(I)$. Consequently, $f$ is a loop in $A$ based at $x_0$, so we may state $\varphi([f]_A) = [f]_X$ and $\varphi$ is surjective.
+
+Finally, we prove that $\varphi$ is a homomorphism. Let $[f]_A,[g]_A\in \pi_1(A,x_0)$. We see that:
+\[\varphi([f]_A[g]_A) =  \varphi([f*g]_A) = [f*g]_X = [f]_X [g]_X = \varphi([f]_A)\varphi([g]_A)\]
+and $\varphi$ satisfies the definition of a homomorphism.
+
+We have proved that $\varphi$ is a bijective, homomorphism, and is therefore an isomorphism between $\pi_1(A,x_0)$ and $\pi_1(X,x_0)$, so we conclude the two groups are isomorphic, as desired.
+\end{proof}
+
+We now wish to prove a similar result:
+\begin{theorem}
+Let $X$ be a topological space and let $x,y\in X$. Suppose $f:I\to X$ is a path from $x$ to $y$, then $\pi_1(X,x)\cong \pi_1(X,y)$. 
+\end{theorem}
+
+Before providing the proof, we will define a key map which we will use again later in the course:
+\begin{definition}
+Define $u_f:\pi_1(X,x)\to \pi_1(X,y)$ by $u_f([g]) = [\overline{f}*g*f]$.\footnote{Technically, $\overline{f}*g*f$ should have some indication of ordering of operations, but we dispense with these designations because we previously proved that $*$ is associative.}
+\end{definition}
+We now prove the theorem by showing that $u_f$ is an isomorphism from $\pi_1(X,x)$ to $\pi_1(X,y)$:
+\begin{proof}
+Again, we need to show that $u_f$ is a bijective homomorphism. As usual for functions defined in terms of equivalence classes, we need to show that $u_f$ is actually well defined. 
+
+Suppose that $g,h$ are loops in $X$ based at $x$ such that $g\sim h$, so there exists $F:I\times I\to X$, a path homotopy from $g$ to $h$ in $X$. We want to show that:
+\[\overline{f}*g*f \sim \overline{f}*h*f\]
+Since we know trivally $f\sim f$, $g\sim h$ and $\overline{f}\sim\overline{f}$, using our inverse and identity lemmas for multiplication of path homotopy classes, it is easy to see that $\overline{f}*g*f \sim \overline{f}*h*f$, so $u_f$ is well defined.
+
+Next, we show that $u_f$ is injective. Suppose $g,h$ are loops in $X$ based at $x$ such that $u_f([g]_X) = u_f([h]_X)$. Therefore:
+\[[\overline{f}*g*f] = [\overline{f}*h*f] \Rightarrow \overline{f}*g*f\sim \overline{f}*h*f\]
+so by our important lemma for path homotopies and our inverse/identity lemmas, we have that $g\sim h$ and $u_f$ is injective.
+
+The remainder of the proof is postponed until the following lecture period.
+\end{proof}
+\end{document}

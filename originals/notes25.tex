@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{center}
+	\bf
+	Topology \\
+	Spring 2010 \\
+	\rm
+	Notes for March 29, 2010 \\
+\end{center}
+
+\noindent \textsc{Definition:} Let $f_0$ and $f_1$ be paths in $(X, F_X)$ from $a$ to $b$. We say $f_0$ is \textit{path-homotopic} if there exists a homotopy $F$ from $f_0$ to $f_1$ s.t. $\forall t \in I$, $F(0,t) = a$ and $F(1, t) = b$. We say $F$ is a \textit{path homotopy} and write $f_0 \sim f_1$.
+\\(insert picture of a path homotopy here)
+
+\addvspace{1.5 in}
+
+\noindent\textsc{Example:} Let $X$ be a convex region of $\mathbb{R}^n$, let $a$, $b \in X$, and let $f_0$ and $f_1$ be paths in $X$ from $a$ to $b$. 
+\\ \\\textsc{Claim:} $f_0 \sim f_1$.
+\\\textsc{Proof:} Let $F(s,t) = (1-t)f_0(s) + tf_1(s)$ (Note: we call this the \emph{straight line homotopy}). Observe that $\forall s \in I$, $F(s,0) = f_0(s)$ and $F(s,1) = f_1(s)$, and that $F$ is continuous, so $F$ is a homotopy from $f_0$ to $f_1$. Now let $t \in I$ be given. Observe that $F(0,t) = (1-t)f_0(0) + tf_1(0) = f_0(0) = a$, and that $F(1, t) = f_0(1) = b$. Thus $\forall t \in I$, $F(0,t) = a$ and $F(1,t) = b$, so $F$ is a path homotopy, and thus $f_0 \sim f_1$. $\Box$
+\\ \\\textsc{Example:} Let $X \cong D^2$, let $a, b \in X$, and let $f_0$ and $f_1$ be paths in $X$ from $a$ to $b$.
+\\ \\\textsc{Claim:} $f_0 \sim f_1$.
+\\\textsc{Proof:} Let $g: X \rightarrow D^2$ be a homeomorphism. Let $F: (I \times I) \rightarrow D^2$ be the straight line homotopy in $D^2$ from $g \circ f_0$ to $g \circ f_1$ (Note: $D^2$ is a convex region of $\mathbb{R}^2$, so by the last example we can use the straight line homotopy here).
+\\ \\\textit{WTS:} $g^{-1} \circ F$ is continuous.
+\\Note that $F$ is continuous since $F$ is a homotopy. Note also that since $g$ is a homeomorphism, $g^{-1}$ is continuous. Thus $g^{-1} \circ F$ is the composition of continuous functions, and hence $g^{-1} \circ F$ is continuous.
+\\ \\\textit{WTS:} $g^{-1} \circ F$ is a homotopy from $f_0$ to $f_1$.
+\\First, observe that $\forall s \in I$, $(g^{-1} \circ F)(s,0) = g^{-1}((1-0)g(f_0(s)) + (0)g(f_1(s))) = g^{-1}(g(f_0(s))) = f_0(s)$ since $g$ is a bijection, and similarly $(g^{-1} \circ F)(s, 1) = f_1(s)$. Thus, since $g^{-1} \circ F$ is continuous, $g^{-1} \circ F$ is a homotopy from $f_0$ to $f_1$.
+\\ \\\textit{WTS:} $g^{-1} \circ F$ is a path homotopy.
+\\Note that $\forall t \in I$, $(g^{-1} \circ F)(0, t) = g^{-1}((1-t)g(f_0(0)) + tg(f_1(0))) = g^{-1}((1-t)g(a) + tg(a)) = g^{-1}(g(a)) = a$ since $g$ is a bijection. Similarly, $\forall t \in I$, $(g^{-1} \circ F)(1,t) = b$. Thus, since $g^{-1} \circ F$ is a homotopy from $f_0$ to $f_1$, $g^{-1} \circ F$ is a path homotopy, and thus $f_0 \sim f_1$. $\Box$
+\\ \\\textsc{Theorem:} Let $(X, F_X)$ be a topological space and let $a$, $b \in X$ be given. Then $\sim$ is an equivalence relation of paths in $X$ from $a$ to $b$.
+\\\textsc{Proof:} In order to show $\sim$ is an equivalence relation, we need to show that $\sim$ is reflexive, symmetric, and transitive.
+\\ \\\textit{WTS:} If $f$ is a path in $X$ from $a$ to $b$, then $f \sim f$.
+\\If $f$ is a path in $X$ from $a$ to $b$, let $F: (I \times I) \rightarrow X$ be given by $F(s,t) = f(s)$. Note that $F$ is a homotopy from $f$ to $f$ since, $\forall s \in I$, $F(s,0) = f(s)$ and $F(s,1) = f(s)$ and $F$ is continuous since $f$ is continuous. Observe that $\forall t \in I$, $F(0, t) = f(0) = a$ and $F(1, t) = f(1) = b$, so $F$ is a path homotopy and $f \sim f$. Thus, $\sim$ is reflexive.
+\\ \\\textit{WTS:} If $f_1$ and $f_2$ are paths from $a$ to $b$ s.t. $f_1 \sim f_2$, then $f_2 \sim f_1$.
+\\Since $f_1 \sim f_2$, there exists a path homotopy $F$ from $f_1$ to $f_2$ . Define $F': (I \times I) \rightarrow X$ given by $F'(s,t) = F(s, 1-t)$, $\forall (s,t) \in (I \times I)$. Note that $F'$ is continuous since $F$ is continuous so $F'$ is a composition of continuous functions. Recall that $F$ is a homotopy from $f_1$ to $f_2$, and thus $F'$ is a homotopy from $f_2$ to $f_1$ since,  $\forall s \in I$, $F'(s, 0) = F(s, 1) = f_2(s)$ and $F'(s, 1) = F(s, 0) = f_1(s)$. Now observe that $\forall t \in I$, $F'(0,t) = F(0,1-t) = a$ and $F'(1,t) = F(1, 1-t) = b$, since $F$ is a path homotopy. Thus, $F'$ is a path homotopy, and thus $f_2 \sim f_1$, so $\sim$ is symmetric.
+\\ \\\textit{WTS:} If $f_1$, $f_2$, and $f_3$ are paths in $X$ from $a$ to $b$ s.t. $f_1 \sim f_2$ and $f_2 \sim f_3$, then $f_1 \sim f_3$.
+\\Since $f_1 \sim f_2$, there exists a path homotopy $F_1$ from $f_1$ to $f_2$, and since $f_2 \sim f_3$, there exists a path homotopy $F_2$ from $f_2$ to $f_3$. Define $F_3: (I \times I) \rightarrow X$ by \begin{displaymath}
+   F_3(s,t) = \left\{
+     \begin{array}{lr}
+       F_1(s,2t) & \mathrm{if }$ $ t \in [0, \frac{1}{2}]\\
+       F_2(s,2t - 1) & \mathrm{if }$ $ t \in [\frac{1}{2}, 1]
+     \end{array}
+   \right.
+\end{displaymath}
+Now we must show that $F_3$ is a path homotopy from $f_1$ to $f_3$. Observe that $A = I \times [0, \frac{1}{2}]$ and $B= I \times [\frac{1}{2}, 1]$ are closed in $I \times I$, and $F_1$ and $F_2$ are continuous, so if $F_1(s,t) = F_2(s,t)$ $\forall (s,t) \in A \cap B$, then by the pasting lemma $F_3$ is continuous. Since $A \cap B = I \times \{\frac{1}{2}\}$, and, $\forall s \in I$, $F_1(s, 2(\frac{1}{2})) = F_1(s, 1) = f_2(s)$ and $F_2(s, 2(\frac{1}{2}) - 1) = F_2(s, 0) = f_2(s)$, $F_3$ is continuous by the pasting lemma. Now, observe that $\forall s \in I$, $F_3(s, 0) = F_1(s, 2(0)) = F_1(s, 0) = f_1(s)$ and $F_3(s, 1) = F_2(s, 2(1) - 1) = F_2(s, 1) = f_3(s)$, so $F_3$ is a homotopy from $f_1$ to $f_3$. Now, observe that $\forall t \in I$, 
+\begin{displaymath}
+   F_3(0,t) = \left\{
+     \begin{array}{lr}
+       F_1(0,2t) & \mathrm{if }$ $ t \in [0, \frac{1}{2}]\\
+       F_2(0,2t - 1) & \mathrm{if }$ $ t \in [\frac{1}{2}, 1]
+     \end{array}
+   \right.
+\end{displaymath}
+\begin{displaymath} 
+    = \left\{
+     \begin{array}{lr}
+       a & \mathrm{if}$ $ t \in [0, \frac{1}{2}]\\
+       a & \mathrm{if}$ $ t \in [\frac{1}{2}, 1]
+     \end{array}
+   \right.
+\end{displaymath} 
+(since $F_1$ and $F_2$ are path homotopies), and thus $F_3(0,t) = a$, $\forall t \in I$. Similarly, $\forall t \in I$, $F_3(1,t) = b$. Thus, $F_3$ is a path homotopy from $f_1$ to $f_3$, so $f_1 \sim f_3$, and thus $\sim$ is transitive.
+\\Thus, $\sim$ is an equivalence relation of paths in $X$ from $a$ to $b$. $\Box$
+\\ \\\textsc{Remark:} The same proof (using only the parts related to continuity and homotopy) works for $\simeq$.
+\\ \\\textsc{Definition:} Let $(X, F_X)$ be a topological space and let $a$, $b \in X$ be given. For each path $f$ from $a$ to $b$ in $X$, define $[f]$ to be the \textit{path homotopy class of f}.
+\\ \\\textsc{Definition:} Let $f$ be a path in $X$ from $a$ to $b$ and $g$ be a path in $X$ from $b$ to $c$. Define an \textsc{invisible symbol} by $[f][g] = [f \ast g]$.
+\\ \\\textsc{Remarks:}
+\begin{enumerate} 
+\item  $[f]$, $[g]$, and $[f \ast g]$ are not elements of the same quotient `world' unless $a = b = c$.
+\item We have to prove that invisible multiplication is well-defined, i.e. if $f \sim f'$ and $g \sim g'$, then we want $[f \ast g] = [f' \ast g']$ because $[f] = [f']$ and $[g] = [g']$.
+\end{enumerate}
+
+\end{document}

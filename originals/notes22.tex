@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\begin{center}
+	\bf
+	Topology \\
+	Spring 2010 \\
+	\rm
+	Notes for March 29, 2010 \\
+\end{center}
+
+We start this lecture by finishing the example from the $24^{th}$:
+\\Suppose $U$, $V$ are a separation of $X$. Since the Comb is connected, we can say, WLOG, Comb $\subseteq U$. Then it must be that Flea $\subseteq V$ because $U$, $V$ are a separation. $V$ is open in $X$, so $\exists \epsilon > 0$ s.t. $B_{\epsilon}((0,1); X) \subseteq V$. Let $n \in \mathbb{N}$ s.t. $n > \frac{1}{\epsilon}$. Then $d((\frac{1}{n}, 1), (0, 1)) = \frac{1}{n} < \epsilon \Rightarrow (\frac{1}{n}, 1) \in B_{\epsilon}((0,1); X) \subseteq V$. Observe that since $Y_n = \{\frac{1}{n}\} \times [0,1]$,  $(\frac{1}{n}, 1) \in Y_n$. Thus, $(\frac{1}{n}, 1) \in V \cap Y_n \subseteq V \cap Y \subseteq V \cap U \Rightarrow V \cap U \neq \emptyset$. But this is a contradiction, since we assumed that $U$, $V$ was a separation of $X$. Thus, $X$ is connected. $\Box$
+\\ \\ \textsc{Definition:} Let $(X, F_X)$ be a topological space and let $f:[0,1] \rightarrow X$ be continuous. Then we say that $f$ is a \emph{path} from $f(0)$ to $f(1)$ (Note: it is handy to think of $t \in [0,1]$ as time).
+\\ \\ \textsc{Definition:} Let $(X, F_X)$ be a topological space. If $\forall p$, $q \in X$, there exists a path in $X$ from $p$ to $q$ then we say that $X$ is \emph{path-connected}.
+\\ \\ \textsc{Example:} $\mathbb{R}^n$ is path-connected.
+\\ Let $a$, $b \in \mathbb{R}^n$ be given. Let $f: I \rightarrow \mathbb{R}^n$ be $f(t) = (1-t)a + bt$. Then $f(0) = a$, and $f(1) = b$. $f$ can be shown to be continuous by performing an involved $\epsilon$-$\delta$ proof.
+\\ \\ \textsc{Remarks}
+\begin{enumerate}
+\item Connected is a negative definition and path-connected is a positive definition (for connectedness, we are trying to show that a separation \emph{doesn't} exist, so it is easiest to do connectedness proofs by contradiction. For path-connectedness, we are trying to show that a path exists, so path-connectedness proofs are more easily done constructively).
+\item In general, it is easier to prove that a space is disconnected than to prove that it is not path-connected.
+\item In general, it is easier to prove that a space is path-connected than to prove that it is connected.
+\end{enumerate}
+
+{\noindent}\textsc{Theorem:} If $(X, F_X)$ is path-connected, then $(X, F_X)$ is connected.
+\\ \textsc{Proof:} Suppose there exists a separation $U$, $V$ of $X$. Since $U$, $V$ is a separation of $X$, $U \neq \emptyset$, $V \neq \emptyset$. Let $p \in U$, $q \in V$ be given. Since $X$ is path-connected, $\exists$ a path $f$ from $p$ to $q$. Since paths are continuous by definition, $f$ is continuous, so $f^{-1}(U)$, $f^{-1}(V)$ are open in $[0,1]$. 
+\\ \emph{sub-claim 1:} $f^{-1}(U) \cup f^{-1}(V) = [0,1]$. 
+\\ \emph{proof of sub-claim 1:} Let $x \in [0,1]$ be given. Then $f(x) \in X = U \cup V \Rightarrow f(x) \in U$ or $f(x) \in V \Rightarrow x \in f^{-1}(U)$ or $x \in f^{-1}(V) \Rightarrow x \in f^{-1}(U) \cup f^{-1}(V)$. Thus, $[0,1] \subseteq f^{-1}(U) \cup f^{-1}(V) \Rightarrow [0,1] = f^{-1}(U) \cup f^{-1}(V)$ (since $f^{-1}(U)$, $f^{-1}(V) \subseteq [0,1]$).
+\\ \emph{sub-claim 2:} $f^{-1}(U) \cap f^{-1}(V) = \emptyset$.
+\\ \emph{proof of sub-claim 2:} Suppose $\exists x \in f^{-1}(U) \cap f^{-1}(V)$. Then $x \in f^{-1}(U) \Rightarrow f(x) \in U$, and $x \in f^{-1}(V) \Rightarrow f(x) \in V$, so $f(x) \in U \cap V$, which is impossible since we are assuming that $U$ and $V$ are a separation of $X$. Thus, $f^{-1}(U) \cap f^{-1}(V) = \emptyset$.
+\\ Observe that since $f$ is a path from $p$ to $q$, $f(0) = p$ and $f(1) = q$, so $0 \in f^{-1}(U)$, $1 \in f^{-1}(V)$ so $f^{-1}(U)$ and $f^{-1}(V)$ are non-empty and proper. Thus, since $f^{-1}(U) \cap f^{-1}(V) = \emptyset$ and $f^{-1}(U) \cup f^{-1}(V) = [0,1]$, $f^{-1}(U)$ and $f^{-1}(V)$ form a separation of $[0,1]$. But this is a contradiction, since we know from Math 131 that $[0,1]$ is connected. Thus, $(X, F_X)$ must be connected. $\Box$
+\\ \\Define the flea and comb and the space $X$ as follows: 
+\\Comb: $\bigcup_{n=0}^{\infty} Y_n$ in $\mathbb{R}^2$ where $Y_0 = [0,1] \times \{0\}$ and $\forall n \in \mathbb{N}$, $Y_n = \{\frac{1}{n}\} \times [0,1]$. 
+\\Flea: $\{(0,1)\}$.
+\\$X = $ Flea $\cup$ Comb with the subspace topology.
+\\ \textsc{Theorem:} The flea and comb is not path-connected.
+\\ \textsc{Proof:} \emph{WTS:} $\nexists$ a path from the flea to $(0,0)$. 
+\\Suppose $\exists$ a  path $f$ from the flea to $(0,0)$. Let $p =$ flea. Then $f^{-1}(\{p\})$ is not empty because $f(0) = p$ by the definition of $f$. Similarly, by the definition of $f$, $f(1) = (0,0) \neq p$, so $f^{-1}(\{p\})$ is proper as well. Observe that since $\{p\}$ is closed in $X$ and $f$ is continuous, $f^{-1}(\{p\})$ is closed.
+\\ \emph{WTS:} $f^{-1}(\{p\})$ is open. 
+\\Let $y \in f^{-1}(\{p\})$ be given. 
+\\ \emph{WTS:} $\exists \epsilon > 0$ s.t. $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(\{p\})$.
+\\First, observe that $B_{\frac{1}{2}}(p; X)$ is open in $X$. Since $f$ is a path, $f$ is continuous, so $f^{-1}(B_{\frac{1}{2}}(p; X))$ is open in $[0,1]$. Since $y \in f^{-1}(\{p\})$, $f(y) = p \in B_{\frac{1}{2}}(p; X) \Rightarrow y \in f^{-1}(B_{\frac{1}{2}}(p; X))$. Thus, since $f^{-1}(B_{\frac{1}{2}}(p; X))$ is open in $[0,1]$, $\exists \epsilon > 0$ s.t. $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(B_{\frac{1}{2}}(p; X))$.
+\\ \emph{WTS:} $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(\{p\})$.
+\\Let $z \in B_{\epsilon}(y; [0,1])$ be given.
+\\ \emph{WTS:} $f(z) = p$.
+\\Suppose $f(z) \neq p$. Since $z \in B_{\epsilon}(y; [0,1])$, $z \in f^{-1}(B_{\frac{1}{2}}(p; X))$, so $f(z) \in B_{\frac{1}{2}}(p; X)$ (so $d(f(z), p) < \frac{1}{2}$). Since $Y_0 = [0,1] \times \{0\}$, for each $q \in Y_0$, $d(p,q) \geq 1 \Rightarrow q \not\in B_{\frac{1}{2}}(p; X)$. Thus, $f(z) \not\in Y_0$. Thus since $f(z) \neq p$, $\exists n \in \mathbb{N}$ s.t. $f(z) \in Y_n$.
+\\TO BE CONTINUED...
+
+\end{document}

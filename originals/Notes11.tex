@@ -1,0 +1,94 @@
+\documentclass[11pt]{amsart}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[all,2cell]{xy}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{defn}{Definition}
+\newcommand{\ex}{ {\bf Example.} }
+
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+\begin{center}
+\LARGE{Math 147 - Topology}
+
+\large{Erica Flapan}
+
+\mbox{ }
+
+\large{Notes - 19 February 2010}
+\end{center}
+
+\mbox{ }
+
+{\bf Important Lemma about Quotients: } 
+Let $(X, F_X)$ and $(Z, F_Z)$ be topological spaces and let $Y$ be a set.  Suppose $f:X\onto Y$.  Let $g:(Y, F_f)\to(Z, F_Z)$.  Then $g$ is continuous if and only if $g\circ f$ is continuous.
+
+{\bf Proof: }
+
+$(\Rightarrow)$: Suppose that $g$ is continuous.  Since $f$ is a quotient map, it is continuous.  Therefore, $g\circ f$ is a composition of continuous functions, and so $g\circ f$ is continuous.
+
+$(\Leftarrow)$:  Suppose, now, that $g\circ f$ is continuous.  Let $U\in F_Z$.  Then $(g\circ f)^{-1}(U)\in F_X$.  Therefore, $(g\circ f)^{-1}(U) = f^{-1}(g^{-1}(U)) \in F_X$.
+ 
+ Recall that $F_f = \{ V\subseteq Y : f^{-1}(V)\in F_X\}$.  So, $g^{-1}(U) \in F_f$, and $g$ is continuous.  \begin{flushright}$\blacksquare$\end{flushright}
+
+\mbox{ }
+
+Now, a non-example.  Define functions $f:\R\setminus\{1\}\to\R$ and $g:\R\to\R$ by
+\[ f(x) = \begin{cases} x^2 & x\in(-\infty, 1) \\ \frac{-1}{x-1} & x\in (1, \infty) \end{cases} \]
+\[ g(x) = \begin{cases}  1 &  x\ge 0 \\  -1 & x < 0 \end{cases} \]
+Then $g\circ f : \R\setminus\{1\}\to\R$ is defined by
+\[ (g\circ f)(x) = \begin{cases} -1 & x > 1 \\ 1 & x < 1 \end{cases} \]
+which doesn't seem to be continuous.  But according to the lemma, $g\circ f$ should be.  
+
+The solution is, of course, that $g$ actually \emph{is} continuous - the topology of its domain isn't the usual topology.  Instead, it has the topology induced by $f$.  That is, 
+\[F_f = \{ U\subseteq \R : f^{-1}(U)\text{ open in }\R\setminus\{1\} \}\]
+More precisely, we have $g^{-1}(\{ 1\}) = [0, \infty)$ and $f^{-1}([0, \infty)) = (-\infty,1)$, which is open.
+
+Also, $g^{-1}( \{-1 \} ) = (-\infty,0)$ and $f^{-1}((-\infty, 0)) = (1, \infty)$, which again is open.
+
+Therefore, $g$ is continuous (as we only need to look at the range of $g$, which is $\{-1, 1\}$).
+
+\mbox{ }
+
+It would be nice to be able to say precisely whether equivalence relations are preserved by homeomorphisms.  
+\begin{theorem}  Let $(A, F_A)$ and $(B, F_B)$ be topological spaces and $f:A\to B$ be a homeomorphism.  Let $\sim_A$ and $\sim_B$ be equivalence relations on $A$ and $B$, respectively, such that $x\sim_A x'$ if and only if $f(x) \sim_B f(x')$.
+
+Then $A/\sim_A \equiv B/\sim_B$.
+\end{theorem}
+{\bf Proof: }
+
+We want to show that there is some function $g$ such that the following diagram commutes:
+\[ \xymatrix{ A \ar[rr]^f \ar[dd]_{\pi_A} && B \ar[dd]^{\pi_B} \\ &&\\C \ar @{.>}[rr]_g & & D } \]
+Define $g:A/\sim_A \to B/\sim_B$ by $g\left([x]_A\right) = \left[ f(x) \right]_B$.  To show it's a homeomorphism:
+\begin{itemize}
+\item {\bf Well-defined:} Suppose $[y]_A = [z]_A$.  Then 
+\[y\sim_A z\qquad\Rightarrow\qquad f(y) \sim_B f(z) \qquad\Rightarrow \qquad[f(y)]_B = [f(z)]_B]\]
+and so $g$ is well-defined.
+\item {\bf 1-to-1:} Suppose that $[x]_A$ and $[y]_A$ are such that $g([x]_A) = g([y]_A)$.  Then
+\[ [f(x)]_B = [f(y)]_B\quad\Rightarrow\quad f(x)\sim_B f(y)\quad\Rightarrow\quad x\sim_A y \quad\Rightarrow\quad [x]_A = [y]_A\]
+and so $g$ is 1-to-1.
+\item {\bf Onto: } Let $[y]_B\in B/\sim_B$, and let $x = f^{-1}(y)$.  Then
+\[ g([x]_A) = [f(x)]_B = [y]_B \]
+and $g$ is onto.
+\item {\bf Continuous: } We want to show that $g\circ \pi_A$ is continuous, so we can use the Important Lemma.  By the definition of $g$, $g\circ \pi_A = \pi_B\circ f$.  Since $f$ is a homeomorphism, it is continuous; $\pi_B$ is a quotient map and is thus continuous.  So $\pi_B\circ f$ is continuous.  Since $g\circ \pi_A = \pi_B\circ f$, we know that $g\circ \pi_A$ is continuous.  As $\pi_A$ is a quotient map, it is continuous, so from the Important Lemma, $g$ is continuous.
+\item {\bf Open: }  We can show equivalently that $g^{-1}$ is continuous instead, since $g$ is a bijection.
+\begin{align*}
+g\circ\pi_A &= \pi_B\circ f \\
+g^{-1}\circ(g\circ\pi_A)\circ f^{-1} &= g^{-1}\circ(\pi_B\circ f)\circ f^{-1} \\
+\pi_A\circ f^{-1} & =g^{-1}\circ \pi_B
+\end{align*}
+From here, the argument is eerily similar to the argument for continuity above.
+
+Note that $\pi_A$ is a quotient map and $f^{-1}$ s a homeomorphism, so both are continuous.  As such, $\pi_A\circ f^{-1}$ is continuous, and therefore so is $g^{-1}\circ \pi_B$.  Since $\pi_B$ is a quotient map, it is continuous; from the Important Lemma, $g^{-1}$ is continuous.  Therefore, $g$ is open.
+\end{itemize}
+Therefore, $g$ is a homeomorphism. Hurrah!\begin{flushright}$\blacksquare$\end{flushright}
+\end{document}  

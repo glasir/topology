@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage[margin=1.3in]{geometry}
+\usepackage{amssymb,amsmath}
+\title{Math 147 Topology}
+\author{Prof. Flapan}
+\date{Jan 29 2010}
+
+\begin{document}
+\maketitle
+
+\noindent \textbf{Small facts about closure}. \vspace{2mm}
+
+(1)$A \subseteq \bar{A}$; \vspace{2mm}
+
+(2)$\bar{A}$ is closed;\vspace{2mm}
+
+(3) If $A \subseteq C$ and $C$ is closed, then $\bar{A} \subseteq
+C$; \vspace{2mm}
+
+(4)$\bar{A}=A$ if and only if $A$ is closed. \vspace{2mm}
+
+\noindent \textit{Proof}. Left as exercise.\vspace{4mm}
+
+\noindent EXAMPLE 1. \quad In $\mathbb{R}$ with the usual topology,
+$\mathrm{cl}(\lbrace \frac{1}{n}|n \in \mathbb{N} \rbrace) = \lbrace
+\frac{1}{n}|n \in \mathbb{N} \rbrace \cup \lbrace 0
+\rbrace$.\vspace{4mm}
+
+\noindent EXAMPLE 2. \quad In $\mathbb{R}$ with the half open
+interval topology, $\mathrm{cl}((0,1 \rbrack)=\lbrack 0, 1
+\rbrack$.\vspace{6mm}
+
+\noindent \textbf{Important Lemma}. \quad \textit{Let $(X,F)$ be a
+topological space and $Y \subseteq X$. Then $ p \in \bar{Y}$ if and
+only if $\forall$ open set $U$ containing $p$, $U \cap Y \neq
+\phi$.}\vspace{2mm}
+
+\noindent \textit{Proof}. \quad Let $p \in \bar{Y}$ and $U$ be open
+with $p \in U$. Suppose $U \cap Y = \phi$ and let $C=X-U$. Then $p
+\notin C$ because $p \in U$. It follows that $\bar{Y} \subseteq C$
+because $Y \subseteq C$ and $C$ is closed. We obtain that $p \in C$
+which is a contradiction.
+
+Conversely, suppose $\forall$ open set $U$ such that $p \in U$, $U
+\cap Y \neq \phi$. Let $C$ be closed such that $Y \subseteq C$.
+Suppose $p \notin C$. Let $U=X-C$ which is open with $p \in U$. Now
+$U \cap Y \neq \phi$, so there exists some $x \in U \cap Y$. This
+means that $x$ is in the complement of C, i.e. $x \notin C$. But
+since $Y \subseteq C$, we have $x \notin Y$, a contradiction.
+Therefore we conclude that $p \in \bar{Y}$.\vspace{4mm}
+
+\noindent \textbf{Corollary}. Suppose that $U$ is an open set in a
+topological space $(X,F)$ and $Y \subseteq X$. If $U \bigcap \bar{Y}
+\neq \phi$, then $U \bigcap Y \neq \phi$.
+
+\noindent \textit{Proof}. The proof is immediate from the important
+lemma. \vspace{4mm}
+
+Now we can use the important lemma to prove example 1. In example 1,
+we can show that for all open sets $U$ containing 0, $U \bigcap
+\lbrace \frac{1}{n}|n \in \mathbb{N} \rbrace \neq \phi$.\vspace{8mm}
+
+\subsection*{Continuity}
+
+\noindent \textbf{Definition}. \quad Let $(X_1,F_1)$ and $(X_2,F_2)$
+be topological spaces and $f: \; X_1 \longrightarrow X_2$. We say
+$f$ is $continuous$ if and only if $\forall$ $U \in F_2$, $f^{-1}(U)
+\in F_1$.\vspace{4mm}
+
+\noindent \textbf{Small fact}. \quad Let $(X_1,F_1)$ and $(X_2,F_2)$
+and $(X_3,F_3)$ be topological spaces, $f: \; X_1 \longrightarrow
+X_2$ and $f: \; X_2 \longrightarrow X_3$ be continuous functions.
+Then $g \circ f: \;X_1 \longrightarrow X_3$ is continuous.
+
+\noindent \textit{Proof}. \quad Let $U \in F_3$, then $g^{-1}(U) \in
+F_2$ because $g$ is continuous. $f^{-1}(g^{-1}(U)) \in F_1$ because
+f is continuous. Therefore $(g \circ f)^{-1}(U) \in F_1$. Thus $g
+\circ f$ is continuous. \vspace{4mm}
+
+\noindent \textbf{Theorem}. \quad \textit{Let X, Y be topological
+spaces and $f: \; X \longrightarrow Y$. Then f is continuous if and
+only if $\forall$ closed set C in Y, $f^{-1}(C)$ is closed in
+X.}\vspace{2mm}
+
+\noindent \textit{Proof}. \quad $(\Longrightarrow)$ Suppose $C$ is
+closed in $Y$. Then $Y-C$ is open, implying that $f^{-1}(Y-C)$ is
+open in X. Since $f^{-1}(Y-C)=\lbrace x \in X|f(x) \in Y-C \rbrace =
+\lbrace x \in X|f(x) \notin C \rbrace$ and $X-f^{-1}(C)= \lbrace x
+\in X|f(x) \notin C \rbrace$, we have the desired results.
+
+
+
+
+
+
+
+
+
+
+\end{document}

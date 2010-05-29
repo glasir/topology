@@ -1,0 +1,174 @@
+\documentclass[10pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+%\usepackage{graphicx}
+
+%%  Renewed
+\renewcommand{\phi}{\varphi}
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\h}{\mathcal{H}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+
+%%  Matrices
+\newcommand{\minimatrix}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}  }
+\newcommand{\megamatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}  }
+
+%\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\twovector}[2]{\begin{pmatrix} #1\\#2 \end{pmatrix} }
+%\newcommand{\threevector}[3]{\begin{pmatrix} #1\\#2\\#3 \end{pmatrix} }
+
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Small Fact}{Small Fact}
+\newtheorem*{Small Fact about Basis}{Small Fact about Basis}
+\newtheorem*{Tiny Fact about Projection Maps}{Tiny Fact about Projection Maps}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem*{Question}{Question}
+\newtheorem{Problem}{Problem}
+\newtheorem{Analogous Theorem}{Analogous Theorem}
+
+
+\allowdisplaybreaks
+\begin{document}
+\begin{center}
+\huge Topology
+March 3, 2010
+\normalsize
+Madeline Wyse
+
+\vspace{.2in}
+$\mathbf{EXAM:}$
+4 Questions. 2 Hours. Starts at 8:00 AM.
+Covers up through Quotient Spaces (no Product Spaces).
+We should actually describe/name the theorems/homework results we cite.
+\end{center}
+\bigskip
+$\mathbf{PART \ III: \ DISTINGUISHING  \ SPACES}$
+\begin{Definition}
+A $\mathbf{topological \ property}$ (top. prop.) is a property of a topological spaces that is preserved by homeomorphisms. 
+\end{Definition}
+\begin{center} $\mathbf{List \ of \ Topological \ Properties \ thus \ Far}$ \end{center}
+\begin{enumerate}
+\item Cardinality of $X$ 
+\item Cardinality of $F_x$
+\item Metrizability (we proved this in the homework)
+\item Discreteness 
+\item Indiscretness
+\end{enumerate}
+\vspace{.1 in}
+$\mathbf{Rachel's \ Lemma}$
+Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be  an open bijection. If $F_X$ is the discrete topology, then $F_Y$ is the discrete topology.
+\begin{proof}
+Let $y \in Y$. Since $f$ is surjective, there exists $x \in X$ such that $f(x) = y$. Since $\{x\} \in F_X$ and $f$ open, $f(\{x\}) \in F_Y$. Thus all singletons in are elements of $F_Y$ and all sets in $Y$ are unions of singletons and hence elements of $F_Y$, so every set is an open set and $F_Y$ is the discrete topology. 
+\end{proof}
+$\mathbf{Daniel's \ Lemma}$. 
+Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be  a continuous bijection. If $F_X$ is the indiscrete topology, then $F_Y$ is the indiscrete topology.
+\begin{proof}
+Let $U \in F_Y$. WTS $U = Y$ or $U = \emptyset$. Since $f$ is continuous, $f^{-1}(U) \in F_X$. Therefore $f^{-1}(U) = X$ or $\emptyset$. \\
+Suppose $f^{-1}(U) = X$. Then $U = f(f^{-1}(U)) = f(X) = Y$ since $f$ surjective.\\
+Suppose $f^{-1}(U) = \emptyset$. Then $U = \emptyset$. Therefore $F_Y$ is the indiscrete topology. 
+\end{proof}
+$\mathbf{Corollaries}$
+If $(X, F_X) $ and $(Y, F_Y)$ topological spaces and $f: X \rightarrow Y$ a homeomorphism, then 
+\begin{enumerate}
+\item $F_X$ the discrete topology $\Longrightarrow$ $F_Y$ the discrete topology
+\item $F_X$ the indiscrete topology $\Longrightarrow$ $F_Y$ the indiscrete topology
+\end{enumerate}
+\vspace{.1in}
+Unfortunately, even with these five lovely Topological Properties, we can't yet distinguish a circle from a line. Clearly there is more work to do. \\
+\newpage
+$\mathbf{Non \ Example}$
+Distance is not a topological property. A big circle $is$ homeomorphic to a little circle.\\
+\vspace{1in}
+\begin{center} $\mathbf{Chapter \ 7: \  Completeness}$ \end{center}
+\begin{Definition}
+Let $(X, F_X)$ be a topological space and $S \subseteq X$.\\ 
+We say $\{U_j : j \in J\}$ is an $\mathbf{open \ cover}$ of $S$ if for all $j \in J$, $U_j \in F_X$ and $S \subseteq \bigcup_{j \in J}U_j$.\\ 
+We say $\{U_j : j \in K\}$ is a $\mathbf{subcover}$ if $K \subseteq J$ and $S \subseteq \bigcup_{j \in K} U_j$.\\
+We say $S$ is $\mathbf{compact}$ if every open cover of $S$ has a finite subcover. 
+\end{Definition}
+\vspace{.1in}
+$\mathbf{IMPORTANT \ WARNING}$\\
+We learned in 131 that in $\R^{n}$, a set if compact $\Longleftrightarrow$ it is closed and bounded. THIS IS NOT TRUE IN TOPOLOGICAL SPACES. DO NOT TRY TO USE IT.
+\vspace{.1in}
+\bigskip
+
+$\mathbf{ Example}$
+Is the set $(0,1)$ compact in 
+\begin{enumerate}
+\item $\R$ with the discrete topology?
+\item $\R$ with the half-open topology?
+\item $\R$ with the finite complement topology?
+\end{enumerate}
+Answers:\\
+(1) No. Take the open covering $\{B_{1/2}(x) : x \in (0,1)\}$. If we remove any of these balls, the corresponding $x$ will no longer be covered. However, there are clearly uncountably infinitely many balls. \\\\
+(2) No. Take the open covering $\{[\frac{1}{n}, 1) : n \in \N\}$ so that $(0,1) = \bigcup_{n \in \N}([\frac{1}{n}, 1)$. There is not finite subcover. \\\\
+(3) Yes. Suppose we have a cover of $(0,1)$. Take any element of the cover, say $U_{47}$. $U_{47}$ is missing at most finitely may elements of $(0,1)$ since its complement is finite. For each element $x \in \R \setminus U_{47}$, select one $U_{j_x}$ containing $x$. The set $\{U_{47}\} \cup \{U_{j_x}: x \in \R \setminus U_{47}\}$ is a finite open subcover. 
+\begin{Analogous Theorem}
+Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces, $S \subseteq X$, and $f : X \rightarrow Y$ continuous. If $S$ is compact then $f(S)$ is compact. 
+\end{Analogous Theorem}
+\begin{proof}
+\begin{enumerate}
+\item Take a covering of $f(S)$. 
+\item Applying $f^{-1}$ to these sets, we pull back to an open covering of $S$.
+\item Take a finite subcover. 
+\item Push these forward again. We have a finite cover of $f(S)$. 
+\end{enumerate}
+\end{proof}
+As a corollary we have $\mathbf{Topological \ Property \ 6:}$ Compactness
+\begin{Analogous Theorem}
+Any closed subset of a compact space is compact. 
+\end{Analogous Theorem}
+\begin{proof}
+\begin{enumerate}
+\item Take an open cover of $S$
+\item Add $X \setminus S$. Now we have an open cover of $X$. 
+\item Take a finite subcover.
+\item Remove $X \setminus S$. Not we have a finite subcover of $S$. 
+\end{enumerate}
+\end{proof}
+\begin{Analogous Theorem}
+Let $(X, F_X)$ be compact and $f : X \rightarrow \R$ be continuous. Then $f$ has a max value and a min value. 
+\end{Analogous Theorem}
+\begin{proof}
+\begin{enumerate}
+\item $f(X)$ is compact by Analogous Theorem 1
+\item Therefore $f(X)$ is closed and bounded
+\item Therefore $f(X)$ has a lub and a glb (ie a max and a min)
+\end{enumerate}
+\end{proof}
+$\mathbf{Small \ Fact \ about \ Compactness}$
+Let $(X, F_X)$ be a topological space. Suppose every open cover of $S \subseteq X$ made up of basis elements has a finite subcover. Then $X$ is compact. 
+\begin{proof}
+Let $\{U_j : j \in J\}$ be an open cover of $S$ and $\beta$ be a basis of $S$. For every $j \in J$, $U_j = \bigcup_{i \in I_j}B_i$ where for every $i \in I_j$ $B_i \in \beta$. Hence $\{B_i : i \in I_j \text{ and } j \in J\}$ is an open cover of $S$. By hypothesis, we have a finite subcover, $\{B_i : i \in K_j \text{ and } j \in K\}$ where $K \subseteq J$ and $K$ is finite, and for all $j \in K$, $K_j \subseteq I_j$ and $K_j$ is finite. Now note that given any $j \in K$, for every $i \in K_j$ $B_i \subseteq U_j$.  Hence $$X = \bigcup_{j\in K} \left[ \bigcup_{i \in K_j} B_i \right] \subseteq \bigcup_{j\in K} U_j \subseteq X$$ and $\{U_j : j\in K\}$ is a finite subcover. 
+\end{proof}
+\end{document}

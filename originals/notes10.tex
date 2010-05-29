@@ -1,0 +1,104 @@
+\documentclass[12pt]{amsart}
+\title{Topology Notes: 17 February 2010}
+\author{Arolyn Conwill}
+
+\usepackage{pictexwd,dcpic}
+\usepackage{amsmath,amsfonts,amssymb} 
+\usepackage{geometry} 
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+\begin{document}
+\section*{Topology Notes: 17 February 2010}
+
+\subsection{Quotient Map} Let $f: X \twoheadrightarrow Y$ be onto. Define $F_f = \{ U \subseteq Y \text{ st. } f^{-1}(U) \in F_X \}$. $f$ is a \textbf{quotient map} from $(X,F_X)$ to $(Y,F_f)$.
+
+\subsection{Tiny Facts}
+\begin{enumerate}
+	\item $(Y,F_f)$ is a topological space.
+	\item $f: (X,F_X) \rightarrow (Y,F_f)$ is continuous. 
+\end{enumerate}
+\begin{proof} Left as an exercise. \end{proof}
+
+\subsubsection{Example} Let $f$ map closed segment $[0,1]$ to a figure-eight, where $f(0)=f(1)=f(\frac{1}{2})$ at the intersection of the two sides of the figure-eight. What is open in the quotient topology $(Y,F_f)$? 
+\vspace{2cm}
+\begin{itemize}
+	\item Any open-looking interval on the eight that does not contain the intersection point is open since its preimage is clearly open on the segment; for the same reason, any appropriate union or intersection of these open intervals is also open.
+	\item Furthermore, any open set in the figure-eight that includes the point at the cross must also contain an open interval of nonzero length extending along each of the four legs of the figure-eight. This is necessary because the definition of $F_f$ requires that the preimage of anything open must be open itself; hence the only way for the preimage of a set containing the intersection point to be open is if the preimage is an open set in $[0,1]$ containing the three preimages of the intersection point ($0$, $\frac{1}{2}$, and $1$).
+\end{itemize}
+
+\subsection{Theorem} Let $(X,F_X)$ be a topological space, $f: X \twoheadrightarrow Y$ onto, and $\sim$ induced by $f$. Then $(Y,F_f) \cong (X/\sim,F_\sim)$.
+
+\subsubsection{Commutative Diagram} If a diagram commutes, then the path taken does not affect the result. Note that the arrow representing $g$ is dashed because we have not yet shown that the diagram commutes. In the proof, we will define $g$ so that the diagram does commute.
+
+\[\begindc{\commdiag}[50]
+\obj(0,1){$X$}
+\obj(2,1){$Y$}
+\obj(1,0){$X/\sim$}
+\mor{$X$}{$Y$}{$f$}[1,0]
+\mor{$X$}{$X/\sim$}{$\pi$}[1,0]
+\mor{$X/\sim$}{$Y$}{$g$}[1,1]
+\enddc\]
+
+\begin{proof} Define $g \colon X/\sim \rightarrow Y$ by $g([\pi]) = f(x)$ where $x$ is a representative of equivalence class $[\pi]$. WTS $f$ is well-defined, one-to-one, onto, continuous, and open.
+
+\begin{itemize}
+	\item Well-defined: WTS if $[x]=[y]$, then $g([x])=g([y])$. That is, any representative of a given equivalence class maps to the same value. Suppose $[x]=[y]$. Then $x \sim y$; since $\sim$ is the relation induced by $f$, $f(x)=f(y)$. $\therefore$ $g([x])=g([y])$.
+	\item One-to-one: Suppose $g([x])=g([y])$. Then $f(x)=f(y)$ $\Rightarrow$ $x \sim y$ $\Rightarrow$ $[x]=[y]$.
+	\item Onto: Suppose $y \in Y$. $f$ is onto, so $\exists x \in X$ such that $f(x)=y$. So $g([x]) = f(x) = y$.
+	\item Continuous: WTS $U \in F_f$ $\Rightarrow$ $g^{-1}(U) \in F_\sim$. Suppose $U \in F_f$. Recalling that $F_\sim = \{ O \subseteq X/\sim \text{ st. } \pi^{-1}(O) \in F_X \}$, we equivalently WTS that $\pi^{-1}(g^{-1}(U)) \in F_X$. Since $U \in F_f$ $\Leftrightarrow$ $f^{-1}(U) \in F_X$, we WTS $f^{-1}(U) = \pi^{-1}(g^{-1}(U))$.
+		\begin{itemize}
+			\item[$(\subseteq)$] Let $x \in f^{-1}(U)$. Hence $f(x) = g([x]) \in U$. Since $\pi^{-1}(g^{-1}(U)) = \{ p \text{ st. } g \circ \pi (p) \in U \}$, $g \circ \pi (x) = g([x]) \in U$ $\Rightarrow$ $x \in \pi^{-1}(g^{-1}(U))$.
+			\item[$(\supseteq)$] Let $x \in \pi^{-1}(g^{-1}(U))$. Hence $g(\pi(x)) \in U$ $\Rightarrow$ $g([x]) \in U$ $\Rightarrow$ $f(x) \in U$. So $x \in f^{-1}(U)$.
+		\end{itemize}
+$\therefore$ $f^{-1}(U) = \pi^{-1}(g^{-1}(U))$. Since $f^{-1}(U) \in F_X$, $\pi^{-1}(g^{-1}(U)) \in F_X$. Thus $g^{-1}(U) \in F_\sim$.
+	\item Open: WTS $U \in F_\sim$ $\Rightarrow$ $g(U) \in F_f$. Suppose $U \in F_\sim$. Recalling that $F_f = \{ O \subseteq Y \text{ st. } f^{-1}(O) \in F_X \}$ and that $U \in F_\sim$ $\Leftrightarrow$ $\pi^{-1}(U) \in F_X$, we equivalently WTS $f^{-1}(g(U)) = \pi^{-1}(U)$.
+		\begin{itemize}
+			\item[$(\subseteq)$] Let $x \in f^{-1}(g(U))$. So $f(x)=g([x]) \in g(U)$. Since $g$ is bijective (from the earlier parts of this proof), $[x] \in U$ $\Rightarrow$ $\pi(x) \in U$ $\Rightarrow$ $x \in \pi^{-1}(U)$.
+			\item[$(\supseteq)$] Let $x \in \pi^{-1}(U)$. So $\pi(x) \in U$, implying that $g(\pi(x)) \in g(U)$. Then $g(\pi(x)) = g([x]) = f(x)$ $\Rightarrow$ $x \in f^{-1}(g(U))$.
+		\end{itemize}
+\end{itemize}
+Therefore $g$ is a homeomorphism, and $(Y,F_f) \cong (X/\sim,F_\sim)$.
+\end{proof}
+
+\subsection{Theorem} Let $(X,F_X)$ be a topological space and $\sim$ an equivalence relation. Let $Y = X/\sim$ and let $f : X \rightarrow Y$ be $\pi$. Then $F_\sim = F_f$ and $f$ is a quotient map.
+
+\begin{proof} Recall that:
+\begin{align*}
+	F_\sim &= \{ U \subseteq X/\sim \text{ st. } \pi^{-1} (U) \in F_x \} \\
+	F_f		 &= \{ U \subseteq Y \text{ st. } f^{-1} (U) \in F_x \}.
+\end{align*}
+We know that $X/\sim = Y$ and $f = \pi$. $\therefore$ $F_\sim = F_f$. Also, $f = \pi$ is onto since it is a projection, and by definition $F_\sim = F_f$ is a quotient topology. $\therefore$ $f$ is a quotient map.
+\end{proof}
+
+\subsection{Important Lemma} Let $(X,F_X)$, $(Z,F_Z)$ be topological spaces and let $Y$ be a set. Suppose $f: X \twoheadrightarrow Y$ is onto and let $g: (Y,F_f) \rightarrow (Z,F_Z)$. Then $g$ is continuous if and only if $g \circ f$ is continuous.
+
+\subsubsection{A Non-Example} Let $f: \mathbb{R}-\{1\} \rightarrow \mathbb{R}$ by
+\begin{displaymath}
+   f(x) = \left\{
+     \begin{array}{rl}
+       x^2 						& \text{if } x \in (-\infty,1) \\
+       \frac{-1}{x-1} & \text{if } x \in (1,\infty)
+     \end{array}
+   \right.
+\end{displaymath} 
+$f$ is continuous. Let $g: \mathbb{R} \rightarrow \mathbb{R}$ by
+\begin{displaymath}
+   f(x) = \left\{
+     \begin{array}{rl}
+       1  & \text{if } x > 1 \\
+       -1 & \text{if } x \leq 1
+     \end{array}
+   \right.
+\end{displaymath} 
+$g$ is not continuous. So $g \circ f: \mathbb{R}-\{1\} \rightarrow \mathbb{R}$ is defined by
+\begin{displaymath}
+   g \circ f(x) = \left\{
+     \begin{array}{rl}
+       -1  & \text{if } x > 1 \\
+       1 & \text{if } x < 1
+     \end{array}
+   \right.
+\end{displaymath}
+$g \circ f$ is continuous. Does this contradict the Important Lemma? Find out what's going on next class...
+
+\end{document}

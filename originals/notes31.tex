@@ -1,0 +1,195 @@
+\documentclass[11pt,reqno]{article}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{graphicx}
+
+%%  Renewed
+
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\dD}{\partial \mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\left< #1 \right>}
+\newcommand{\blf}{ {[\,\cdot\, , \,\cdot\,]} }
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\dom}{\mathcal{D}}
+\newcommand{\pc}{\perp_C}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\tr}{\operatorname{tr}}
+%%  Matrices
+\newcommand{\minimatrix}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}  }
+\newcommand{\megamatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}  }
+
+\renewcommand{\hat}{\widehat}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\twovector}[2]{\begin{pmatrix} #1\\#2 \end{pmatrix} }
+\newcommand{\threevector}[3]{\begin{pmatrix} #1\\#2\\#3 \end{pmatrix} }
+
+\renewcommand{\vec}[1]{{\bf #1}}
+
+\newcommand{\varnot}{\sim\!\!}
+\newcommand{\due}[1]{\vspace{-0.2in}\begin{center}\textsc{due at the beginning of class \underline{#1}} \end{center}\medskip }
+
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Postulate}{Postulate}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem*{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem{Exercise}{Exercise}
+\newtheorem*{Question}{Question}
+\newtheorem{Problem}{Problem}
+\newtheorem*{soln}{Solution}
+
+
+\allowdisplaybreaks
+%\newcounter{ex}[section]
+
+
+
+%\numberwithin{section}{chapter}
+%\numberwithin{Theorem}{chapter}
+%\numberwithin{equation}{chapter}
+%\numberwithin{Example}{chapter}
+
+%%
+%% MAIN DOCUMENT
+%%
+\begin{document}
+\author{James Buerger}
+\date{}
+
+\title{Topology Notes for  April 19th, 2010}
+\maketitle
+
+Recall from last class we want to prove the following technical theorem.
+
+\begin{Theorem}
+Let $\phi:X\rightarrow Y$ and $\psi:X\rightarrow Y$ be continuous functions and $\phi\simeq \psi$ by a homotopy $F$. Let $x_0\in X$ and $f:I\rightarrow Y$ be given by 
+$$
+f(t)=F(x_0,t).
+$$
+Then $u_f\circ\phi_*=\psi_*$.
+\end{Theorem}
+\begin{proof}
+We want to show that for all $[g]\in\pi_1(X,x_0)$, $u_f(\phi([g])=\psi([g])$.
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+Let $[g]\in\pi_1(X,x_0)$. We want to show that $\overline{f}*\phi(g)*f\sim \psi(g)$. More specifically, we will do so by showing that $\left(\overline{f}*\phi(g)\right)*f\sim \left( e_{\psi(x_0)}*\psi(g)\right)*e_{\psi(x_0)}$.
+\\
+\\
+\\
+\\
+\\
+Define $G:I\times I\rightarrow Y$ by 
+$$
+G(s,t)=
+\left\{
+\begin{array}{ll}
+e_{\psi(x_0)} &s\in\left[0,\frac{t}{4}\right]\\ \\
+\overline{f}(4s-t) &s\in\left[\frac{t}{4},\frac{1}{4}\right]\\ \\
+F(g(4s-1),t) &s\in\left[\frac{1}{4},\frac{1}{2}\right]\\ \\
+f(2s-1+t) &s\in\left[\frac{1}{2},\frac{2-t}{2}\right]\\ \\
+e_{\psi(x_0)} &s\in\left[\frac{2-t}{2},1\right]
+\end{array}
+\right.
+$$
+To prove that $\left(\overline{f}*\phi(g)\right)*f\sim \left( e_{\psi(x_0)}*\psi(g)\right)*e_{\psi(x_0)}$, we must show that $G$ is path homotopy from $\left(\overline{f}*\phi(g)\right)*f$ to $\left( e_{\psi(x_0)}*\psi(g)\right)*e_{\psi(x_0)}$.
+\begin{enumerate}
+\item \textit{Continuous.} $G$ is defined differently over five intervals. Over each interval, $G$ is the composition of continuous functions and hence continuous. For $G$ to be continuous everywhere,  the value of $G$ at the intersection of any two intervals must agree.
+\begin{itemize}
+\item $s=\frac{t}{4}$: $\overline(f)(4\frac{t}{4}-t)=\overline{f}(0)=\psi(x_0) = e_{\psi(x_0)}$.
+\item $s=\frac{1}{4}$: $\overline{f}(4\frac{1}{4}-1)=\overline{f}(1-t)=f(t)$. \\
+$F(g(4\frac{1}{4}-1),t)= F(g(0),t)=F(x_0,t)=f(t).$ 
+\item  $s=\frac{1}{2}$:  $F(g(4\frac{1}{2}-1),t)= F(g(1),t)=F(x_0,t)=f(t).$\\
+$f(2\frac{1}{2}-1+t)=f(t)$. 
+\item $s=\frac{2-t}{2}$: $f(2\left(\frac{2-t}{2}\right)-1 +t) = f(1)=\psi(x_0)=e_{\psi(x_0)}$. 
+\end{itemize}
+By the Pasting Lemma, the function $G$ is continuous.
+\item \textit{Homotopy.} Consider $G(s,0)$:
+$$
+G(s,0)=
+\left\{
+\begin{array}{ll}
+e_{\psi(x_0)} &s\in\left[0,0\right]\\ \\
+\overline{f}(4s) &s\in\left[0,\frac{1}{4}\right]\\ \\
+F(g(4s-1),0) &s\in\left[\frac{1}{4},\frac{1}{2}\right]\\ \\
+f(2s-1) &s\in\left[\frac{1}{2},1\right]\\ \\
+e_{\psi(x_0)} &s\in\left[1,1\right]
+\end{array}
+\right.
+$$
+Thus, $G(s,0)=\overline{f}*\phi(g)*f$. Consider $G(s,1)$:
+$$
+G(s,1)=
+\left\{
+\begin{array}{ll}
+e_{\psi(x_0)} &s\in\left[0,\frac{1}{4}\right]\\ \\
+\overline{f}(4s-1) &s\in\left[\frac{1}{4},\frac{1}{4}\right]\\ \\
+F(g(4s-1),1) &s\in\left[\frac{1}{4},\frac{1}{2}\right]\\ \\
+f(2s) &s\in\left[\frac{1}{2},\frac{1}{2}\right]\\ \\
+e_{\psi(x_0)} &s\in\left[\frac{1}{2},1\right]
+\end{array}
+\right.
+$$
+Thus, $G(s,1) = \left( e_{\psi(x_0)}*\psi(g)\right)*e_{\psi(x_0)}$.
+\item \textit{Path.} $G(0,t)=\psi(x_0)$, and $G(1,t)=\psi(x_0)$.
+\end{enumerate}
+$G$ is a path homotopy from $\left(\overline{f}*\phi(g)\right)*f$ to $\left( e_{\psi(x_0)}*\psi(g)\right)*e_{\psi(x_0)}$. Therefore, $u_f(\phi([g])=\psi([g])$ for all $[g]\in\pi_1(X,x_0)$ and $u_f\circ\phi_*=\psi_*$.
+\end{proof}
+\begin{Corollary}
+Let $\phi:X\rightarrow Y$ and $\psi:Y\rightarrow X$ be continuous such that $\phi\circ\psi \simeq 1_Y$ and $\psi\circ\phi \simeq 1_X$. Let $\phi(x_0)=y_0$. Then $\phi_*:\pi_1(X,x_0)\rightarrow \pi_1(Y,y_0)$ is an isomorphism.
+\end{Corollary}
+\begin{proof}
+We have already proven that $\phi_*$ is a homomorphism. For $\phi_*$ to be an isomorphism, it must also be a bijection.
+
+Let $F$ be a homotopy in $Y$ from $1_Y$ to $\phi\circ\psi$. Let $G$ be a homotopy in $Y$ from $1_Y$ to $\phi\circ\psi$. Let $G$ be a homotopy in $X$ from $1_X$ to $\psi\circ\phi$. Let $f:I\rightarrow Y$ be $f(t)=F(y_0,t)$ and let $g:I\rightarrow X$ be $g(t)=G(x_0,t)$. $f$ is a path in $Y$ from $y_0$ to $\phi(\psi(y_0))$, and $g$ is a path in $X$ from $x_0$ to $\psi(\phi(x_0))$.
+
+By the technical theorem proven earlier, $u_f\circ 1_{Y_*}=(\phi\circ\psi)_*$ and $u_g\circ1_{X_*}=(\psi\circ\phi)_*$. Therefore, $u_f\circ1_{Y_*} = \psi_*\circ \phi_*$, implying that $u_f =\phi_*\circ\psi_*$. Similarly, $u_g = \psi_*\circ\phi_*$. We have already established that $u_f$ is an isomorphism and therefore onto --- $\phi_*$ must be onto as well. Because $u_g$ is 1-1 and $u_g=\psi_*\circ\phi_*$,  $\phi_*$ is 1-1. $\phi_*$ is a bijection and hence an isomorphism.
+\end{proof}
+
+\noindent\textbf{Irrelevant Question.} \textit{How did you end up at Pomona?}\\
+\noindent\textit{Answer:} Professor Flapan went to Hamilton as an undergraduate and wanted to teach at a small liberal arts college because they're, like, the best. She initially disliked the idea moving to Southern California, fearing her child would grow up to be a beach boy or valley girl just like Teddy. Flapan and her husband overlooked these concerns as Southern California provided her and her husband a place to teach; in the end Flapan is glad she chose to move here. For those planning their life post-college career, Flapan advises them to decide what's important, and reminds them they can't decide everything is important. 
+\end{document}

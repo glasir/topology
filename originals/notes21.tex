@@ -1,0 +1,113 @@
+\documentclass[10pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\newtheorem*{Important Flower Lemma}{Important Flower Lemma}
+\newtheorem*{Theorem}{Theorem}
+\newtheorem*{Definition}{Definition}
+\newtheorem*{Teeny Facts About Connected Components}{Teeny Facts About Connected Components}
+
+
+\begin{document}
+\begin{center}
+\huge Topology Notes, 24 March 2010 \\
+\normalsize
+Elaine Brow
+\end{center}
+\vspace{.1in}
+
+\begin{Important Flower Lemma}
+Suppose \{$y_j \mid j \in J$\} is a collection of connected subspaces of $X = \displaystyle{\bigcup_{j \in J} y_j}$,  and $\displaystyle{\bigcap_{j \in J} y_j} \neq \emptyset$. Then $X$ is connected. \\
+\end{Important Flower Lemma}
+
+\begin{proof}
+Suppose that $X$ is {\it dis}connected. Then $X$ has a separation, $U, V$. \\
+(Draw your flower here!)\\
+\vspace{2.2in}\\
+Let $j_0 \in J$.\\
+We know that\\
+\indent $(U\cap y_{j_0}) \cup (V\cap y_{j_0}) = y_{j_0}$, \\
+\indent $(U\cap y_{j_0}) \cap (V\cap y_{j_0}) = \emptyset$, \\
+\indent $(U\cap y_{j_0})$ and $(V\cap y_{j_0})$ are open in $y_{j_0}$, \\
+\indent and $y_{j_0}$ is connected, so either $U \cap y_{j_0} = \emptyset$ or $V \cap y_{j_0} = \emptyset$.\\
+Without loss of generality, say $U \cap y_{j_0} = \emptyset$. Then $V \cap y_{j_0} = y_{j_0}$.\\
+By the same argument, $\forall j\in J, y_j \subseteq U$ or $y_j \subseteq V$.\\
+But $\displaystyle{\bigcap_{j \in J} y_j} \neq \emptyset$,  so there exists $p\in \displaystyle{\bigcap_{j \in J} y_j}$ such that $p\in y_{j_0} \subseteq V$.\\
+Thus $\forall j\in J$, $y_j \subseteq V$.\\
+Since $X = \displaystyle{\bigcup_{j \in J} y_j} \subseteq V$, $U, V$ is not a separation of $X$.
+Thus, $X$ is connected.\end{proof}
+
+\begin{Theorem}
+Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces. Then $(X\times Y, F_{X\times Y})$ is connected if and only if both $X$ and $Y$ are connected.
+\begin{proof}
+$(\Rightarrow)$\\
+$\pi_X: X\times Y \longrightarrow X$ and $\pi_Y: X\times Y \longrightarrow Y$ are continuous surjections. Continuous functions preserve connectedness, so $X$ and $Y$ are connected. \\
+\vspace{.8in}\\
+$(\Leftarrow)$\\
+First, a picture proof.\\
+(Draw your picture proof here!)\\
+\vspace{2.2in}\\
+The axes are connected, because $X$ and $Y$ are connected. If we make a copy of the axes, shifted over a little bit, that copy is connected too. The union of these shifted axis crosses will be the entirety of $X\times Y$, and their intersection will be nonempty, so $X\times Y$ is connected.\\\\
+Now for the actual proof.\\
+Let $(x_0, y_0) \in X\times Y.$\\
+$\{x_0\}\times Y \cong Y$, so it is connected (connectedness is a top. prop.). Similarly, $\{y_0\} \times X$ is connected.\\
+Observe that $(x_0, y_0) \in (\{x_0\}\times Y) \cap (\{y_0\} \times X)$.  That is, $(\{x_0\}\times Y) \cap (\{y_0\} \times X) \neq \emptyset$.
+Then $(x_0, y_0) \in (\{x_0\}\times Y) \cup (\{y_0\} \times X)$ is connected by the Important Flower Lemma.\\
+By the same process, we see that $\forall x\in X$, $(X\times \{y_0\}) \cup (\{x\} \times Y)$ is connected.\\
+Note that $(X\times \{y_0\}) \subseteq \displaystyle{\bigcap_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}$.\\\\
+{\it Claim.}  $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} = X\times Y$\\\\
+{\it Proof of claim.}\\
+$(\subseteq)$ Clearly $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} \subseteq X\times Y$ because $X\times Y$ is the entire space. \\
+$(\supseteq)$ Let $(x_1, y_1) \in X\times Y$.\\
+Then $(x_1, y_1) \in (\{x_1\}\times Y)$.\\
+Thus, $\forall x\in X$ and $y\in Y$, $(x,y) \in (\{x\} \times Y) \subseteq {\displaystyle\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}$.\\\\\\
+Since $(X\times \{y_0\}) \cup (\{x\} \times Y)$ is connected $\forall x\in X$, and $\displaystyle{\bigcap_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}\neq \emptyset$, $X\times Y$ is connected by the Important Flower Lemma.
+\end{proof}
+\end{Theorem}
+\vspace{.1in}
+\begin{Definition} Let $(X, F_X)$ be a topological space and let $p\in X$. Let $\{C_j\mid j\in J\}$ be the set of all connected subspaces of $X$ containing $p$. Then ${\displaystyle\bigcup_{j\in J}C_j}$ is said to be the {\rm connected component}, $C_p$, of $p$.
+\end{Definition}
+\begin{Teeny Facts About Connected Components}
+Let $(X, F_X)$ be a topological space. Then,
+\begin{enumerate}
+\item $\forall p \in X$, $C_p$ is connected.
+\item If $C_p$ and $C_q$ are connected components, then either $C_p\cap C_q = \emptyset$ or $C_p = C_q$. (That is, connected components partition.)
+\end{enumerate}
+\begin {proof}
+\item(1) $p\in {\displaystyle\bigcap_{j\in J} C_j}$, so $C_p = {\displaystyle\bigcup_{j\in J} C_j}$ is connected by the Important Flower Lemma.\\\\
+(2) Suppose $C_p \cap C_q \neq \emptyset$.
+Let $x\in C_p \cap C_q$.\\
+Then $C_p \cup C_q$ is connected by the Important Flower Lemma.\\
+$p\in C_p \cup C_q$, so $C_p \cup C_q \in \{C_j\mid j\in J\}$.\\
+$C_p \cup C_q \subseteq C_p$, since $C_p =  {\displaystyle\bigcup_{j\in J} C_j}$. So, $C_q \subseteq C_p$. Similarly, $C_p \subseteq C_q$.\\
+Thus $C_p = C_q$, so we can say $X$ is partitioned by its connected components.
+\end{proof}
+\end{Teeny Facts About Connected Components}
+\vspace{.1in}
+\noindent{\bf Example.} Let $X = \mathbb{R}^2$ with the dictionary topology. Connected components are vertical lines. (Proof is an exercise.) Define $x\backsim y$ ($x, y \in \mathbb{R}^2$) if $x$ and $y$ are in the same connected component. Then $X/\backsim$ = $\mathbb{R}$ with the discrete topology. \\
+(Draw your dictionary topology components and $X/\backsim$ here!)\\
+\vspace{1.5in}\\
+{\bf Example (of how connectedness is not intuitive): The Flea and the Comb}\\
+Define the Comb, the Flea, and the space $X$ as follows.\\
+Comb: ${\displaystyle\bigcup_{n=0}^{\infty}y_n}$ in $\mathbb{R}^2$ where $y_0 = \lbrack0,1\rbrack\times\{0\}$ and $\forall n\in \mathbb{N}$, $y_n = \{1/n\} \times \lbrack0,1\rbrack$.\\
+Flea: $\{(0,1)\}$.\\
+$X =$ Flea $\cup$ Comb with the subspace topology.\\\\
+{\it Claim.} $X$ is connected.\\
+{\it Subclaim.} The Comb is connected.\\\\
+{\it Proof of subclaim.}\\
+$\forall n \in \{0\} \cup \mathbb{N}$, $y_n$ is connected because $y_n \cong \lbrack0,1\rbrack$.\\
+$\forall n \in \mathbb{N}$, $y_0 \cap y_n \neq \emptyset$  (because $(1/n, 0)$ is in both), so $y_0 \cup y_n$ is connected. \\
+Thus ${\displaystyle\bigcap_{n\in \mathbb{N}}y_0 \cup y_n} \neq \emptyset$,  so ${\displaystyle\bigcup_{n=0}^{\infty}y_0 \cup y_n} = {\displaystyle\bigcup_{n=0}^{\infty}y_n} =$ the Comb is connected via Flower Power $\clubsuit$ (i.e. by the Important Flower Lemma).\\\\
+Suppose $U$, $V$ are a separation of $X$. Since the Comb is connected, we can say, without loss of generality, Comb $\subseteq U$.  Then it must be that Flea $\subseteq V$ because $U$, $V$ are a separation. $V$ is open in $X$, so there exists $\epsilon > 0$ such that $B_{\epsilon}((0,1); X)$ (ball around $(0,1)$ in $X$) $\subseteq V$. \\\\
+{\bf STAY TUNED FOR THE REST OF THIS ACTION-PACKED EXAMPLE!!! WILL THE FLEA BE CONNECTED TO THE COMB? WHO CAN SAY?}\\\\
+But think about this. There must be some $n\in \mathbb{N}$ for which $(1/n) < \epsilon$. Thus there must be some $y_n$ that has a nonempty intersection with $B_{\epsilon}((0,1); X)$. But $B_{\epsilon}((0,1); X) \subseteq V$, which is supposed to be disjoint from $U \supseteq {\displaystyle\bigcup_{n=0}^{\infty}y_n}$...\\\\
+{\bf THE SUSPENSE!}
+
+
+
+\end{document}

@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\begin{document}
+\begin{center}
+Math 147 Notes\\
+March 1, 2010
+\end{center}
+\vspace{10 mm}
+\begin{center}
+Infinite Products
+\end{center}
+Last time, we discussed how to obtain a topology from the cartesian product of two topological spaces.  We would of course like to be able to generalize this to deal with infinite products.  Initially, we may simply want to define such products as follows: $X_1$x$X_2$x...$=\{(x_1,x_2,...)|x_i \epsilon X_i \forall i \epsilon \mathbb{N} \}$.  However, such a definition limits us to countable products, so we look more generally.
+\\
+\\
+Definition: $\forall j \epsilon J$, let $X_j$ be a set.  Define the product $\Pi_{j \epsilon J} X_j = \{f:J \rightarrow \cup_{j \epsilon J}X_j|f(j) \epsilon X_j\}.$  We refer to $f(j)$ as the $j^{th}$ coordinate of the point $f$.
+\\
+\\
+Example 1: Suppose $J = \{1,2\}$.  Then $\Pi_{j\epsilon \{1,2\}}X_j = \{f: \{1,2\} \rightarrow X_1\cup X_2|f(j) \epsilon X_j\} = \{(f(1),f(2))|f(j) \epsilon X_j\}=\{(x_1,x_2)|x_j \epsilon X_j\} = X_1$ x $X_2.$  Thus we see that this definition agrees with our previous definition for finite products.
+\\
+\\
+Example 2: Consider $\Pi_{j \epsilon \mathbb{R}}\{1,2\}$.  By definition this is equivalent to $\{f: \mathbb{R} \rightarrow \{1,2\}| f(j) \epsilon \{1,2\}, j \epsilon \mathbb{R}\}$, which precisely correspond to subsets of $\mathbb{R}$ if we simply think of the preimage of $1$ under $f$ as the elements in the set and the preimage of $2$ under $f$ as those elements outside the set.  Commonly this product is then denoted by $\{1,2\}^{\mathbb{R}}$.
+\\
+\\
+Now we wish to define a topology on these products which, as in example $1$, agrees with our prior definition for a product of two sets if the indexing set $J = \{1,2\}$.  Perhaps the most natural way of doing this is to define the following basis:
+\begin{center}
+$\beta_{\Box} = \{\Pi_{j \epsilon J} U_j|U_j \epsilon F_j\}$, where $X_j$ has topology $F_j$.
+\\
+$F_{\Box} = \{$Unions of elements of $\beta_{\Box}\}.$
+\end{center}
+This topology is not what we desire, but is a topology, aptly named the box topology on the product.
+\\
+\\
+Definition: The product topology on $\Pi_{j \epsilon J}X_j$ is given by the basis $\beta_{\Pi} = \{\Pi_{j \epsilon J}U_j|U_j = X_j$ for all but finitely many $j$ and $\forall j \epsilon J, U_j \epsilon F_j \}$.
+\\
+\\
+Remarks: 1) $\beta_{\Pi} \subseteq \beta_{\Box}$ \\
+2) Both are bases for topologies on the product.
+\\
+\\
+Definition: Define the projection map $\pi_j : \Pi_{j \in J}X_j \rightarrow X_j$ by $\pi(f) = f(j)$.
+\\
+Lemma: For all $j \in J$, Suppose $(X_j, F_j)$ is a topological space.  Then $\pi_j$ as defined above is continuous for all $j \in J$.
+\\
+\\
+Proof: Let $j_{0} \in J$ and consider $U \in F_{j_{0}}$. We wish to show that $\pi_{j_{0}}^{-1}(U) \in  F_{\Pi}$.  Note that $\pi_{j_{0}}^{-1}(U) = \{f \in \Pi_{j \in J}X_j | \pi_{j_{0}}(f) \in U\} = \{f \in \Pi_{j \in J}X_j | f(j_{0}) \in U\} = \{f \in \Pi_{j \in J}X_j | f(j_{0}) \in U, \forall j \neq j_{0} f(j) \in X_{j}\}= \Pi_{j \in J} U_j$ such that $U_{j_{0}} = U$ and $\forall j \neq j_{0}, U_j = X_j$.\\
+It then follows from definitions that $\pi_{j_{0}}^{-1}(U) \in \beta_{\Pi} \subseteq F_{\Pi}$ so the projection map is continuous.\\
+\\
+\begin{center}
+Important Lemma for Infinite Products
+\end{center}
+Let $(X_j,F_j)$ and $(Y,F_Y)$ be topological spaces for all $j \in J$.  Moreover, for each such j let $g_j : Y \rightarrow X_j$ be a function.  Define $h: Y \rightarrow \Pi_{j \in J}X_j$ by: $h(y) = f$ such that $\forall j \in J, f(j) = g_{j}(y)$.  Then $h$ is continuous if and only if $g_j$ is continuous for all $j \in J$.\\
+\\
+Proof: We begin with the forward direction. Suppose $h$ is continuous and let $j \in J$.  Then $\pi_j \circ h = g_j$.  Thus $g_j$ is the composition of continuous functions and must itself be continuous.\\
+Now we consider the other direction.  Suppose that $g_j$ is continuous for all $j \in J$.  Let $U \in \beta_{\Pi}.$  We wish to show that $h^{-1}(U) \in F_{Y}$.\\
+Note that $h^{-1}(U) = \{y \in Y | h(x) \in U\}$  As an open set in the product topology, $U = \Pi_{j \in J}U_j$ where $U_j \in F_j$.  Thus, $h^{-1}(U) = \{y \in Y | h(x) \in \Pi_{j \in J}U_j\} = \{f \in \Pi_{j \in J}U_j$ such that $\forall j \in J, f(j) = g_{j}(y)\} = \{y \in Y | g_{j}(y) \in U_j\} = \{y \in Y | y \in g_{j}^{-1}(U_j) \forall j \in J\} = \cap_{j \in J} U_j$.\\
+Since $g_j$ is continuous for all $j$, $g_{j}^{-1}(U_j)$ is open in $Y$ for all $j$.  Also, by definition of the product topology, $U_j = X_j$ for all but at most finitely many $j$.  Thus, $g_{j}^{-1}(U_j) = Y$ for all but at most finitely many $j$.  It follows that the intersection $\cap_{j \in J} U_j$ is a finite intersection of open sets since removing all trivial indices will not change the intersection.  Thus, $h^{-1}(U) \in F_Y$ so $h$ is continuous, completing the proof.
+\end{document}

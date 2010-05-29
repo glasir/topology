@@ -1,0 +1,112 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\B}[0]{\mathbb{B}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\U}[0]{\mathbb{U}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\W}[0]{\mathbb{W}}
+
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem*{Question}{Question}
+
+\begin{document}
+    \begin{center}
+    \LARGE{Topology Notes} \\
+    \vspace{.1in}
+    \normalsize{3 May 2010}\\
+    \vspace{.1in}
+    \normalsize{Sam Lind} \\
+    \vspace{.2in}
+    \end{center}
+\begin{Theorem}
+$\pi_1(S^1,x_0)\cong \mathbb{Z}$ where $x_0\in S^1$.
+\end{Theorem}
+
+\begin{proof}
+We assume WLOG that $x_0=(1,0)$ since $S^1$ is simply connected. Let $\phi \colon \pi_1(S^1,s_0)\to \mathbb{Z}$ by $\phi([f])=deg(f)$. Recall from last lecture that we defined $deg(f)=\tilde{f}(1)$ where $\tilde{f}$ was the lift of $f$ based at $0$ with respect to the covering map $p\colon \mathbb{R}\to S^1$ defined by $p(x)=(\cos 2\pi x, \sin 2\pi x)$. Our aim is to show that $\phi$ is an isomorphism.
+\par
+\textbf{Well Defined}
+\newline
+Suppose $[f]=[g]$. Then $f\sim g$ are homotopic loops in $S^1$ based at $x_0$. By the Monodromy theorem, we may say that $\tilde{f}(1)=\tilde{g}(1)$ (from here on out we assume that $\tilde{f},\tilde{g}$ are the lifts of $f,g$ respectively based at $0$). This implies that $deg(f)=deg(g)$, which means that $\phi([f])=\phi([g])$ and so $\phi$ is well-defined.
+\par
+\textbf{1-1}
+\newline
+Let $[f],[g]\in \pi_1(S^1,x_0)$ be such that $\phi([f])=\phi([g])$. This means that $deg(f)=deg(g)$, and this means that $\tilde{f}(1)=\tilde{g}(1)$. But $\mathbb{R}$ is simply connected, so since $\tilde{f},\tilde{g}$ share an endpoint we may say that $\overline{\tilde{f}}\sim \overline{\tilde{g}}$, and there exists a path homotopy $\tilde{F}\colon I\times I\to \mathbb{R}$ such that $\tilde{F}(0,t)=\overline{\tilde{f}}$ and $\tilde{F}(1,t)=\overline{\tilde{g}}$. Consider $p\circ \tilde{F}$. This is continuous because it is a composition of continuous functions, and $p\circ \tilde{F}(0,t)=p\circ \overline{\tilde{f}}=\overline{f}$; $p\circ \tilde{F}(1,t)=p\circ \overline{\tilde{g}}=\overline{g}$. Finally, we know that for all $s\in I$ we have $\tilde{F}(s,0)=\tilde{f}(1)$, so $p\circ \tilde{F}(s,0)=p\circ \tilde{f}(1)=f(1)=x_0$, and the same goes for $t=1$, so $p\circ \tilde{F}$ goes to a loop homotopy $F$ which takes $\overline{f}$ to $\overline{g}$, but since these are loops we may deduce that $f\sim g$. This means that $[f]=[g]$ and we are done with proving one to one.
+\par
+\textbf{Onto}
+\newline
+Let $n\in \mathbb{Z}$. Since $\mathbb{R}$ is path connected there exists a path $\tilde{f}$ from $0$ to $n$. Then $p\circ \tilde{f}$ is a loop in $S^1$ based at $x_0$ (since $p(\cos 2\pi n, \sin 2\pi n)=(1,0)=x_0$), and $deg(p\circ \tilde{f})=n$. Therefore $\phi([p\circ \tilde{f}])=n$. This proves that $\phi$ is onto.
+\par
+\textbf{Homomorphism}
+ \newline
+Let $[f],[g]\in \pi_1(S^1, x_0)$. We want to show that $\phi([f][g])=\phi([f])+\phi([g])$, and the right hand side is equal to $deg(f)+deg(g)$, while the left hand side is equal to $deg(f\ast g)$. So we want to show that $deg(f\ast g)=deg(f)+deg(g)$. Let $\widetilde{f\ast g}$ be the lift of $f\ast g$ beginning at $0$. We want to show that $\widetilde{f\ast g}(1)=\tilde{f}(1)+\tilde{g}(1)$. Let $m=\tilde{f}(1), n=\tilde{g}(1)$. Let us define a function $h\colon I\to \mathbb{R}$ by:
+	\[h(s)=\begin{cases}
+	\tilde{f}(2s) & s\in [0,\frac{1}{2}]\\
+	\tilde{g}(2s-1)+m & s\in [\frac{1}{2},1]
+	\end{cases}
+\]
+Now $h$ is a path in $\mathbb{R}$ from $0$ to $m+n$. This is because $\tilde{f}, \tilde{g}$ are continuous, and when $s=\frac{1}{2}$ we have $\tilde{f}(1)=m$, and $\tilde{g}(0)+m=0+m=m$, so this is continuous by the pasting lemma. Also, $h(0)=0$ and $h(1)=\tilde{g}(1)+m=n+m$. Also we know:
+	\[p\circ h(s)=\begin{cases}
+	f(2s) & s\in [0,\frac{1}{2}\\
+	p(\tilde{g}(2s-1)+m) & s\in [\frac{1}{2},1]
+	\end{cases}
+\]
+Now observe that the second half of this is:
+\begin{align}
+	p(\tilde{g}(2s+1)+m)&=(\cos 2\pi (\tilde{g}(2s-1)+m), \sin2\pi (\tilde{g}(2s-1)+m))\\
+											&=(\cos 2\pi \tilde{g}(2s-1),\sin2\pi \tilde{g}(2s-1))\\
+											&=p(\tilde{g}(2s-1))\\
+											&=g(2s-1)						
+\end{align}
+Thus we see that $p\circ h=f\ast g$, which implies that $h=\widetilde{f\ast g}$ since $h$ begins at $0$ and we know that lifts are unique w/r/t their starting points. Now $h(1)=m+n=\tilde{f}(1)+\tilde{g}(1)$, so putting it together:
+	\[deg(f\ast g)=deg(f)+deg(g)\Rightarrow \phi([f][g])=\phi([f])+\phi([g])
+\]
+So we conclude that $\phi$ is a homomorphism. This plus one to one and onto means that $\phi$ is in fact an isomorphism, so we conclude that $\mathbb{Z}\cong \pi_1(S^1,x_0)$.
+\end{proof}
+\par
+We rejoice at the fact that we have now seen a non trivial fundamental group. Check out this theorem:
+\begin{Theorem}
+Let $x_0\in X$ and $p\colon \tilde{X}\to X$ be a covering map. If $\tilde{X}$ is simply connected, then there exists a bijection from $\pi_1(X,x_0)$ to $p^{-1}(\left\{x_0\right\})$.
+\end{Theorem}
+
+\begin{proof}
+We only needed simple connectedness in the proof that $\phi$ was $1-1$ and onto, so we use an analogous proof to show that $\phi \colon \pi_1(X,x_0)\to p^{-1}(\left\{x_0\right\})$ by $\phi([f])=\tilde{f}(1)$, where $\tilde{f}$ is the unique lift originating at some $y_0\in p^{-1}(\left\{x_0\right\})$. 
+\end{proof}
+
+\begin{Theorem}
+Let $p\colon S^2\to \mathbb{R}P^2$ be the quotient map. Then $p$ is a covering map.
+\end{Theorem}
+
+\begin{proof}
+Recall that the equivalence relation for this quotient map was defined as $x\sim y$ iff $x=\pm y$. We use one of the most powerful proof techniques known to mathematics here: proof by picture. Consider any open ball in $\mathbb{R}P^2$ containing some point. Then its pre image will be a pair of disjoint balls such that $p$ restricted to the balls will be a homeomorphism. Just think about it...
+\end{proof}
+
+\begin{Remark}
+$\mathbb{R}P^2$ provides us with another example of a space with a nontrivial fundamental group. From one of our theorems, we know that given $x_0\in \mathbb{R}P^2$ there is a bijection from $\pi_1(\mathbb{R}P^2,x_0)$ to $p^{-1}(\left\{x_0\right\})$ (since $\mathbb{R}P^2$ is simply connected), and we know that $p^{-1}(\left\{x_0\right\})$ has precisely two elements, so $\pi_1(\mathbb{R}P^2,x_0)\cong \mathbb{Z}_2$ (alternatively written by dirty algebraists as $\mathbb{Z}/ 2\mathbb{Z}$).
+\end{Remark}
+\end{document}

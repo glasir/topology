@@ -1,0 +1,122 @@
+\documentclass[12pt,letterpaper,boxed]{article}
+\usepackage[usenames]{color}
+\usepackage{amsthm,amssymb,amsmath}
+\newtheorem*{example}{Example}
+\newtheorem*{defn}{Definition}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\begin{document}
+Math147: Topology Notes: 4/9/10\\
+
+\begin{center}{\Large The Fundamental Group and Homotopy Equivalence}
+\end{center}
+\normalsize
+\vspace{.2in}
+
+Note: The Associativity Lemma, proven in the previous notes, is true in the case of paths $f,g,h$ such that $f(1)=g(0)$ and $g(1)=h(0)$.
+\vspace{.2in}
+
+{\bf \large Identity:  }\normalsize  Let $f$ be a path in $X$ which begins at $x_0$ and ends at $x_1$.  Then $f*e_{x_1}\sim f$ and $e_{x_0}* f \sim f$. \footnote{Recall that $\sim$ denotes ``path homotopy."}
+
+
+\emph{Proof:} \indent We prove that $f* e_{x_1}\sim f$.  The other case is similar.
+\vspace{.1in}
+
+In order to define a homotopy, at $t$, we will ``do'' 
+
+$f$ for $s\in [0,t(1)+(1-t)\tfrac{1}{2}]$ or, by simplification, $s\in[0,\tfrac{t+1}{2}]$.
+
+And $e_{x_1}(t)$ for $s\in [\tfrac{t+1}{2},1]$.\\ 
+\vspace{.1in}
+
+Define $F:I\times I \to X$ by $$F(s,t)=\begin{cases} f(\tfrac{2s}{t+1}) & s\in [0,\tfrac{t+1}{2}]\\ e_{x_1} & s\in [\frac{t+1}{2},1]\end{cases}.$$
+\vspace{.6in}
+
+{\bf cont:}
+By the Pasting lemma, as $f, e_{x_1}$ are continuous on closed domains it suffices to check that they agree for $s=\tfrac{t+1}{2}$.
+This follows easily, as $f\big(\frac{2\tfrac{t+1}{2}}{t+1}\big)=f(1)=x_1$, and $e_{x_1}(\tfrac{t+1}{2})=x_1$. 
+\vspace{.6in}
+
+{\bf homo:}
+$$F(s,0)=\begin{cases}f(2s) & s\in[0,\tfrac{1}{2}]\\ e_{x_1}(t) & s\in[\tfrac{1}{2},1]\end{cases} = f*e_{x_1}$$
+and
+$$F(s,1)=\begin{cases} f(s) & s\in [0,1]\\ e_{x_1} & s\in [1,1]=f.\end{cases}$$ Hence $F$ is a homotopy.
+\vspace{.6in}
+
+{\bf path:}
+$F(0,t)=f(0)=x_0$, and $F(1,t)=e_{x_1}=x_1$, hence $F$ is a path.
+
+\vspace{.2in}
+
+Thus $f*e_{x_1}\sim f$.\qedsymbol
+
+\vspace{.6in}
+
+{\bf \large Inverses: } \normalsize Let $f$ be a path in $X$ from $x_0$ to $x_1$.  Then $f*\overline{f}\sim e_{x_0}$ and $\overline{f}*f\sim e_{x_0}$.\\ 
+\vspace{.1in}
+\textcolor{blue}{The ``wrong" approach:  increase the speed over $f$ and $\overline{f}$ and wait at $x_1$.\\
+The ``right" approach: travel successively smaller distances along $f$.}
+
+
+\emph{Proof:} \indent We show only that $f*\overline{f}\sim e_{x_0}$, and the other case follows.
+
+Define $F:I\times I\to X$ by 
+$$F(s,t)=\begin{cases} f(2s) & s\in [0,\tfrac{1-t}{2}] \hspace{1in} \text{do $f$}\\ f(1-t) & s\in [\tfrac{1-t}{2},\tfrac{1+t}{2}] \hspace{1in} \text{wait}\\ \overline{f}(2s-1) & s\in[\tfrac{1+t}{2}, 1] \hspace{1in} \text{do $\overline{f}$.}\end{cases}$$
+\vspace{.6in}
+
+\emph{\bf cont:} Using the pasting lemma, it suffices to check that these functions agree on their (shared) endpoints.  As $f(2(\tfrac{1-t}{2}))=f(1-t)$, and $f(2(\tfrac{1+t}{2})-1)=\overline{f}(t)=f(1-t)$, we conclude that $F$ is continuous.
+\vspace{.6in}
+
+\emph{\bf homo:} For $t=0$, $$F(s,0)=\begin{cases} f(2s) & s\in [0,1/2]\\ f(1) & s\in [1/2,1/2] \\ \overline{f}(2s-1) & s\in [1/2,1]\end{cases}=f*\overline{f}(s)$$
+For $t=1$, $$F(s,1)=\begin{cases} f(2s) & s\in [0,0]\\ f(0) & s\in [0,1]\\ \overline{f}(2s-1) & s\in [1,1]\end{cases} =e_{x_0}.$$
+\vspace{.6in}
+
+\emph{\bf path:} For $s=0$, $F(0,t)=f(0)=x_0$.  And for $s=1$, $F(1,t)=\overline{f}(1)=x_0$.
+
+For each loop $f$ based at $x_0$, $\overline{f}$ is a loop based at $x_0$.  Thus we have shown closure under inverses.
+
+\qedsymbol
+
+It follows that the action $*$ defines a group on the set of loops based at $x_0$.
+\textcolor{blue}{Observe that the set of paths does not have a group structure, as there is no definition of multiplication between arbitrary paths.}
+
+
+\begin{example} Let $X=\R^n$ and $x_0$ be a point in $X$.\\  Then $\pi_1(X,x_0)=\langle [e_{x_0}]\rangle$.
+\end{example}
+
+
+\section{Homotopy Equivalence: An Excursion}
+\begin{defn}  Let $(X,F_x)$, $(Y,F_y)$ be topological spaces.  We say $X$ and $Y$ are \emph{\textcolor{red}{homotopy equivalent}} if there exist continuous $f,g$ where $f:X\to Y$, $g:Y\to X$, such that $f\circ g\simeq id_Y$ and $g\circ f\simeq id_X$.
+\end{defn}
+
+\begin{example} If $f$ is a homeomorphism, then $X,Y$ are homotopy equivalent (using $f, f^{-1}$).
+\end{example}
+
+As the following example illustrates, however, homotopy equivalence is weaker than homeomorphism.
+
+\begin{example} Let $X=S^1\times I$ and $Y=S^1$.  Then $S^1\times I\not\cong S^1$, as removing 2 points disconnects $S^1$, but does \emph{not} disconnect $S^1\times I$.
+
+Let $f:S^1\times I\to S^1$ by $f(x,y)=x$, and let $g:S^1\to S^1\times I$ by $g(x)=(x,0)$.
+
+Then $(f\circ g)(x)=f(x,0)=x$, so $f\circ g\simeq id_Y$.
+
+It remains to show that $(g\circ f)(x)\simeq id_X$.  
+Define $F:(S^1\times I)\times I\to S^1\times I$ by $$F((x,y),t)=(x,yt)$$\marginpar{\footnotesize``Compressing the $y$-coordinate''}
+\normalsize
+As $F$ is the composition of continuous functions it is itself continuous.
+
+$F((x,y),0)=(x,0)=g\circ f(x,y)$, and $F((x,y),1)=(x,y)=id_X(x,y)$.  Thus $F$ is a homotopy.
+\end{example}
+
+\begin{defn}  Let $(X,F_x)$ be path connected and suppose for all $x_0\in X$, $$\pi_1(x,x_0)=\langle [e_{x_0}]\rangle.$$ Then $X$ is \emph{\textcolor{red}{simply connected}}.
+\end{defn}
+
+\begin{example} $\R^n$ is simply connected.
+\end{example}
+\begin{example} What about $\Q$?  $\Q$ is \emph{not} path connected.  But $\pi_1(Q,x_0)=\langle [e_{x_0}]\rangle $, as $e_{x_0}$ is the only path from $x_0$: all others must pass through irrationals, and hence cannot be contained in $\Q$.
+\end{example}
+
+
+
+
+\end{document}

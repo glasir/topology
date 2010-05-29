@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{amsthm}			%Add this one!!
+\usepackage{amssymb}
+
+
+\begin{document}
+(continuation of the Long Example from previous class)
+
+WTS: $\exists  U' \in F_{\pi \times i}$ such that $U' \notin F_{\frac{\mathbb{R}}{\sim} \times \mathbb{Q}}$
+
+We want to construct $U$ as a union.
+
+For all $n\in \mathbb{N}$ define $U_n$ to be the interior of the region of $\mathbb{R}\times\mathbb{Q}$ bounded by the vertical lines $n-\frac{1}{4}$ and $n+\frac{1}{4}$ and above and below by the lines through $(n, \frac{\sqrt{2}}{n})$ with slope $\pm 1$. Each one of these sets has a vertical line through the natural number.
+
+So $\forall n \in \mathbb{N}, \{n\}\times \mathbb{Q} \subseteq U_n$. Observe that $\forall n\in \mathbb{N}, U_n \in F_{\mathbb{R}\times\mathbb{Q}}$ (it is an interior, so it is open).
+
+Let $\bigcup_{n \in\mathbb{N}} U_n \in F_{\mathbb{R}\times\mathbb{Q}} \qquad$ (also open in $\mathbb{R}\times\mathbb{Q}$ because it is a union).
+
+Let $U' = (\pi \times i)(U).$ This will glue together the strips along the vertical lines with $\mathbb{R}$ coordinates in $\mathbb{N}$. This can be pictured as a fan.
+
+\smallskip
+
+Claim: $U' \in F_{\pi \times i}$
+
+{\it proof}: $(\pi \times i)^{-1}(U') = U$ and $U$ is a union of $U_n 's$
+
+$\therefore$ by definition $U' \in F_{\pi \times i}$.
+
+\smallskip
+
+Claim: $U' \notin F_{\frac{\mathbb{R}}{\sim} \times \mathbb{Q}}$
+
+{\it proof}: Let $([n],0) \in U'$. Suppose $\exists W \in F_{\frac{\mathbb{R}}{\sim}}$ and $V \in F_{\mathbb{Q}}$ such that $([n], 0)\in W \times V \subseteq U'$.
+
+Then $\pi^{-1}(W) \in F_{\mathbb{R}}$ and of course $i^{-1}(V) = V$.
+
+So $\pi^{-1}(W) \times V$ is open in $\mathbb{R}\times \mathbb{Q}$ such that $\pi^{-1}(W) \times V \subseteq (\pi \times i)^{-1}(U') = U$.
+
+Also, $\pi^{-1}(W)$ is open in $\mathbb{R}$ and contains $\mathbb{N}$ and $V$ is open in $\mathbb{Q}$ and contains $\{0\}$.
+
+So $\exists \delta >0$ such that $(-\delta, \delta) \cap \mathbb{Q} \subseteq V$. There exists an $n\in \mathbb{N}$ such that $\delta > \frac{\sqrt{2}}{n}$. $\pi^{-1}(W)$ is open in $\mathbb{R}$, so it's on the x-axis.
+
+So $\exists \epsilon >0$ such that $(n-\epsilon, n+\epsilon)\subseteq \pi^{-1}(W)$.
+
+So the interval $(n-\epsilon, n+\epsilon)\times (-\delta, \delta)\subseteq \pi^{-1}(W)\times V$. So $\epsilon < \frac{1}{4}$ from our previous definition of $U_n$.
+
+Let $x = n + \frac{\epsilon}{2}$. Question: Where does $x = n + \frac{\epsilon}{2}$ meet the boundaries of $U_n$? It meets at $y = \frac{\sqrt{2}}{n} \pm \frac{\epsilon}{2}$.
+
+$\exists y \in \mathbb{Q}$ such that $\frac{\sqrt{2}}{n} - \frac{\epsilon}{2} < y < \frac{\sqrt{2}}{n} + \frac{\epsilon}{2}$.
+
+So $(x,y) \notin U_n$ and $\forall m\neq n, (x,y)\notin U_m$ since $(x,y) \in (n-\epsilon, n+\epsilon)\subseteq (n-\frac{1}{4}, n+\frac{1}{4}$.
+
+But $(x,y) \in (n-\epsilon, n+\epsilon) \times (-\delta, \delta) \subseteq \pi^{-1}(W) \times V \subseteq U$ $\Rightarrow (x,y) \notin U$. Therefore we have a contradiction.
+
+$\therefore U' \notin F_{\frac{\mathbb{R}}{\sim} \times \mathbb{Q}}$
+
+So we have shown that $F_{\pi\times i} \neq F_{\frac{\mathbb{R}}{\sim} \times \mathbb{Q}}$. $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

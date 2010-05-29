@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{anagtheorem}{Analogous Theorem}
+\newtheorem{sfact}{Small Fact}
+
+\title{Topology Notes - March 8, 2010}
+\author{Daniel Poore}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{theorem}
+Let $(X,F_X)$ be a compact and Hausdorff topological space.  If $(Y,F_Y)$ is a topological space and $f : X \to Y$ is continuous, onto, and closed, then $(Y,F_Y)$ is compact and Hausdorff.
+\begin{proof}
+From previous notes, as $f$ is continuous and $X$ is compact, $Y$ is compact.
+\\
+\\
+So now consider Hausdorff:
+\\
+\\
+Let $p,q \in Y$ such that $p \neq q$.  As $f$ is onto, $\exists \ a,b \in X$ such that $f(a) = p$ and $f(b) = q$.  As $X$ is Hausdorff, $\{a\}$ and $\{b\}$ are closed.  As $f$ is closed, $f(\{a\}) = \{p\}$ and $f(\{b\}) = \{q\}$ are closed.  Therefore, as $f$ is continuous, $f^{-1}(\{p\})$ and $f^{-1}(\{q\})$ are closed, and are clearly disjoint.
+\\
+\\
+As $X$ is both compact and Hausdorff, it is also normal.  So $\exists \ U,V \in F_X$ such that $f^{-1}(\{p\}) \subseteq U$, $f^{-1}(\{q\}) \subseteq V$, and $U \cap V = \emptyset$.  As these sets are open, $A = U^c$ and $B = V^c$ are closed.  As $f$ is closed, $f(A)$ and $f(B)$ are also closed, and hence $f(A)^c$ and $f(B)^c$ are open.
+\\
+\\
+Suppose that $p \in f(A)$.  Then for some $x \in A$, $f(x) = p$.  But then $x \in f^{-1}(\{p\}) \subseteq U = A^c$.  So $x \in A \cap A^c$, which is a contradiction.  So $p \in f(A)^c$, and by a similar argument, $q \in f(B)^c$.
+\\
+\\
+Now suppose that $c \in f(A)^c \cap f(B)^c$.  So, as $f$ is onto, there exists some $d \in X$ such that $f(d) = c$.  As $c \notin f(A)$, $d \notin A$, so $d \in U$.  Similarly, as $c \notin f(B)$, $d \in V$.  But then $d \in U \cap V = \emptyset$.  This is a contradiction, so no such $c$ exists, and $f(A)^c \cap f(B)^c = \emptyset$.
+\\
+\\
+So $f(A)^c$ and $f(B)^c$ are disjoint open sets with $p \in f(A)^c$ and $q \in f(B)^c$.  As such open sets exist for all $p,q \in Y$, $Y$ is Hausdorff.
+\\
+\\
+Therefore $Y$ is compact and Hausdorff, as desired.
+\end{proof}
+\end{theorem}
+\newpage
+\begin{center}
+\Large{Chapter 9: Connected Spaces}
+\end{center}
+
+\begin{definition}
+$(X,F_X)$ is a topological space.  Then $X$ is disconnected if $X$ has a proper, nonempty, clopen subset.  Otherwise, $X$ is connected.
+\\
+Equivalently, $X$ is disconnected if there exist nonempty, disjoint $A,B \in F_X$ such that $A \cup B = X$.  $A$ and $B$ are called a separation of $X$.
+\\
+\end{definition}
+\noindent Recall from Math 131 that $A \subseteq \mathbb{R}$ is connected iff $A$ is an interval.
+\\
+\begin{anagtheorem}
+Let $f : (X,F_X) \to (Y,F_Y)$ be continuous, then $X$ is connected only if $f(X)$ is connected.
+\begin{proof}
+Suppose that $U,V \in F_Y$ are separating sets of $f(X)$.  Then, as $f$ is continuous, $f^{-1}(U)$ and $f^{-1}(V)$ are open.  As $U$ and $V$ cover $f(X)$, $f^{-1}(U)$ and $f^{-1}(V)$ cover $X$.  Furthermore, suppose that $x \in f^{-1}(U) \cap f^{-1}(V)$.  Then $f(x) \in U \cap V$, and $f(x) \in f(X)$.  However, this contradicts the assumption that $U$ and $V$ are separating sets.  So $f^{-1}(U)$ and $f^{-1}(V)$ are disjoint open sets that cover $X$, so they are a separating set.  But $X$ is connected, so this is a contradiction.  Hence, no such $U$ and $V$ exist, and $f(X)$ is also connected.
+\end{proof}
+\end{anagtheorem}
+\vspace{.2in}
+\noindent Which of the following are connected?
+\begin{itemize}
+\item $\mathbb{R}$ with the finite complement topology - Yes.  Let $U$ be some proper, nonempty open subset of $\mathbb{R}$.  Then it is infinite, so its complement does not have finite complement.  Therefore, its complement is not open.  So there are no proper, nonempty clopen sets, and the topology is connected.
+\item $\mathbb{R}$ with the half-open interval topology - No.  Let $U = [0,\infty)$ and $V = (-\infty,0)$.  These are open as $U = \bigcup_{n\in \mathbb{N}} [0,n)$ and $V = \bigcup_{n \in \mathbb{N}} [-n,0)$, and the arbitrary union of basis elements is open.  Furthermore, they are clearly disjoint, and cover $\mathbb{R}$.\\
+\end{itemize}
+
+\begin{definition}
+$(X,F_X)$ is a topological space.  $S \subseteq X$ is disconnected if and only if there exist $U,V \in F_X$ such that $(U \cap S) \cap (V \cap S) = \emptyset$, $U \cap S, V \cap S \neq \emptyset$ and $S \subseteq U \cup V$.  Note that this does not require $U \cap V = \emptyset$.
+\end{definition}
+\newpage
+\begin{sfact}
+$(X, F_X)$ is connected if and only if $\forall \ f : X \to Y$ where $Y$ has the discrete topology and $f$ is continuous, then $f$ constant.
+\begin{proof}
+$(\Rightarrow)$ 
+\\
+So $(X,F_x)$ is connected.  Suppose that $\exists \ f : X \to Y$ where $Y$ has the discrete topology, such that $f$ is continuous and not constant.  So there exist $p,q \in Y$ such that $p \neq q$ and $f^{-1}(\{p\}), f^{-1}(\{q\}) \neq \emptyset$.  Therefore, $U = f^{-1}(\{p\})$ and $V = f^{-1}(\{p\}^c) \supseteq f^{-1}(\{q\})$ have $U,V \neq \emptyset$.  As every set is open in the discrete topology and $f$ is continuous, $U,V \in F_X$.  Furthermore, as $\{p\} \cap \{p\}^c = \emptyset$, $U \cap V = \emptyset$, and $U \cup V = f^{-1}(Y) = X$.  So $U$ and $V$ separate $X$.  However, $X$ is connected, so this is a contradiction, and no such $f$ exists.
+\end{proof}
+\begin{proof}
+$(\Leftarrow)$
+\\
+So $f : X \to Y$ is constant for all continuous $f$ where $Y$ has the discrete topology.  Suppose that $X$ is disconnected.  Then there exist separating sets $A,B \in F_X$.  Define $Y = \{0,1\}$ with the discrete topology and $f : X \to Y$ as $f(x) = \left\{ \begin{array}{cc} 0 & x \in A \\ 1 & x \in B\end{array}\right.$.  Then, as $f^{-1}(\{0\}) = A \in F_X$, $f^{-1}(\{1\}) = B \in F_X$, $f^{-1}(\emptyset) = \emptyset \in F_X$ and $f^{-1}(Y) = X \in F_X$, $f^{-1}(U) \in F_X$ for all $U \subseteq Y$ such that $U$ is open.  So $f$ is continuous.  Furthermore, as $A,B \neq \emptyset$, there exist $a \in A$ and $b \in B$, so $f(a) = 0$ and $f(b) = 1$.  Hence $f$ is not constant.  Therefore $f : X \to Y$ is a continuous function from $X$ to a space with the discrete topology that is not constant.  This contradicts the initial assumption, so $X$ is connected.
+\end{proof}
+\end{sfact}
+\end{document}
+

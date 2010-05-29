@@ -1,0 +1,215 @@
+\documentclass{article}
+
+\usepackage{amssymb}
+\newtheorem{Thm}{Theorem}
+\newtheorem{Ex}{Example}
+\newtheorem{Def}{Definition}
+\newtheorem{smallf}{Small Fact}
+
+\begin{document}
+
+\begin{Ex}
+
+Let $M$ be a set and $d$ a function which satisfies property $2$ and not $1$ of the definition of a metric space.
+
+$$d(a,b) = 0 \quad \forall a,b \in M$$ and $M$ has at least 2 points.
+
+\end{Ex}
+
+Goal: talk about continuity in metric spaces (rather than just the reals)
+
+\begin{Def}
+
+Let $(M_1, d_1)$ and $(M_2, d_2)$ be metric spaces and $a \in M_1$. Let $f:M_1 \rightarrow M_2$. We say $f$ is continuous at a if $\forall \epsilon > 0$ there exists a
+$\delta > 0$ such that $\forall x\in M_1$ with $d_1 (x,a) <\delta$ then $d_2 (f(x), f(a))<\epsilon$.
+
+\end{Def}
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+\bigskip
+
+
+\begin{Def}
+
+Let (M,d) be a metric space and $a\in M$. The open ball of radius $\epsilon >0$ is $B_\epsilon (a) = \{x\in M | d(x,a)<\epsilon \}$
+
+\end{Def}
+
+So in terms of open balls:
+
+$f$ is continuous at a if $\forall\epsilon >0$ there exists a $\delta >0$ such that if $x\in B_\delta (a)$ then $f(x) \in B_\epsilon (f(a))$
+
+In other words $f(B_\delta (a)) \subseteq B_\epsilon (f(a))$
+
+
+Open balls don't always look like open balls...
+
+\begin{Ex}
+
+$M =$ upper half of plane with usual distance
+
+(picture) An open ball can look like a semicircle if it rests on the x-axis.
+
+\end{Ex}
+
+\begin{Ex}
+
+$\mathbb{R}$ with the discrete metric.
+
+$$B_1 (47) = {47}$$
+
+$$B_2 (47) = \mathbb{R}$$
+
+\end{Ex}
+
+
+\begin{Ex}
+
+Comb metric
+
+$B_{\frac{1}{2}} ((0,1))$ is just an interval along the y-axis starting at $(0,1)$
+
+$B_2 ((0,1)$ This is everything on the comb below the line of slope $-1$ that connects points $(0,1)$ and $(1,0)$. Since it's an open ball, the line is not contained in
+the ball.
+
+\end{Ex}
+
+Note: Balls are not closed under $\bigcup$ and $\bigcap$
+
+\begin{Def}
+
+Let $(M,d)$ be a metric space. A set $U \subseteq M$ is said to be open if $\forall a\in U$ there exists an $\epsilon >0$ such that $B_\epsilon (a) \subseteq U$
+
+\end{Def}
+
+
+Question: What are all the open sets in the discrete metric?
+Answer: All subsets of M, whatever M is!
+
+\begin{smallf} (a.k.a. ``not hard to prove but not teeny-weeny and seemingly obvious")
+
+In a metric space, open balls are open sets.
+
+\end{smallf}
+
+$proof:$
+Let $a \in M$ and $\epsilon >0$.
+
+WTS: $B_\epsilon (a)$ is open
+WTS: $\forall x \in B_\epsilon (a)$ there exists an $r>0$ such that $B_r (x) \subseteq B_\epsilon (a)$
+
+Let $x \in B_\epsilon (a)$
+
+Let $r < \epsilon - d(x,a)$ and $r > 0$
+
+Claim: $B_r (x) \subseteq B_\epsilon (a)$
+
+Let $y \in B_r (x)$
+
+$d(y,a)\leq d(y,x) + d(x,a)$
+
+$< \epsilon - d(x,a) + d(x,a)$
+
+$= \epsilon$
+
+Therefore $B_r (x) \subseteq B_\epsilon (a)$
+
+
+
+\begin{Thm} (``open sets are nice" theorem)
+
+Let $F$ be the family of open sets in a metric space $(M,d)$. Then:
+
+1) $M$, $\emptyset \in$ $F$
+
+2) If U, V $\in$ F then U $\cap$ V $\in$ F
+
+3) If $\forall i \in I$, $U_i \in F$ then $\bigcup_{i \in I} U_i \in F$
+
+
+\end{Thm}
+
+Define: $\bigcup_{i \in I} U_i = \{x \in U_i | i \in I\}$
+
+$proof:$
+1) Let $x\in M$, and $\epsilon = 47$
+
+$B_{47} (x) = \{y\in M|d(x,y)<47\} \subseteq M$
+
+and $\forall x\in \emptyset$ there exists an $\epsilon >0$ such that $B_\epsilon (x) \subseteq \emptyset$
+
+\medskip
+
+2) Let $x\in U\cup V$
+
+Let $r_1 >0$ such that $B_{r_1} (x) \subseteq U$
+
+Let $r_2 >0$ such that $B_{r_2} (x) \subseteq V$
+
+Let $r = \min\{r_1, r_2 \}$
+
+$B_r (x) \subseteq B_{r_1} (x) \subseteq U$
+
+$B_r (x) \subseteq B_{r_2} (x) \subseteq V$
+
+Therefore $B_r (x) \subseteq U \cap V$
+
+\medskip
+
+3) Let $x \in \cup_{i\in I} U_i$
+
+WTS: There exists an $r>0$ such that $B_r (x) \subseteq \cup_{i\in I} U_i$
+
+$x\in \cup_{i\in I} U_i$ implies that there exists an $i_o \in I$ such that $x\in U_{i_o}$ so there exists an $r>0$ such that $B_r (x) \subseteq U_{i_o}$
+
+$B_r (x) \subseteq U_{i_o} \subseteq \bigcup_{i\in I} U_i$
+
+
+\medskip
+
+\begin{Def}
+
+If f:X $\rightarrow$ Y and $U \subseteq Y$ then $f^{-1} (U) = \{x\in X |f(x) \in U\}$
+
+\end{Def}
+
+\begin{Thm}
+
+Let $(M_1, d_1)$ and $(M_2, d_2)$ be metric spaces and $f: M_1 \rightarrow M_2$. Then $f$ is continuous if and only if $\forall U \subseteq M_2$ which is open in $(M_2,
+d_2)$, $f^{-1} (U)$ is open in $(M_1, d_1)$.
+
+\end{Thm}
+
+$proof:$
+$(\Rightarrow)$ Suppose $f$ is continuous. Let $U \subseteq M_2$ be open.
+
+WTS: $\forall x \in f^{-1} (U)$ there exists an $r>0$ such that $B_r (x) \subseteq f^{-1} (U)$
+
+Let $x\in f^{-1} (U)$
+
+$f(x) \in U$ so since U is open, there exists an $\epsilon >0$ such that $B_\epsilon (f(x)) \subseteq U$
+
+Since $f$ is continuous there exists an $r>0$ such that \[f(B_r (x)) \subseteq B_\epsilon (f(x)) \subseteq U\]
+
+So $f^{-1} (f(B_r (x))) \subseteq f^{-1} (U)$
+
+Therefore $B_r (x) \subseteq f^{-1} (f(B_r (x))) \subseteq f^{-1} (U)$
+
+\smallskip
+
+$(\Leftarrow)$ Suppose that $\forall U$ open in $(M_2, d_2) f^{-1} (U)$ is open in $(M_1, d_1)$
+
+WTS: $f$ is continuous at every point.
+
+Let $a\in M_1$
+
+WTS: $\forall \epsilon >0$ there exists a $\delta > 0$ such that $f(B_\delta (a)) \subseteq B_\epsilon (f(a))$
+
+
+
+\end{document}

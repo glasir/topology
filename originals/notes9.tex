@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+\begin{document}
+\begin{center}
+Math 147 Notes
+\break
+15 February 2010
+\end{center}
+Recall at the end of last class we were proving the last property of a topology for the quotient space.  That is, let $U_{i} \epsilon F_{\sim} \forall$ i $\epsilon I. $ We then wish to show that $\cup_{i \epsilon I} U_{i}\epsilon F_{\sim}.$
+\\Before we get to the proof, recall that $F_{\sim} = \{U \subseteq X/\sim | \Pi^{-1}(U) \epsilon F_{X} \}$
+\\
+\\
+Proof: Consider $\Pi^{-1}(\cup_{i \epsilon I}U_{i}) = \cup_{i \epsilon I} \Pi^{-1}(U_{i})$
+\\
+Since $\Pi^{-1}(U_{i}) \epsilon F_{\sim} \forall i$, the arbitrary union of such sets must also be open.  Thus by the above equality, $\Pi^{-1}(\cup_{i \epsilon I}U_{i}) \epsilon F_{\sim}$, completing the proof.  Note that the continuity of $\Pi$ follows directly from the quotient topology.
+\\
+\\
+Question: Is $\Pi$ necessarily open?
+Answer: No
+\\
+Consider the interval [0,1] mapped to a circle under $\Pi$.  Then the interval [0,1/2), which is open in [0,1] is mapped to a half circle which is not open in the whole circle. 
+\vspace{40 mm}
+\\
+Example 1: Let $X=I \times I$, where I is the unit interval.
+\\ Define an equivalence relation on X as follows: $(x,y)\sim(x^{'},y^{'})$ if and only if either $(x,y)=(x^{'},y^{'})$ or $x=x^{'}$ and $y,y^{'} \epsilon \{0,1\}$.
+\\ Topologically, $X/\sim$ gives us a cylinder.
+\vspace{40 mm}
+\\ 
+Example 2: Let $X = \mathbb{R}^{2}$ and suppose $(x,y)\sim(x^{'},y^{'})$ if and only if $\exists n,m \epsilon \mathbb{Z}$ such that $x = x^{'} + n, y = y^{'} + m$.  
+\\Note that X may be divided into integer side length squares, such that under $\sim$ all of the given squares are equivalent.  Thus we need only consider one such square, noting that the opposite sides are equivalent, yielding a torus.  We may also generalize X to higher dimensions, yielding the analagous torus for that dimension (i.e. $X = \mathbb{R}^{3}$ yields a 3-torus and so on).
+\vspace{40 mm}
+\\
+Example 3: Let $S^{n} = \{x \epsilon \mathbb{R}^{n+1}| \|x\| = 1\}.$ Define $x \sim y \Leftrightarrow x =  \pm y$
+\\Note that for n=1 we obtain the unit circle such that points connected by a diameter are equivalent.  Thus any semi-circle forms a fundamental domain.  Such a semicircle has it's endpoints as equivalent, and is thus topologically equivalent to the original circle.
+\\We denote the quotient space $S^{n}/\sim$ by $\mathbb{R}P^{n}$, or the real projective space.  The above argument concludes that $\mathbb{R}P^{1} \cong S^{1}$.
+\vspace{40 mm}
+\\Example 4: $\mathbb{R}P^{2} = S^{2}/\sim$.
+\\Here we simply note that the fundamental domain is a hemisphere whose boundary takes on the same topology of example 3 since it is a circle under $\sim$.
+\newpage
+Example 5: Let $X=\mathbb{R}^{2}$ and define $(x,y)\sim(x^{'},y^{'}) \Leftrightarrow x^{2}+y^{2}=x^{'2}+y^{'2}$.
+\\Under $\sim$, any points on a circle centered at the origin are equivalent.  Collapsing all such circles, we find that $X/\sim$ is a ray emanating from the origin.
+\vspace{40 mm}
+\\Definition: Let X,Y be sets and $f: X \rightarrow Y$ be a function. We define the relation $\sim$ induced by f as follows:
+\\ $\forall p,q \epsilon X, p \sim q \Leftrightarrow f(p)=f(q)$.
+\\ It is clear that $\sim$ is an equivalence relation on X because $=$ is an equivalence relation on Y.
+\vspace{10 mm}
+\\Defintion: Suppose $(X,F_{X})$ is a topological space and Y is a set. Let $f: X \rightarrow Y$ be onto.  Then the quotient topology on Y with respect to f is given by:
+\begin{center}
+$F_{f}=\{U \subseteq Y | f^{-1}(U) \epsilon F_{X}\}$
+\end{center}
+If Y has this topology we say that f is a quotient map.
+\end{document}

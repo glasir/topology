@@ -1,0 +1,87 @@
+\documentclass{amsart}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+
+\newcommand{\Z}{\mathbb Z}\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{defn}{Definition}
+\newtheorem{smfact}{Small Fact}
+\setlength{\parindent}{0 in}
+\begin{document}
+
+Math 147, Topology
+
+Lecture Notes
+
+March 12, 2009
+
+Rachel Karpman
+
+\setlength{\parskip}{0.1 in}
+\textcolor{red}{Hausdorff $\heartsuit$ compact forever!!}
+
+\begin{lem}(Important Lemma About Homeomorphisms)  Let $f:(X,F_x)\rightarrow(Y,F_y)$ be continuous, $X$ be compact, and $Y$ be Hausdorff.  Then $f$ is a homeomorphism if and only if $f$ is a bijection.
+\end{lem}
+\begin{proof}
+$(\Rightarrow)$  If $f$ is a homeomorphism, then by definition, $f$ is a bijection.
+
+$(\Leftarrow)$  WTS $f$ is open.  Since $f$ is a bijection, we can equivalently show that $f$ is closed.  Let $A \subseteq X$ be closed.  By Analgous Theorem 2, $A$ is compact, so $f(A)$ is compact by Analogous Theorem 1.  Since $Y$ is Hausdorff, $f(A)$ is closed.  Therefore, $f$ is a homeomoprhism.
+\end{proof}
+
+Example 1: A Hausdorff space $X$ and an equivalence relation $\sim$ such that $X/\sim$ is not Hausdorff.  Let $X=[0,1]\times[0,1]$, and let $(a,b)\sim(c,d)$ if either $(a,b)=(c,d)$ or $b=d\neq 0.$  (See Homework $4$, Problem $3$.)  Points on the $x$-axis are not separable. 
+ 
+(Draw a picture to see why!)
+
+\vspace{1.5 in}
+
+Example 2: Let $X=\mathbb{R},$ and set $x \sim y$ if and only if $x=y$ of $x,y>0.$  
+
+(Pretty pictures go here!)
+
+\vspace{1.5 in}
+
+Let $p>0.$  The $[p],[0]\in X/\sim$.  Let $U \subseteq X/\sim$ be an open set containing $[0].$  We claim that $[p]\in U$.  Too see why, note that $\pi^{-1}(U)$ is an open subset of $\R$ containing $0$.  Hence, there exists $q \in \pi^{-1}(U)$ such that $q>0.$  Therefore, $q \sim p \Rightarrow [q]=[p]\in U$, and $X/\sim$ is not Hausdorff.
+
+Note: this proves that the continuous images of a Hausdorff space need not be Hausdorff!
+
+\begin{defn}  Let $(X,F_x)$ be a topological space.  We say $X$ is \textbf{normal} if for every pair of disjoint closed sets $A,B \subseteq X$, there exist disjoint open sets $U,V\subseteq X$ such that $A \subseteq U$ and $B \subseteq V$.
+\end{defn}
+
+
+On Homework 2, we proved that metric spaces are normal.
+
+Example: a space that is Hausdorff but not normal.  Consider $\R$ with a topology $F$ defined by a basis of all sets of the form $(a,b)$ plus all sets of the form $(a,b)\cap \Q.$  This is known as the \textbf{rational topology}, and it is finer than the usual topology.  As an exercise, you can prove that that this collection of sets really form the basis of a topology.  (Use the basis lemma.)
+
+
+We want to show that $(\R,F)$ is Hausdorff.  This is easy, because $F$ contains the usual topology on on $\R$, which is Hausdorff.  
+
+
+Next, we will show that $(\R,F)$ is not notmral.  To see why, let $A=\R-\Q.$  Then $A$ is closed, because $\Q$ is contained in $F$.  Let $B=\{47\}.$  Suppose there exist $U,V \in F$ such that $A \subseteq U,$ and $B \subseteq V$.  Then there exists $\epsilon>0$ such that $(47-\epsilon,47+\epsilon)\cap Q \subseteq V$.  Let $p \in (47-\epsilon,47+\epsilon)$ such that $p \not\in \Q.$  Then $p \in U$ because $p \not\in \Q$.  So, there exists $\delta>0$ such that $(p-\delta,p+\delta) \subseteq U$.  Now, there must exist a point in $x \in (p-\delta,p+\delta)\cap((47-\epsilon,47+\epsilon)\cap \Q).$  But then $x \in U \cap V$, and so $U \cap V \neq \emptyset$.  This proves that $(\R,F)$ is not a normal space.
+
+In particular, we have shown that a space can be Hausdorff but not normal.  
+
+\begin{lem}  If $(X,F_x)$ is Hausdorff and compact, then $X$ is normal.
+\end{lem}
+(Comic strip proof can go here)
+\vspace{3 in}
+
+\begin{proof}Let $A$ and $B$ be disjoint closed subsets of $X$.  Then $A$ and $B$ are compact because $X$ is compact.  Let $a \in A$.  For every $b \in B$, there exist open sets $U_b$ and $V_b$ such that $a \in U_b$ and $b \in V_b,$ and $U_b \cap V_b = \emptyset.$  Then $\{V_b \mid b \in B\}$ is an open cover of $B$.  Since $B$ is compact, we can choose a finite subcover $\{V_{b_1},\ldots,V_{b_n}\}.$  Let $U_a=\cap_{i=1}^n U_{b_i}$.  For every $a \in A$, $U_a \in F_x$ and $a \in U_a.$  Let $V_a=\cup_{i=1}^n V_{b_i}$.  Then $B \subseteq V_a  \in F_x$.  
+
+We claim that $U_a \cap V_a = \emptyset$ for all $a \in A$.  To see why, note that $\left( \cap_{i=1}^n U_{b_i}\right) \cap \left( \cup_{i=1}^n V_{b_i} \right) = \emptyset$ because for all $i$, $U_{b_i} \cap V_{b_i}=\emptyset.$
+
+Now, $\{U_a \mid a \in A\}$ is an open cover of $A$.  Since $A$ is compact, this cover has a finite subcover $\{U_{a_1},\ldots,U_{a_m}\}$.  Now, $V=\cap_{i=1}^{m}V_{a_i}$ is open and $B \subseteq V$. For all $i=1,\ldots,m,$ $U_{a_i}\cap \left( \cap_{i=1}^m V_{a_i} \right) = \emptyset$ because for all $i=1,\ldots,m$, $U_{a_i} \cap V_{a_i}=\emptyset$.   
+
+Let $U=\cup_{i=1}^m U_{a_i} \in F_x$.  Then $A \subseteq U$ and $U \cap V = \emptyset$ because $U_{a_i} \cap V_{a_i}=\emptyset$ for all $i$.
+
+Therefore, $X$ is normal.  
+\end{proof}
+\end{document}
+

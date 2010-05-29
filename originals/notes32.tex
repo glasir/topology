@@ -1,0 +1,91 @@
+\documentclass{amsart}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{color}
+
+\newcommand{\Z}{\mathbb Z}\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}\newcommand{\C}{\mathbb C}
+\newcommand{\F}{\mathbb F}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{defn}{Definition}
+\newtheorem{smfact}{Small Fact}
+\setlength{\parindent}{0 in}
+
+\begin{document}
+
+Math 147, Topology
+
+Lecture Notes: Covering Spaces
+
+April 21, 2010
+
+Rachel Karpman
+
+\setlength{\parskip}{0.1 in}
+
+Our ultimate goal is to find a space with an interesting fundamental group.  
+
+\begin{defn}  Let $X$ and $\tilde{X}$ be topological spaces, and $p:\tilde{X}\twoheadrightarrow X$ be a continuous surjection.  An open set $U \subseteq X$ is said to be \textbf{evenly covered} by $p$ if $p^{-1}(U)$ is the disjoint union of open sets $V_{\alpha}$, $\alpha \in A$ for some index set $A$, such that for all $\alpha \in A,$ $p \mid V_{\alpha} \rightarrow U$ is a homeomorphism.  
+\end{defn}
+
+In this case, we say that each $V_{\alpha}$ is a \textbf{sheet} covering $U$.
+
+Example: Let $X=D^2$ with the usual topology, and $\tilde{X}=D^2 \times \N$ with the usual product topology.  Define $p:\tilde{X} \rightarrow X$ by $p(x,n)=x.$  We can take $U$ to be any open set in $X$; $\displaystyle p^{-1}(U)=\bigcup_{i=1}^{\infty}p^{-1}{U}\cap V_i$, where $V_i=D^2 \times i$.  
+
+(Draw a picture here!)\vspace{2 in}
+
+Non-example:  Let $\tilde{X}=S^1,$ and let $X=S^1 \lor S^1.$  That is, $X$ is two copies of $S^1,$ which agree at a point.  
+
+Let $\sim$ be the equivalence relation on $S^1$ given by $x \sim y$ if and only if $x,y \in \{x_1,x_2\}$ or $x=y$.  Let $p$ the the quotient map from $\tilde{X}$ to $X$, corresponding to this relation, and let $U$ be an open set in $X$ containing $x_1,x_2,$ as shown.  Is $U$ evenly covered?
+
+The answer is no.  To see why, note that $p^{-1}(U)=V_1 \cup V_2,$ where $V_1,V_2$ are disjoint open sets in $\tilde{X}$.  But $p \vert V_1: V_1 \rightarrow U$ is not a homoemophism because it is not onto.  
+
+\begin{defn}  Let $p: \tilde{X} \twoheadrightarrow X$ be a continuous surjection.  Suppose for all $x \in X$, there exists an evenly covered open set $U$ containing $X$.   We say $p$ is a \textbf{covering map}, $\tilde{X}$ is the \textbf{covering space} and $X$ is the \textbf{base space.}
+\end{defn}
+
+Non-example: let $\tilde{X}=\R^2,$ $X=\R,$ and $P:\R^2\rightarrow \R$ be defined by $p(x,y)=x$.  Then for each open $U \subseteq X,$ $p^{-1}(U)=\cup_{\alpha \in A}V_{\alpha}.$  (We can think of $p^{-1}(U)$ as a horizontal stack of uncountably many copies of $U$).  For each $\alpha \in A,$ $p \mid V_{\alpha}: V_{\alpha} \rightarrow U$ is a homeomorphism.  However, each $V_{alpha}$ is not open in $\tilde{X}$.  
+
+(Pictures lead to better learning!)
+\vspace{2 in}
+
+\begin{lem}{Important Lemma on Covering Maps}
+Let $p:\tilde{X} \rightarrow X$ be a covering map.  Let $x \in X$.  Then the subspace topology on $p^{-1}(\{x\})$ is the discrete topology.
+\end{lem}
+
+\begin{proof}Let $y \in p^{-1}(\{x\}).$  We want to show that $\{y\}$ is open in $p^{-1}(\{x\})$.  Since $p$ is a covering map, there exists a evenly covered open set $U$ containing $x$.  Then $p^{-1}(U)=\cup_{\alpha \in A}V_{\alpha}$, where the $V_{\alpha}$ are pairwise-disjoint open sets such that $p \mid V_{\alpha}:V_{\alpha}\rightarrow U$ is a homeomoprhism for every $\alpha \in A$.  Hence, there exists $\alpha_0 \in A$ such that $y \in V_{\alpha_0}$.  Now, $V_{\alpha_0}$ is open in $\tilde{X}$.  Note that $y \in V_{\alpha_0}\cap p^{-1}(\{x\})$.  Let $y' \in V_{\alpha_0} \cap p^{-1}(\{x\})$ be given.  We know that $p \mid V_{\alpha_0}$ is a homeomorphism, so it is injective.  Since $p(y')=x,$ and $p(y)=x,$ we see that $y=y'$.  Thus, $\{y\}=V_{\alpha_0} \cap p^{-1}(\{x\})$, both of which are open in $p^{-1}(\{x\}).$ So $\{y\}$ is open in $p^{-1}(\{x\})$ with the subspace topology.  This completes the proof.
+\end{proof}
+
+The take-home message is that in a covering space, points in the pre-image of a single point are ``spread out."
+
+Important Example: Let $p:\R \rightarrow S^1$ be defined by $p(x)=(\cos(2 \pi x), \sin(2 \pi x))$.  (The ``slinky" space.)
+
+(Draw a picture, and you will win fortune and fame!)
+\vspace{2 in}
+
+For each $s \in S^1,$ an ``open interval" around $s$ is evenly covered, and so $\R$ is a covering space.  
+
+Another example: $\tilde{X}=S^1,$ $X=S^1$ by $p:\tilde{X} \rightarrow X$ is $p((\cos(2 \pi x), \sin(\pi x))=(\cos(4 \pi x), \sin(4 \pi x)).$  
+
+(More pictures is more better!)
+\vspace{2 in}
+
+Remark: not all quotient maps are covering maps.  But, we will prove that all covering maps are quotient maps.  (Remember our important example?)
+
+\begin{thm}  Let $p:\tilde{X}\rightarrow X$ be a covering map.  Then
+\begin{enumerate}
+\item  $p$ is an open map
+\item $X$ is a quotient space, and $p$ is a quotient map.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}  Let $U$ be open in $\tilde{X}$.  We want to show that $p(U)$ is open.  Let $x \in p(U).$  Then there exists an evenly covered open set $V$ containing $X$.  Now, there exists $y \in U$ such that $p(y)=x.$  Then $p^{-1}(V)=\cup_{\alpha \in A}V_{\alpha}$ such that the $V_{\alpha}$ are disjoint open sets and $p \mid V_{\alpha}$ is a homeomorphism for all $\alpha \in A$.  Let $\alpha_0 \in A$ such that $y \in V_{\alpha_0}$.  There exists such an $\alpha_0$ because $x \in V$.
+
+(To be continued...)
+\end{proof}
+\end{document}

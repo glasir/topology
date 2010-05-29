@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage[margin=1.3in]{geometry}
+\usepackage{amssymb,amsmath}
+\title{Math 147 Topology}
+\author{Prof. Flapan}
+\date{Jan 27 2010}
+
+\begin{document}
+\maketitle
+  \noindent $Question$: Are the topologies on a set linearly ordered?
+  \\ $Answer$: NO! \vspace{4mm}
+  \\  EXAMPLE 1. \quad  Consider $\mathbb{R}$ with the usual topology and
+  ($\mathbb{R}, F$) with $F = \lbrace \mathbb{R},\phi,47 \rbrace$.
+  We say these two topologies are $incomparable$.\vspace{4mm}
+  \\EXAMPLE 2. (Finite complement topology on $\mathbb{R}$)  \quad Consider $(\mathbb{R},F)$ Define $U \in F$ if and
+  only if either $U=\phi$ or $U=\mathbb{R}$, or $\mathbb{R}-U$ is
+  finite. We see that if $U$ is open in $(\mathbb{R},F)$, then U is
+  open in the usual topology. Therefore the usual topology is finer.\vspace{4mm}
+
+  \noindent \textbf{Definition}. \quad A set $C$ in a topological space
+  $(X,F)$ is $closed$ if $X-C$ is open.
+  \\ \noindent \textit{Remark}. \quad A set can be both open and closed as well as neither open nor closed.(It is not a door!)\vspace{4mm}
+  \\EXAMPLE 3. \quad Let us consider $\mathbb{R}$ with the half open
+  interval topology. Then $\lbrack 0,\infty)=\bigcup _{\substack{\\n \in \mathbb{N}}} \lbrack 0,n)$ is
+  open. On the other hand, the complement of this set is
+  $(-\infty,0) = \bigcup_{\substack{n \in \mathbb{N}}} \lbrack
+  -\infty,0)$, which is also open. Thus this is a "clopen" set.\vspace{4mm}
+  \\EXAMPLE 4. \quad A ``vertical line" in $\mathbb{R}^{2}$ with the dictionary order
+  is both open and closed. The proof is left as exercise.\vspace{4mm}
+  \\ \noindent \textbf{Lemma}. \quad \textit{Let $(X,F)$ be a topological space and
+  $A$
+  be the set of all closed sets in X Then \vspace{2mm}
+  \\ \indent (1) $X,\phi \in A$;\vspace{1mm}
+  \\ \indent (2) If $C,D \in A$, then $C \bigcap D \in A$;\vspace{1mm}
+  \\ \indent (3) If $C_i \in A \; \forall i \in I$, then $\bigcap_{\substack{i
+  \in I}}C_i \in A$.}\vspace{2mm}
+
+ \noindent \textit{Proof}. Use the definition of open sets in ``Note
+ 2"
+  and deMorgan's Law.\vspace{4mm}
+  \\ \textbf{Definition}. \quad Let $(X,F)$ be a topological space
+  and $A \subseteq X$. Let $\lbrace U_j| j \in J \rbrace$ be the set of all open
+  sets contained in $A$. Then we define $ \buildrel _\circ \over {A} =
+  \mathrm{Int}(A) = \bigcup_{j \in J} U_j$, and we say $\buildrel _\circ \over
+  {A}$ is the interior of $A$.
+
+  \noindent \textbf{Remark}. \quad We also say that $\buildrel _\circ \over
+  {A}$ is the \textbf{largest} open set in A.\vspace{4mm}
+
+  \noindent \textbf{Small facts about interiors}. \quad Let $(X,F)$
+  be a topological space and $A \subseteq X$. Then \vspace{2mm}
+
+  (1)$\buildrel _\circ \over{A} \subseteq A$;
+
+  (2)$\buildrel _\circ \over{A}$ is open;
+
+  (3)If $O \subseteq A$ is open , then $O \subseteq \buildrel _\circ \over
+  {A}$;
+
+  (4)$A$ is open if and only if $A=\buildrel _\circ \over
+  {A}$. \vspace{2mm}
+
+ \noindent \textit{Proof}. (1) Since $\buildrel _\circ \over{A} = \bigcup_{j
+  \in J} U_j$ and $U_j \subseteq A \; \forall j \in J$, $\buildrel _\circ \over{A} \subseteq
+  A$.
+
+  (2) By definition, $\buildrel _\circ \over{A}$ is a union of open
+  sets, so $\buildrel _\circ \over{A}$ is open.
+
+  (3) Since $O$ is open in $A$, $O \in \lbrace U_j|j \in J \rbrace.$
+  Therefore $O \subseteq \bigcup_{j \in J} U_j = \buildrel _\circ
+  \over{A}$.
+
+  (4)Assume that $A=\buildrel _\circ \over
+  {A}$. Then $\buildrel _\circ \over{A}$ is open by (2), so A is
+  open. Conversely, suppose that $A$ is \\ \indent open. This means that $A
+  \in \lbrace U_j| j \in J \rbrace$. Therefore $A \subseteq \buildrel _\circ
+  \over{A}$. Combining (1) we have $A=\buildrel _\circ \over
+  {A}$. \vspace{4mm}
+
+  \noindent EXAMPLE 5. \quad In the half open interval topology on
+  $\mathbb{R}$, $\mathrm{Int}((0,1\rbrack)=(0,1)$. To prove this, assume that $1 \in
+  \mathrm{Int}((0,1\rbrack)$ and show that it leads to a
+  contradiction.\vspace{4mm}
+
+  \noindent EXAMPLE 6. \quad In the finite complement topology on
+  $\mathbb{R}$, $\mathrm{Int((0,1\rbrack)}=\phi$. This follows from
+  the fact that $\mathbb{R}$ is infinite and all subset of
+  $(0,1\rbrack$ are finite. \vspace{4mm}
+
+  \noindent EXAMPLE 7. \quad In the dictionary order topology on
+  $\mathbb{R}^2$, $\mathrm{Int(\lbrack 0,1 \rbrack \times
+  \lbrack 0,1 \rbrack)} = \lbrack 0,1 \rbrack \times (0,1)$. (Draw a
+  picture) \vspace{4mm}
+
+  \noindent \textbf{Definition}. \quad Let $A$ be a subset of a
+  topological space $(X,F)$, and let $\lbrace F_j|j \in J \rbrace$
+  be the set of all closed sets containing $A$. Then the $closure$
+  of $A$, $\bar{A} = cl(A) = \bigcap_{j \in J}F_j$.
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,234 @@
+\documentclass[reqno]{amsart}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%Reset Margins
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+
+%set line spacing
+\linespread{1.3}
+
+%Define commands
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}{{}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\rtwo}{\mathbb{R}^{2}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\Q}{\rationals}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\algebraic}{\mathbb{A}}
+\newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\xnot}{x_{0}}
+\newcommand{\seqlim}{\lim_{n\to\infty}}
+\newcommand{\torus}{\mathbb{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\half}[1]{\frac{#1}{2}}
+\newcommand{\ip}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{||#1||}
+\newcommand{\pdx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fracpart}[1]{\langle #1 \rangle}
+\newcommand{\matr}{\mathbb{M}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\zmodnz}[1]{\integers / #1 \integers}
+\newcommand{\inv}{^{-1}}
+\newcommand{\modu}[1]{(\text{mod }\,#1)}
+\newcommand{\cyc}[1]{\langle #1 \rangle}
+\newcommand{\nil}{\mathcal{N}}
+\newcommand{\polyz}[1]{\integers[#1]}
+\newcommand{\polyq}[1]{\rationals[#1]}
+\newcommand{\Z}{\integers}
+\newcommand{\Rx}{\reals[x]}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Fix}{\text{Fix}}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\nottingham}{\mathcal{N}(K)}
+\newcommand{\nottinghamQuotient}{\mathcal{N}/\equiv_n}
+\newcommand{\depthMoreThanN}[1]{K_n(#1)}
+\newcommand{\nequiv}{\equiv_n}
+\newcommand{\numShrubs}{\widetilde{t_n}(h,l) = |S_n(h,l)|}
+\newcommand{\sumShrubWeights}{_A\Gamma_n(h,l)}
+\newcommand{\shrubCollection}{S_n(h,l)}
+\newcommand{\formalAut}{\mathcal{A}(K)}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{irrevquestion}[theorem]{Irrelevant Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{implemma}[theorem]{Important Lemma}
+
+%Define environments
+\newcounter{probnum}
+\setcounter{probnum}{1}
+\newenvironment{problem}{\noindent\textbf{Problem} \arabic{probnum}: \\}{\addtocounter{probnum}{1}\bigskip}
+\newenvironment{solution}{\medskip\emph{Solution: }}{\medskip}
+
+\begin{document}
+\noindent Teddy Einstein\\Math 147\\
+\begin{center}
+The Fundamental Group\\
+April 7, 2010 \\
+\end{center}
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
+\medskip
+
+\section{Products of Path Homotopy Classes}
+
+We previously defined a ``product'' of path homotopy classes by $[f][g] = [f*g]$. However, we did not prove that this product is well-defined. 
+By well-defined, we mean that if $f,f',g,g'$ are paths in a topological space with $f\sim f'$ and $g\sim g'$, then $f*g\sim f'*g' \Rightarrow [f][g] = [f'][g']$.
+Without this result, the product of two equivalence classes could potentially have two different products which would render the product useless for defining a group. 
+
+\begin{implemma}
+The product of path homotopy classes is well-defined. Formally, let $(X,F_x)$ be a topological space. Let $f,f'$ be paths in $X$ from $a$ to $b$ and let $g,g'$ be paths in $X$ from $b$ to $c$. Then:
+\[f*g \sim f'*g' \Rightarrow [f][g] = [f'][g']\]
+
+\begin{proof}
+We know $f*g$ and $f'*g'$ are paths in $X$ from $a$ to $c$ by a previous result. 
+Let $F$ be the path homotopy from $f$ to $f'$, and let $G$ be the path homotopy from $g$ to $g'$.
+
+At this point, it may be wise to draw a homotopy diagram. Space follows below: 
+\vspace{2.5in}
+
+Define $H:I\times I\to X$ by:
+\[H(s,t) = \begin{cases} F(2s,t) & s\in [0,\half1] \\ G((2s-1),t) & s\in [\half1,1] \end{cases}\]
+We claim $H$ is a homotopy from $f*g$ to $f'*g'$. We will now verify the claim. 
+
+We see that:
+\[F(2\cdot\half1,t) = F(1,t) = b \qquad G(2\cdot\half1 -1,t) = G(0,t) = b\]
+so by the pasting lemma, it follows that $H$ is continuous.
+
+We now show $H$ gives the desired paths by calculating:
+\[H(0,t) = F(0,t) = a \qquad H(1,t) = G(1,t) = c\]
+so $H(s,[0,1])$ gives a set of paths from $a$ to $c$. 
+
+Finally, we need to prove that $H$ gives a homotopy between the intended paths:
+\[H(s,0) = \begin{cases}F(2s,0) & s\in [0,\half1] \\ G(2s-1,0) & s\in [\half1,1]  \end{cases} = \begin{cases} f(2s) & s\in [0,\half1] \\ g(2s-1) & s\in [\half1,1] \end{cases}= f*g \]
+Similarly:
+\[H(s,1) = \begin{cases}F(2s,1) & s\in [0,\half1] \\ G(2s-1,1) & s\in [\half1,1]  \end{cases} = \begin{cases} f'(2s) & s\in [0,\half1] \\ g'(2s-1) & s\in [\half1,1] \end{cases}= f'*g'  \]
+
+Consequently, $H$ satisfies the definition of a path homotopy from $f*g$ to $f'*g'$. We then have that $f*g\sim f'*g'$ so that by definition of the product of paths:
+\[[f][g] = [f*g] = [f'*g'] = [f'][g']\]
+as desired.
+\end{proof}
+\end{implemma}
+
+\section{Loops}
+
+We have shown that the product of two path homotopy classes is well defined.
+For the purposes of defining a group of path homotopy classes, we would like a set of paths whose products have the same endpoints as the original paths. This simplification motivates the two definitions which follow:
+
+\begin{definition}
+Let $f$ be a path in $X$ such that $f(0) = f(1) = x_0\in X$. Then $f$ is a {\bf loop} in $X$ based at $x_0$. 
+\end{definition}
+
+Note that if $f,g$ are loops in $X$ based at some point $x_0\in X$, then their product $f*g$ is also a loop based at $x_0$. In particular, we then have that $[f],[g]$ and $[f][g] = [f*g]$ are all path homotopic classes of loops based at $x_0$. 
+
+\begin{definition}
+Let $(X,F_x)$ be a topological space, and let $x_0\in X$. 
+
+Define $\pi_1(X,x_0)$ as the set of path homotopy classes of loops based at $x_0$ endowed with the product of path homotopy classes. We call $\pi_1(X,x_0)$ the {\bf fundamental group of $X$ based at $x_0$}.
+\end{definition}
+
+\section{The Fundamental Group is a Group}
+
+Our ultimate goal is to harness the power of group theory from abstract algebra to study topological spaces. 
+We defined the fundamental group of $X$ based at $x_0$ with the path homotopy class product operation. 
+Naturally, we would like to prove that $\pi_1(X,x_0)$ endowed with the product operation is actually a group. In other words, if $(X,F_x)$ is a topological space with $x_0\in X$, we must prove the following:
+\begin{enumerate}
+\item $\pi_1(X,x_0)$ is closed under the operation $[][]$. In other words, for $[f],[g]\in \pi_1(X,x_0)$, $[f][g] \in \pi_1(X,x_0)$.
+\item The operation $[][]$ is associative. In other words, given $[f],[g],[h]\in \pi_1(X,x_0)$:
+\[ ([f][g])[h] = [f]([g][h])\]
+\item $\pi_1(X,x_0)$ contains an identity element. In other words, there exists $[e]\in \pi_1(X,x_0)$ such that for all $[f]\in\pi_1(X,x_0)$:
+\[[e][f] = [f][e] = [f]\]
+\item Every element of $\pi_1(X,x_0)$ has an inverse. In other words, given $f\in \pi_1(X,x_0)$, there exists $g\in \pi_1(X,x_0)$ such that:
+\[[f][g] = [g][f] = [e]\]
+\end{enumerate}
+
+If $\pi_1(X,x_0)$ satisfies all of these requirements, $\pi_1(X,x_0)$ is a group.
+We will prove the first two results here while the remaining results will be proved in a later lecture.
+
+\begin{lemma} Closure. Let $(X,F_x)$ be a topological space, and let $x_0\in X$. Let $[f],[g]\in \pi_1(X,x_0)$. Then:
+\[[f][g] \in \pi_1(X,x_0)\]
+
+\begin{proof}
+We see that:
+\[[f][g] = [f*g]\]
+We know by a previous result that $f*g$ is a path in $X$ from $x_0$ to $x_0$ since $x_0$ is both the starting point of $[f]$ and the endpoint of $[g]$. Consequently, $f*g$ is a loop in $X$ based at $x_0$, so $[f*g] \in \pi_1(X,x_0)$. 
+\end{proof}
+\end{lemma}
+
+Next, we will show that path homotopy path products of loops based at a point are associative. 
+\begin{lemma} Associativity. Let $(X,F_x)$ be a topological space, and let $x_0\in X$. Let $[f],[g],[h]\in \pi_1(X,x_0)$. Then:
+\[ ([f][g])[h] = [f]([g][h])\]
+
+\begin{proof}
+Before actually proving the result, we will explicitly write the formulas for $(f*g)*h$ and $f*(g*h)$:
+\[(f*g)*h = \begin{cases}f(4s) & s\in [0,\frac14] \\ g(4s-1) & s\in[\frac14,\frac12] \\ h(2s-1) & s\in [\frac12,1] \end{cases} \qquad\qquad
+f*(g*h) = \begin{cases}f(2s) & s\in [0,\frac12] \\ g(4s-2) & s\in[\frac12,\frac34] \\ h(4s-3) & s\in [\frac34,1] \end{cases}\]
+
+We need to construct a homotopy from $(f*g)*h$ to $f*(h*g)$.
+Before reading the proof, the reader is encouraged to produce a homotopy diagram in the space provided below:
+\vspace{2.5in}
+
+Based on our formulas for $(f*g)*h$ and $f*(g*h)$, we paramaterize the function $F:I\times I \to X$ by:
+\[F(s,t) = \begin{cases} f\left(\frac{4s}{1+t}  \right)& s \in \left[ 0,\frac{1+t}4 \right] \\
+g(4s-1-t) & s\in \left[\frac{1+t}4, \frac{2+t}4\right]  \\ 
+h\left(\frac{4s}{2-t} - \frac{2+t}{2-t} \right) & s\in \left[\frac{2+t}4,1\right]\end{cases}\]
+
+We claim and will verify that $F$ is a homotopy from $(f*g)*h$ to $f*(g*h)$. We first prove continuity using the pasting lemma as usual. 
+The proof that each of the piecewise parts of $F$ is defined on a closed set is left as a (relatively trivial but tedious) exercise.
+
+We will, however, show that on the boundaries between these regions, the piecewise parts agree. We see:
+\begin{eqnarray*}
+f\left(\frac{4}{1+t} \cdot \left(\frac{1+t}4\right)\right) & = &  f(1)  =  x_0 \\
+g\left(4\cdot\left(\frac{1+t}4\right)-1-t\right) & = & g(0)  =  x_0\\
+g\left(4\cdot\left(\frac{2+t}4\right)-1-t\right) & = & g(1)  =  x_0\\
+h\left(\frac{4}{2-t} \cdot \left(\frac{2+t}4\right)- \frac{2+t}{2-t}\right) & = & h(0)  =  x_0\\
+\end{eqnarray*}
+so continuity follows by the pasting lemma. Note that we assume $f,g,h$ are continuous so that things like $h\left(\frac{4s}{2-t} - \frac{2+t}{2-t} \right)$ are because compositions of continuous functions are continuous and over $t\in I$, $\frac{4s}{2-t} - \frac{2+t}{2-t}$ is continuous. The justification is similar for the other piecewise parts in the definition of $F$. 
+
+We now verify that $F$ gives a path from $x_0$ to $x_0$ for every fixed $t\in I$. We see that:
+\begin{eqnarray*} 
+ F(0,t) & = & f(0) = x_0\\
+ F(1,t) & = & h(1) = x_0\\
+\end{eqnarray*}
+as desired.
+
+Finally, we need to show that $F$ provides a homotopy from $(f*g)*h$ to $f*(g*h)$. We have that:
+\[F(s,0) = \begin{cases}f\left(4s \right)& s \in \left[ 0,\frac{1+t}4 \right] \\
+g(4s-1) & s\in \left[\frac{1+t}4, \frac{2+t}4\right]  \\ 
+h\left(2s - 1 \right) & s\in \left[\frac{2+t}4,1\right]\end{cases}\qquad = \qquad (f*g)*h \]
+\[F(s,1) = \begin{cases}f\left(2s  \right)& s \in \left[ 0,\frac{1+t}4 \right] \\
+g(4s-2) & s\in \left[\frac{1+t}4, \frac{2+t}4\right]  \\ 
+h\left(4s - 3 \right) & s\in \left[\frac{2+t}4,1\right]\end{cases}\qquad = \qquad f* (g*h)\]
+as desired, so $F$ satisfies the three properties of a homotopy from $(f*g)*h$ to $f*(g*h)$.
+
+We have constructed $F(s,t)$ such that $F$ is a homotopy from $(f*g)*h$ to $f*(g*h)$ which implies that $(f*g)*h \sim f*(g*h) \Rightarrow [(f*g)*h] = [f*(g*h)]$. It immediately follows that
+\[ ([f][g])[h] = [f]([g][h])\]
+\end{proof}
+\end{lemma}
+
+\section{Trivia for Posterity}
+
+\begin{irrevquestion}
+Did [Professor Flapan] participate in any summer undergraduate research programs?
+\end{irrevquestion}
+
+\begin{solution}
+While Joe Gallian at the University of Minnesota at Duluth claims the REU program at Duluth was the first REU program, Professor Flapan is adamant that this claim is bogus because REU programs were preceded by NSF funded programs known as:
+\[\text{URPP} \equiv \text{Undergraduate Research Participation Program}.\]
+Professor Flapan participated in a URPP program at Indiana University researching a topic at the intersection of computer science and mathematics. Theoretically, since Indiana University has an REU program, this should be the longest running program of its type.
+\end{solution}
+\end{document}

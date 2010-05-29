@@ -1,0 +1,173 @@
+\documentclass[10pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+%\usepackage{graphicx}
+
+%%  Renewed
+\renewcommand{\phi}{\varphi}
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\h}{\mathcal{H}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\langle #1 \rangle}
+
+%%  Matrices
+\newcommand{\minimatrix}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}  }
+\newcommand{\megamatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}  }
+
+%\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\twovector}[2]{\begin{pmatrix} #1\\#2 \end{pmatrix} }
+%\newcommand{\threevector}[3]{\begin{pmatrix} #1\\#2\\#3 \end{pmatrix} }
+
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Small Fact}{Small Fact}
+\newtheorem*{Small Fact about Basis}{Small Fact about Basis}
+\newtheorem*{Tiny Fact about Projection Maps}{Tiny Fact about Projection Maps}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem*{Question}{Question}
+\newtheorem{Problem}{Problem}
+\newtheorem{PART II: Creating News Spaces from Old Spaces}{PART II: Creating News Spaces from Old Spaces}
+
+
+\allowdisplaybreaks
+\begin{document}
+\center
+\huge{Topology}
+February 12, 2010
+\normalsize
+Madeline Wyse
+\begin{Theorem}
+Let $X$ be a set and $\beta$ a collection of subsets of $X$ such that
+\begin{enumerate}
+	\item $X = \cup_{B \in \beta} B$
+	\item For all $B_1, B_2 \in \beta$ and $x \in B_1 \cap B_2$, $\exists$ $B_3 \in \beta$ such that $x \in B_3 \subseteq B_1 \cap B_2$.
+\end{enumerate}
+Let $F = \{$unions of elements of $\beta \}$. Then $F$ is a topology for $X$ with basis $\beta$. 
+\end{Theorem}
+
+\begin{proof}
+First we prove that $F$ is a topology for $X$. 
+\begin{enumerate}
+	\item Since $X = \displaystyle{\cup_{B \in \beta} B}$, by definition $X \in F$. Since $\emptyset$ is the union of zero elements of the $\beta$, we also have $\emptyset \in F$. 
+	\item Let $U, V \in F$. Hence we know that there exist index sets $I$ and $J$ such that $U = \cup_{i \in I}B_i$ and $V = \cup_{j \in J}B_j$. Consider $U \cap V = ( \cup_{i \in I}B_i) \cap (\cup_{j \in J}B_j)$. Let $x \in  U \cap V$. Then there exists $i_x \in I$ and $j_x \in J$ such that $x \in B_{i_x} \cap B_{j_x}$. From our second assumption we know there exists a $B_x \in \beta$ such that $x \in B_x \subseteq B_{i_x} \cap B_{j_x}$. Let $W = \cup_{x \in U \cap V} B_x$. Since $W$ is a union of elements of $\beta$ it is clearly in $F$. \\
+WTS: $W = U \cap V$\\
+$(\subseteq)$ For all $x \in U \cap V$, we know that $x \in B_x \subseteq \cup_{x \in U \cap V}B_x = W$. Therefore $U \cap V \subseteq W$. \\
+$(\subseteq)$ For all $x \in U \cap V$, we have a $B_x \subseteq B_{i_x} \cap B_{j_x} \subseteq U \cap V$. Therefore, $W = \cup_{x \in U \cup V} B_x \subseteq U \cap V$.\\
+We have containment in both directions, so  $W = U \cap V$. 
+	\item Suppose $\forall k \in K$, $U_k \in F$. \\
+	WTS: $\cup_{k \in K}U_k \in F$. \\
+	For all $k \in K$, $U_k = \cup_{i \in I_k} B_i$. Hence $\cup_{k \in K}U_k = \cup_{k \in K} (\cup_{i \in I_k} B_i) \in F$, since it is a union of elements of $\beta$. 
+\end{enumerate}
+Therefore $F$ is a topology. By definition, $\beta$ is also a basis of $F$. 
+\end{proof}
+
+\begin{Small Fact about Basis} 
+Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces with bases of $\beta_X$ and $\beta_Y$ respectively, and $f: X \rightarrow Y$. 
+\begin{enumerate}
+	\item $f$ is continuous iff $\forall$ $B \in \beta_Y$, $f^{-1}(B) \in F_X$. 
+	\item $f$ is open iff $\forall$ $B \in \beta_X$, $f(B) \in F_Y$.
+\end{enumerate}
+\begin{proof}
+(proof of 1 only. 2 is virtually identical.)\\
+$(\Rightarrow)$ Suppose $f$ is continuous. Then $\forall$ $U \in F_Y$, $f^{-1}(U) \in F_X$ by the definition of continuity. In particular, if $B \in \beta_y$, then $B \in F_Y$ and $f^{-1}(B) \in F_X$. \\
+$(\Leftarrow)$ Suppose $B \in \beta_Y$ implies $f^{-1}(B) \in F_X$. Let $U \in F_Y$. Hence $U = \cup_{i \in I} B_i$ for some index set $I$. Therefore,
+$$f^{-1}(U) = f^{-1}(\cup_{i \in I} B_i) = \cup_{i \in I} f^{-1}(B_i) \in F_X,$$ 
+since we know $f^{-1}(B_i) \in F_X$ for all $i$ and unions of elements of $F_X$ are in $F_X$. 
+\end{proof}
+\end{Small Fact about Basis}
+\bigskip
+
+\begin{PART II: Creating News Spaces from Old Spaces}
+\end{PART II: Creating News Spaces from Old Spaces}
+$\mathbf{Chapter \ 5: \ Quotient \ Spaces}$ \\
+First we will consider quotients of sets.
+\begin{Definition}
+Let $X$ be a set and $\sim$ a relation on $X$. We say $\sim$ is an $\mathbf{equivalence \ relation}$ if 
+\begin{enumerate}
+	\item $\forall$ $x \in X, \ x\sim x$ (reflexivity)
+	\item $\forall \ x, y \in X$ if $x\sim y$ then $y\sim x$ (symmetry)
+	\item If $x, y, z \in X$ and $x\sim y$ and $y\sim z$, then $x\sim z$ (transitivity)
+\end{enumerate}
+\end{Definition}
+
+\begin{Definition}
+Let $X$ be a set with an equivalence relation $\sim$. Then $\forall \ a \in X$ define the $\mathbf{equivalent \ class}$ of $a$ as $$[a] = \{x \in X : x\sim a \}.$$
+\end{Definition}
+
+\begin{Definition}
+Let $X$ be a set with an equivalence relation $\sim$. Then the $\mathbf{quotient}$ of $X$ by $\sim$ is 
+$$X / \sim = \{ [p] : p \in X\}.$$
+\end{Definition}
+NOTE: The equivalence classes partition $X$ (i.e. $\forall$ $x \in X$, $x \in$ exactly one equivalence class)
+
+\begin{Example}
+Similarity (i.e. $A \sim B$ iff there exists a $P$ such that $A = P^{-1}BP$) is an equivalence relationship on the set of $n \times n$ matrices. However, this is not the "kind" of equivalence relationships that we will be studying.
+\end{Example}
+
+\begin{Example}
+Let $X = [0,1]$ and $x\sim y$ iff $x = y$ or $x,y \in \{0,1\}$. This "glues" the interval $[0,1]$ into a circle. 
+\end{Example}
+
+\begin{Definition}
+Let $X$ be a set and $\sim$ an equivalence relation. We define $$\pi: X \rightarrow X / \sim$$ such that $\pi(x) = [x] \forall \ x \in X$. We say $\pi$ is the $\mathbf{projection \ map}$. 
+\end{Definition}
+
+\begin{Tiny Fact about Projection Maps}
+Let $X$ be a set with equivalence relation $\sim$. Then
+\begin{enumerate}
+	\item $\pi$ is onto
+	\item $\pi$ is one-to-one iff "$\sim$" is "=". 
+\end{enumerate}
+\end{Tiny Fact about Projection Maps}
+\begin{proof}
+\begin{enumerate}
+	\item Let $[x] \in X / \sim$. Then $\pi(x) = [x]$. Therefore $\pi$ is onto.
+	\item $(\Rightarrow)$ Suppose $\pi$ is one-to-one. Let $x,y \in X$ and $x \sim y$. Then $[x] = [y]$ and $\pi(x) = \pi(y)$, implying $x = y$ since $\pi$ is one-to-one.\\
+	$(\Leftarrow)$ Suppose "$\sim$" is "=". Let $x,y \in X$ such that $\pi(x) = \pi(y)$. Then $\{x\} = [x] = [y] = \{y\}$, and $x = y$. 
+\end{enumerate}
+\end{proof}
+Now we would like to define a topology such that $\pi$ is continuous. 
+
+\begin{Definition}
+Let $(X, F_X)$ be a topological space and $\sim$ be an equivalence relation on $X$. We define $$F_{\sim} = \{U \subseteq X / \sim : \pi^{-1}(U) \in F_X\}$$ and call $(X / \sim, F_{\sim})$ the $\mathbf{quotient \ space}$ of $X$ with respect to $\sim$. 
+\end{Definition}
+
+\begin{Small Fact}
+Let $(X, F_X)$ be a topological space and $\sim$ be an equivalence relation on $X$. $(X / \sim, F_{\sim})$ is a topological space and $\pi$ is continuous. 
+\end{Small Fact}
+\begin{proof}
+First let us prove that $F_{\sim}$ is a topology on $X / \sim$. 
+\begin{enumerate}
+	\item Since $\pi^{-1}(X / \sim) = X \in F_X$, clearly $X / \sim \in F_{\sim}$. Since $\pi^{-1}(\emptyset) = \emptyset \in F_X$, $\emptyset \in F_{\sim}$. 
+	\item Let $U, V \in F_{\sim}$. Now $$\pi^{-1}(U \cap V) = \pi^{-1}(U) \cap \pi^{-1}(V) \in F_X$$ since $ \pi^{-1}(U) \in F_X$ and $\pi^{-1}(V) \in F_X$. Therefore $U \cap V \in F_{\sim}$. 
+\end{enumerate}
+\end{proof}
+\end{document}

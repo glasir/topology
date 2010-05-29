@@ -1,0 +1,164 @@
+\documentclass[11pt,reqno]{article}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[extra]{tipa}
+
+%%  Renewed
+
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\dD}{\partial \mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\left< #1 \right>}
+\newcommand{\blf}{ {[\,\cdot\, , \,\cdot\,]} }
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\dom}{\mathcal{D}}
+\newcommand{\pc}{\perp_C}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\tr}{\operatorname{tr}}
+%%  Matrices
+\newcommand{\minimatrix}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}  }
+\newcommand{\megamatrix}[9]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9\end{pmatrix}  }
+
+\renewcommand{\hat}{\widehat}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\newcommand{\twovector}[2]{\begin{pmatrix} #1\\#2 \end{pmatrix} }
+\newcommand{\threevector}[3]{\begin{pmatrix} #1\\#2\\#3 \end{pmatrix} }
+
+\renewcommand{\vec}[1]{{\bf #1}}
+
+\newcommand{\varnot}{\sim\!\!}
+\newcommand{\due}[1]{\vspace{-0.2in}\begin{center}\textsc{due at the beginning of class \underline{#1}} \end{center}\medskip }
+
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{claim}{Claim}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Postulate}{Postulate}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem*{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem{Exercise}{Exercise}
+\newtheorem*{Question}{Question}
+\newtheorem{Problem}{Problem}
+\newtheorem*{soln}{Solution}
+
+
+\allowdisplaybreaks
+%\newcounter{ex}[section]
+
+
+
+%\numberwithin{section}{chapter}
+%\numberwithin{Theorem}{chapter}
+%\numberwithin{equation}{chapter}
+%\numberwithin{Example}{chapter}
+
+%%
+%% MAIN DOCUMENT
+%%
+\begin{document}
+\author{James Buerger}
+\date{}
+
+\title{Topology Notes for  April 26th, 2010}
+\maketitle
+
+\begin{Theorem}  Let $p:\widetilde{X}\rightarrow X$ be a covering map.  Then
+\begin{enumerate}
+\item  $p$ is an open map;
+\item $X$ is a quotient space, and $p$ is a quotient map.
+\end{enumerate}
+\end{Theorem}
+
+\begin{proof} First things first:
+\begin{enumerate}
+\item Let $U$ be open in $\widetilde{X}$.  We want to show that $p(U)$ is open.  Let $x \in p(U).$  There exists an evenly covered open set $V$ containing $X$.  Let $y \in U$ such that $p(y)=x.$  Then $p^{-1}(V)=\displaystyle\bigcup_{\alpha \in A}V_{\alpha}$ such that $V_{\alpha}$ are disjoint open sets and $p \mid V_{\alpha}$ is a homeomorphism for all $\alpha \in A$.  Let $\alpha_0 \in A$ such that $y \in V_{\alpha_0}$, where such an $\alpha_0$ exists because $x \in V$.
+\\\\\\\\\\\\\\\\\\\
+Because $U$ and $V_{\alpha_0}$ are both open, $U\cap V_{\alpha_0}$ is open in $\widetilde{X}$. Recall $p\mid V_{\alpha_0}:V_{\alpha_0}\rightarrow V$ is a homeomorphism, so 
+\begin{align*}
+p(U\cap V_{\alpha_0})&=p\left(V_{\alpha_0}\cap p(U)\right)\\
+&=V\cap p(U)
+\end{align*}
+where $V\cap p(U)$ is open in $V$ and $U$ is open in $X$. Therefore, $V\cap p(U)$ is open in $X$. Because our $x$ is in both $V$ and $p(U)$, $x\in V\cap p(U)\subseteq p(U)$. That is, $x$ is an element of an open set contained in $p(U)$. Hence, $p(U)$ is open and $p$ is an open map.
+\item To show $X$ has the quotient topology with regard to $p$, we want to show that $F_X = \{U\subseteq X \mid p^{-1}(U)\in F_X\}$.
+
+$(\subseteq)$ Let $V\in F_X$. Because $p$ is continuous, $p^{-1}(V)\in F_{\widetilde{X}}$. Thus, $V\in \{U\subseteq X \mid p^{-1}(U)\in F_X\}$.
+
+$(\supseteq)$ Let $U\subseteq X$ such that $p^{-1}(U)\in F_{\widetilde{X}}$. Because $p$ is open, $p(p^{-1}(U)$ is open in $X$. Because $p$ is onto $p(p^{-1}(U))=U$. Thus, $U\in F_X$.
+
+$F_X = \{U\subseteq X \mid p^{-1}(U)\in F_X\}$, so $p$ is a quotient map and $X$ is a quotient space. \end{enumerate} \end{proof}
+\begin{Definition}
+Let $p:\widetilde{X}\rightarrow X$ be a covering map and $f:Y\rightarrow X$ be continuous. We define a \textit{lift} of $f$ to be any continuous function $\widetilde{f}:Y\rightarrow X$ such that $p\circ \widetilde{f}=f$.
+\end{Definition}
+
+\begin{Example}
+Let $\widetilde{X}=\R$, $X=S^1$ and $p(x)=\left(\cos(2\pi x),\sin(2\pi x)\right)$. Let $f:I\rightarrow S^1$ by $f(x)=\left(\cos(\pi x),\sin(\pi x)\right)$. Define $\widetilde{f}:I\rightarrow \R$ by $f(x)=\frac{x}{2}$.
+\\\\\\\\\\\\\\\\\\
+\end{Example}
+\begin{Lemma}
+\textbf{Uniqueness of Lifts.} Let $p:\widetilde{X}\rightarrow X$ be a covering map and $f:Y\rightarrow X$ be a covering and $f:Y\rightarrow X$ be continuous and $Y$ be connected. Let $\widetilde{f_0}$ and $\widetilde{f_1}$ be lifts of $f$. Suppose there exists $y_0\in Y$ such that $\widetilde{f_0}(y_0)=\widetilde{f_1}(y_0)$ then $\widetilde{f_0}=\widetilde{f_1}$.
+\end{Lemma}
+\begin{proof}
+Let $Y' =\{y\in Y\mid \widetilde{f_0}(y)=\widetilde{f_1}(y)\}$. $Y\ne\emptyset$. We want to show that $Y' = Y$, we will accomplish by showing $Y'$ is clopen in $Y$. 
+\begin{itemize}
+\item\textit{Open.} Let $y\in Y'$. There exists an evenly covered open set $V$ containing $f(y)$. $p^{-1}(V)=\displaystyle\bigcup_{\alpha\in A} V_\alpha$ such that $V_{\alpha}$'s are disjoint and open; also, $p\mid V_\alpha:V\alpha\rightarrow V$ is a homeomorphism. 
+
+Let $q= \widetilde{f}_0(y)=\widetilde{f_1}(y)$. There exists and $\alpha_0\in A$ such that $q\in V_{\alpha_0}$. $\widetilde{f}_0^{-1}(V_{\alpha_0})$ and $\widetilde{f}_1^{-1}(V_{\alpha_0})$ are open in $Y$, and $y\in \widetilde{f}_0^{-1}(V_{\alpha_0})\cap\widetilde{f}_1^{-1}(V_{\alpha_0})$.
+We claim that $\widetilde{f}_0^{-1}(V_{\alpha_0})\cap\widetilde{f}_1^{-1}(V_{\alpha_0})\subseteq Y'.$
+
+Let $z\in \widetilde{f}_0^{-1}(V_{\alpha_0})\cap\widetilde{f}_1^{-1}(V_{\alpha_0}),$ implying $\widetilde{f_0}(z)\in V_{\alpha_0}$ and $\widetilde{f_1}(z)\in V_{\alpha_0}$. Because $\widetilde{f_0}(z)$ and $\widetilde{f_1}(z)$ are lifts of $f$, $p\circ\widetilde{f_0}(z)=f(z)$ and $p\circ\widetilde{f_1}(z)=f(z)$. Since $p$ is 1-1 (because $p$ is a homeomorphism) and $\widetilde{f_0}(z)\in V_{\alpha_0}$ and $\widetilde{f_1}(z)\in V_{\alpha_0}$, $\widetilde{f_0}(z)=\widetilde{f_1}(z)$. Thus, $z\in Y'$.
+
+Hence, $\widetilde{f}_0^{-1}(V_{\alpha_0})\cap\widetilde{f}_1^{-1}(V_{\alpha_0})$ is an open subset of $Y'$ containing $y$, so $Y'$ is open.
+\item\textit{Closed.} To show $Y'$ is closed, we will show $Y-Y'$ is open. Let $y\in Y-Y'$. here exists an evenly covered open set $V$ containing $f(y)$. $p^{-1}(V)=\displaystyle\bigcup_{\alpha\in A} V_\alpha$ such that $V_{\alpha}$'s are disjoint and open; also, $p\mid V_\alpha:V\alpha\rightarrow V$ is a homeomorphism. 
+
+Note that $\widetilde{f}_0(y)\ne\widetilde{f_1}(y)$. There exists and $\alpha_1,\alpha_2\in A$ such that $\widetilde{f}_0(y)\in V_{\alpha_1}$ and $\widetilde{f}_1(y)\in V_{\alpha_2}$. The set $\widetilde{f}_0^{-1}(V_{\alpha_1})\cap\widetilde{f}_1^{-1}(V_{\alpha_2})$ is open and contains $y$. We claim that $\widetilde{f}_0^{-1}(V_{\alpha_1})\cap\widetilde{f}_1^{-1}(V_{\alpha_2})\subseteq Y-Y'$.
+
+Let $z\in \widetilde{f}_0^{-1}(V_{\alpha_1})\cap\widetilde{f}_1^{-1}(V_{\alpha_2}),$ implying $\widetilde{f_0}(z)\in V_{\alpha_1}$ and $\widetilde{f_1}(z)\in V_{\alpha_2}$. We now want to show that $\widetilde{f_0}(z)\ne\widetilde{f_1}(z)$. Recall that $p\mid V_{\alpha_1}$ is $1-1$ and $p\circ\widetilde{f}_0(y)=f(y)=p\circ\widetilde{f}_1(y)$: because $\widetilde{f}_0(y)\ne\widetilde{f}_1(y)$ where $\widetilde{f}_0(y)\in V_{\alpha_1}$ and $\widetilde{f}_1(y)\in V_{\alpha_2}$, implying that $\alpha_1\ne \alpha_2$. Otherwise, $\widetilde{f}_0(y)$ and $\widetilde{f}_1(y)$ would be two points in $V_{\alpha_1}$ that both map to $f(y)$. Therefore, $V_{\alpha_1}\cap V_{\alpha_2}=\emptyset$.
+
+Therefore $\widetilde{f_0}(z)\ne\widetilde{f_1}(z)$, implying that $z\in Y-Y'$. This implies $y$ is contained in the open set $\widetilde{f}_0^{-1}(V_{\alpha_1})\cap\widetilde{f}_1^{-1}(V_{\alpha_2})\subseteq Y-Y'$, making $Y-Y'$ open. 
+\end{itemize}
+Therefore $Y'$ is clopen in $Y$. Because $Y'$ is non-empty and $Y$ is connected, $Y'$ must be all of $Y$. By the definition of $Y'$, $\widetilde{f_0}=\widetilde{f_1}$.
+\end{proof}
+\end{document}
+
+
+
+
+
+
+

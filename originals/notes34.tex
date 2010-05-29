@@ -1,0 +1,71 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\B}[0]{\mathbb{B}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\U}[0]{\mathbb{U}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\W}[0]{\mathbb{W}}
+
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem*{Question}{Question}
+
+\begin{document}
+    \begin{center}
+    \LARGE{Topology Notes} \\
+    \vspace{.1in}
+    \normalsize{28 April 2010}\\
+    \vspace{.1in}
+    \normalsize{Anna Bessesen} \\
+    \vspace{.2in}
+    \end{center}
+    \begin{Lemma}
+    \textbf{Lebesgue Number Lemma}\\
+    Let $X$ be a compact metric space and let $\omega$ be an open cover of $X$. Then $\exists$ $r > 0$ such that $\forall$ $A \subseteq X$ with $lub \{ d(p,q)|p, q \in A \} < r$, $A$ is contained in a single element of $\omega$.
+    \end{Lemma}
+    
+    \indent
+    \textbf{Note:} $r$ is said to be a Lebesgue Number for $\omega$.\\
+    \\
+    We will now use this to prove the existence of lifts.
+    \begin{Theorem}
+    \textbf{Very Important Homotopy Path Lifting Theorem}\\
+    Let $p$$\colon \widetilde{X} \to X$ be a covering map. Then,\\
+    $\textbf{1)}$ given a path $f$ in $X$ and $a \in \widetilde{X}$ such that $p(a) = f(0)$, then $\exists !$ (exists unique) path $\widetilde{f}$ in $\widetilde{X}$ such that $p \circ \widetilde{f} = f$ and $\widetilde{f}(0) = a$.\\
+    $\textbf{2)}$ given a continuous map $F: I \times I \to X$ and $a \in \widetilde{X}$ with $p(a) = f(0,0)$, $\exists !$ continuous map $\widetilde{F}$$\colon I \times I \to \widetilde{X}$ such that $p \circ \widetilde{F} = F$ and $\widetilde{F}(0,0) = a$.
+    \begin{proof}
+    \textbf{1)} $\forall$ $x \in f(I),$ $\exists$ $V_x$ an evenly covered open set containing $x$. $\forall$ $x \in f(I)$, $f^{-1}(V_x)$ is open in $I$, so $\{f^{-1}(V_x)|x \in f(I) \}$ is an open cover of $I$. So, $\exists$ Lebesgue number $r$ for this cover. $\exists$ $n \in \N$ such that $\tfrac{1}{n} < r$.  $\forall$ $k \leq n$, $[ \frac{k-1}{n}, \frac{k}{n}]$ is contained entirely in some $f^{-1}(V_x)$. So, $\exists$ $\{ V_1, V_2, ... , V_n \} \subseteq \{ V_x \}$ such that $\forall$ $k \leq n$, $f([ \frac{k-1}{n}, \frac{k}{n}]) \subseteq V_k$.\\
+    \textbf{Step 1:} $V_1$ is evenly covered and $f(0) \in V_1$, so $a \in p^{-1}(V_1) = \bigcup_{ \alpha \in A_1}V_{\alpha}$. So, $\exists$ $\alpha_1 \in A_1$ such that $a \in V_{\alpha_1}$. $p | V_{\alpha_1}\colon$ $V_{\alpha_1} \to V_1$ is a homeomorphism. So $\forall$ $s \in [0, \tfrac{1}{n}]$, define $\widetilde{f}(s) = (p | V_{\alpha_1})^{-1} f(s)$. Note that $\widetilde{f} \colon$ $[0, \tfrac{1}{n}] \to \widetilde{X}$ continuous because $(p | V_{\alpha_1})^{-1}$ is a homeomorphism.\\
+    \textbf{Step 2:} As above, $p^{-1}(V_2) =  \bigcup_{ \alpha \in A_2}V_{\alpha}$. $f(\tfrac{1}{n}) \in V_2$ by definition. $\exists$ $\alpha_2 \in A_2$ such that $\widetilde{f}(\tfrac{1}{n}) \in V_{\alpha_2}$. So, as above, define $\widetilde{f} \colon$ $[\tfrac{1}{n}, \tfrac{2}{n}] \to \widetilde{X}$ by $\widetilde{f}(s) = (p | V_{\alpha_2})^{-1} f(s)$. $\widetilde{f} \colon$ $[0, \tfrac{2}{n}] \to \widetilde{X}$ is continuous by Pasting Lemma.\\
+    ...\\
+    \textbf{2)} $\forall x \in F(I \times I)$ $\exists$ evenly covered open set $V_x$. $\{ F^{-1}(V_x) \}$ is an open cover of $I \times I$, so it has a Lesbegue number $r$. $\exists$ $n > \tfrac{\sqrt{2}}{r}$. $\forall$ $i \leq n$, let $A_i = [\tfrac{i-1}{n}, \tfrac{i}{n}]$, $B_i = [\tfrac{i-1}{n}, \tfrac{i}{n}]$. $\forall$ $i, j$, $F(A_i \times B_j) \subseteq V_{ij}$ for some $V_{ij} \in \{ V_x \}$. By Part 1, we can lift $F|(I \times \{ 0 \} \cup \{ 0 \} \times I)$ to $\widetilde{F} \colon$ $(I \times \{ 0 \} \cup \{ 0 \} \times I) \to \widetilde{X}$ such that $\widetilde{F}(0,0) = a \in \widetilde{X}$.\\
+    \textbf{Step 1:} $V_{11}$ is evenly covered and $F(A_i \times B_j) \subseteq V_{11}$. $p^{-1}(V_{11}) = \bigcup_{\alpha \in A_{11}}V_{\alpha}$. So $\exists$ $\alpha_{11} \in A_{11}$ such that $a \in V_{\alpha_{11}}$.\\
+    (Proof to be continued next period)
+    \end{proof}
+    \end{Theorem}
+
+\end{document}  

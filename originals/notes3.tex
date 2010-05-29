@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage{amssymb, amsmath, amsthm, graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\parskip=.2in
+\parindent=0in
+
+\title{Topology Notes}
+\author{Alec Boyd}
+\date{January 25th 2010}
+
+
+%----------
+\begin{document}
+\maketitle
+
+$\mathbf{Theorem:}$ Let $(M_{1},d_{1})$ and $(M_{2},d_{2})$ be metric space and $f:M_{1}\rightarrow M_{2}$.  Then $f$ is continuous iff for every open set $U\subseteq M_{2}$, $f^{-1}(U)$ is open in $M_{1}$.
+
+$\mathbf{Proof:}$  $(\Rightarrow )$ ...done in previous class.
+
+$(\Leftarrow)$ Suppose that for all open $U\subseteq M_{2}$, $f^{-1}$ is open in $M_{1}$.  Let $p \in M_{1}$.  We want to show that $f$ is continuous at $p$.
+
+Let $\epsilon > 0$.  $B_{\epsilon}(f(p))$ is open, so $f^{-1}(B_{\epsilon}(f(p)))$ is open.  $p\in f^{-1}(B_{\epsilon}(f(p)))$, so $\exists$ $\delta>0$ such that $B_{\delta}(p)\subseteq f^{-1}(B_{\epsilon}(f(p)))$.
+
+ $f(B_{\delta}(p))\subseteq f(f^{-1}(B_{\epsilon}(f(p))))=B_{\epsilon}(f(p))$, so $f$ is continuous at $p$, and thus everywhere.  $\blacksquare$
+ 
+ We've proven the...
+ 
+ $\mathbf{small fact:}$  If $f : M_{1} \rightarrow M_{2}$, then $f$ is continuous if for all $p\in M_{1}$, and for all $\epsilon>0$ $f^{-1}(B_{\epsilon}(f(p)))$ is open.
+ 
+ 
+ \large{Chapter 2} \normalsize
+ 
+ For this portion of this lecture, we side-step the concept of openness, and define a topology as follows.
+ 
+ $\mathbf{Definition:}$  Let $X$ be a set and $F$ be some collection of subsets of $X$ such that
+ 	
+		$1)$ $X,\O \in F$.
+		
+		$2)$ If $U,V \in F$ then $U\cap V \in F$ .
+		
+		$3)$ If for all $i\in I$, $U_{i} \in F$, then $\cup U_{i} \in F$.
+		
+	Then we say that $(X,F)$ is a topological space with open sets the elements of $F$.  We also 		say $F$ is the  $\emph{topology}$ on $X$.
+	
+
+$\mathbf{Ex:}$  Let $(M,d)$ be a metric space and $F$ be the set of open sets in $M$.  Then $(M,F)$ is a topological space.
+
+$\mathbf{Sub-Example:}$  Let $M$ be a set and $d$ be the discrete metric, then we say $(M,F)$ is the $\emph{discrete topology}$.
+
+$\mathbf{Ex:}$  Let $X$ be a set with at least 2 points.  Let $F=\{X,\O\}$.  Then we say $(X,F)$ is the $\emph{indiscrete}$, or $\emph{concrete}$ topology.
+
+$\mathbf{Definition:}$  If $F_{1}$ and $F_{2}$ are topologies on $X$ and $F_{1}\subseteq F_{2}$ then we say that $F_{1}$ is $\emph{weaker}$ than $F_{2}$, or $F_{2}$ is $\emph{stronger}$ than $F_{1}$.
+
+Note:  $weaker = fewer = coarser$ and $stronger = more =finer$.
+
+Note: The $\emph{discrete}$ topology is the strongest topology on $M$.  The $\emph{indiscrete}$ topology is the weakest topology on $X$.
+
+$\mathbf{Ex:}$  Let $X=R$ and $U\in F$ iff $U$ is the union of sets of the form $[a,b)$ such that $a,b\in \mathbb{R}$.  This is called the half-open interval topology.
+
+Is this weaker, stronger, or neither compared to the usual topology?
+
+Is $(a,b) \in F$?  If so, then $F$ is stronger.
+
+Let $a,b \in \mathbb{R}$, and $a<b$.  Then, $(a,b)=\bigcup_{n\in \mathbb{N}}[a+\frac{1}{n},b)$.
+
+$\mathbf{Ex:}$ Let $X=\mathbb{R}^{2}$ have the "dictionary order".  This means that $(a,b)<(c,d)$ if either $a<c$ or a=c and $b<d$.
+
+$U\in F$ iff $U$ is a union of "open intervals", i.e. $\{(x,y)|(a,b)<(x,y)<(c,d)\}$.
+
+.
+
+.
+
+.
+
+$\mathbf{Q:}$ Is a vertical line open?  
+
+.
+
+.
+
+.
+
+.
+
+Answer: Yes.
+
+$\mathbf{Q:}$  Is a horizontal line open?
+
+.
+
+.
+
+.
+
+.
+
+Answer: No.
+
+$\mathbf{Q:}$  Is this finer or coarser than the usual topology on $\mathbb{R}^{2}$?
+
+.
+
+.
+
+.
+
+.
+
+Any point in a ball in the usual topology can be found in a ball of the dictionary topology, which is contained in the usual ball.  Open balls are open in the dictionary topology, so the dictionary topology is finer than the usual topology.
+
+Note: In $\mathbb{R}$, $\bigcup_{n\in \mathbb{z}}(n,n+1)$ is open.
+
+$\mathbf{Q:}$  Are the topologies on a given set always linearly ordered?
+
+ \end{document}

@@ -1,0 +1,124 @@
+\documentclass[11pt,letterpaper,boxed]{article}
+\usepackage[usenames]{color}
+\usepackage{amsthm,amssymb,amsmath}
+\newtheorem*{example}{Example}
+\newtheorem*{defn}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{smallfact}{Small Fact}
+\newtheorem*{lemma}{Lemma}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\begin{document}
+Math147: Topology Notes: 4/14/10\\
+
+\begin{center}{\Large }
+\end{center}
+\normalsize
+\vspace{.2in}
+
+Recall from the previous lecture that we were attempting to prove the following theorem:
+\begin{theorem}
+Let $x,y\in X$.  If there is a path $f$ in $X$ from $x$ to $y$, then $\pi_1(X,x)\cong \pi_1(X,y)$.
+\end{theorem}
+
+And we defined a helpful map:
+\begin{defn} Let $u_f:\pi_1(X,x)\to \pi_1(X,y)$ by $u_f([g])=[\overline{f}*g*f]$.
+\end{defn}
+
+We wish to show that $u_f$ is, in fact, an isomorphism between $\pi_1(X,x)$ and $\pi_1(X,y).$  As we showed last lecture (see previous notes) that $u_f$ is well defined and one-to-one, it suffices to show that $u_f$ is onto and a homomorphism.
+\vspace{.2in}
+
+\begin{proof}
+
+\vspace{.1in}
+
+{\bf onto:}
+Let $[g]\in \pi_1(X,y)$.  Then $[f*g*\overline{f}]\in \pi_1(X,x)$, and $u_f([f*g*\overline{f}])=u_f([\overline{f}*(f*g*\overline{f})*f])$, which by associativity, inverses, and identity, is precisely $[g]$.  Therefore $u_f$ is onto.
+\vspace{.2in}
+
+{\bf homomorphism:}
+Let $g,h\in \pi_1(X,x)$.  Then \[\begin{array}{cccc} u_f([g])u_f([h])& =& [\overline{f}*g*f][\overline{f}*h*f] & \\ & = & [\overline{f}*g*h*f] =& u_f([g*h]).\end{array}.\]
+
+It follows that $u_f$ is in fact an isomorphism.
+\end{proof}
+
+
+Our overall goal is to show that the fundamental group is a topological invariant.  In general, a 
+\emph{topological invariant} is a ``thing'' that takes a value on topological spaces such that every homeomorphic space takes the same value.  These invariants are used to distinguish topological spaces.
+
+So we want to show now that the Fundamental Group is a topological property.
+
+\begin{defn}  Let $\phi:X\to Y$ be continuous, and $\phi(x_0)=y_0$.  Define $\phi_*:
+\pi_1(X,x_0)\to \pi_1(X,y_0)$ by $\phi_*([f]_X)=[\phi(f)]_Y.$
+
+We say that $\phi_*$ is \underline{induced} by $\phi$.
+\end{defn}
+
+\vspace{.3in}
+\begin{smallfact}[About Induced Maps]  Let $\phi:X\to Y$ and $\phi(x_0)=y_0$.  Then $\phi_*$ is well defined.
+\end{smallfact}
+
+\begin{proof}
+Let $f$ and $g$ be loops in $X$ based at $x_0$ such that $f\sim g$.  Then there exists $F:I\times I\to X$, a path homotopy from $f$ to $g$.  \vspace{.4in}
+
+Consider $\phi(F): I\times I \to Y$.  We see that $\phi$ is a composition of continuous functions, so is itself continuous.  
+\vspace{.1in}
+
+Also, observe that  \[\begin{array}{c} \phi(F(s,0))=\phi\circ f(s)\\ \phi(F(s,1))=\phi\circ g(s)\\ \hline \phi(F(0,t))=\phi(x_0)=y_0\\ \phi\circ F(1,t)=\phi(x_0)=y_0 \end{array}\]
+
+Thus $\phi(F)$ is a homotopy between $\phi\circ g$ and $\phi\circ f$.  
+So $\phi\circ g\sim \phi\circ f$-- and $\phi_*$ is well defined.
+
+\end{proof}
+
+\begin{lemma} Let $\phi:X\to Y$ be continuous and $\phi(x_0)=y_0$.  Then $\phi_*$ is a homomorphism.
+\end{lemma}
+\begin{proof} Let $[f],[g]\in \pi_1(X,x_0).$  We want to show that $\phi_*([f]_X[g]_X)=\phi_*([f]_X)\phi_*([g]_X$.
+
+Observe that \[\begin{array}{c}
+\phi_x([f]_X[g]_X)=\phi_*([f*g]_X)=[\phi(f*g)]Y\\
+\phi\circ (f*g)(x)=\phi_*\begin{cases} f(2s), &s\in [0,1/2]\\ g(2s-1) & s\in [1/2,1]
+\end{cases}\\
+= \begin{cases} \phi\circ f(2s) & s\in [0,1/2]\\ \phi\circ g(2s-1) & s\in [1/2,1]\end{cases}=(\phi\circ f)*(\phi\circ g)(s).
+\end{array}\]
+
+So $\phi\circ f * g=\phi\circ f * \phi\circ g$ and in particular, \[ \begin{array}{cc}  & \phi(f*g)]_Y  =[(\phi\circ f)*(\phi\circ g)]_Y\\ & =[\phi\circ f]_Y[\phi\circ g]_Y=\phi_*([f]_X)\phi_*([g]_X)\end{array}.\]  This concludes the proof of the lemma.
+
+\end{proof}
+
+\vspace{.3in}
+\begin{theorem}
+Let $\phi:X\to Y$ be a homeomorphism and $\phi(x_0)=y_0$.  Then $\phi_*$ is an isomorphism.
+\end{theorem}
+
+With the previous lemma we showed that $\phi_*$ is a homomorphism.  It remains to show that $\phi_*$ is a bijection.
+
+\begin{proof}
+
+{\bf one-to-one}  Let $[f]_X, [g]_X\in \pi_1(X,x_0)$ such that $\phi_* ([f]_X)=\phi_*([g]_X)$.  Then by definition of $\phi_*$, $[\phi\circ f]_Y=[\phi\circ g]_Y$.  
+
+Observe that $\phi\circ f\sim_Y \phi\circ g$, so there exists a path homotopy $F$ from $\phi\circ f$ to $\phi\circ g$.  Also note that, as $\phi$ is a homeomorphism, $\phi^{-1}:Y\to X$ is continuous.
+
+Hence $\phi^{-1}\circ F:I\times I \to Y$ is a path homotopy from $\phi^{-1}\circ \phi\circ f$ to $\phi^{-1}\phi\circ g.$ Since $g$ is bijective, this is a path homotopy from $f$ to $g$.
+
+\vspace{.2in}
+{\bf onto:}
+Recall that $\phi_*:\pi_1(X,x_0)\to \pi_1(Y,y_0)$.  Let $[f]\in \pi_1(Y,y_0)$.  Then $[\phi^{-1}(f)]_X\in \pi_1(X,x_0)$, because $\phi^{-1}$ is continuous.
+
+$\phi_*([\phi^{-1}(f)]_X)=[\phi\circ \phi^{-1}(f)]_Y$, and as $\phi$ is a bijection, this is $[f]_Y$.  
+
+This illustrates that $\phi_*$ is bijective, and hence is an isomorphism between $X$ and $Y$.  
+\end{proof}
+
+\vspace{.3in}
+\begin{smallfact}[About Induced Homos]
+\begin{itemize}
+\item If $\phi:X\to Y$, $\psi:Y\to Z$ are continuous, then $(\psi\circ \phi)_*=\psi_*\circ \phi_*$.
+
+\item If $i:X\to X$ is the identity, then $i_*$ is the identity isomorphism.
+
+\item Let $\phi:X\to Y$ be a continuous map, and $f$ a path in $X$ from $p$ to $q$.  Then $\phi_*\circ u_f=u_{\phi(f)}\circ \phi_*$.
+\end{itemize}
+\end{smallfact}
+
+\end{document}

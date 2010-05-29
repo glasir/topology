@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{amsfonts} 
+\usepackage{amsmath, amscd, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{eurosym}
+
+%%  Renewed
+\renewcommand{\phi}{\varphi}
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\dD}{\partial \mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\left< #1 \right>}
+\newcommand{\blf}{ {[\,\cdot\, , \,\cdot\,]} }
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\dom}{\mathcal{D}}
+\newcommand{\pc}{\perp_C}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\tr}{\operatorname{tr}}
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Postulate}{Postulate}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem*{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem{Exercise}{Exercise}
+\newtheorem*{Question}{Question}
+\newtheorem*{Cor}{Corollary}
+\allowdisplaybreaks
+
+\begin{document}
+\title{\vspace{-.1in} Math 147  Notes}  % Declares the document's title.
+\author{CJ Verbeck}      % Declares the author's name.
+\date{April 16, 2010}
+\maketitle
+\section{The fundamental group, continued}
+\textbf{Small facts about induced homomorphisms}
+\begin{enumerate}
+	\item If $\phi: X\to Y$ and $\psi: Y\to Z$ are continuous, then $(\psi \circ \phi)_* = \psi_* \circ \phi_*$
+	\item If $i:X\to X$ is the identity, then $i_*$ is the identity isomorphism
+	\item Let $\phi:X\to Y$ be continuous and $f$ a path in $X$ from $p$ to $q$. Then $\phi_\ast \circ u_f = u_{\phi(f)}\circ \phi_*$. (recall, $u_f:\pi_1 (X,p) \to \pi_1(X,q)$ by $u_f([g]) = [\overline{f} \ast g \ast f ] )$
+\end{enumerate}
+\begin{proof}
+\text{}
+\begin{enumerate}
+	\item Note that $(\psi \circ \phi)_\ast : \pi_1(X,x_0 ) \to \pi_1(Z,(\psi \circ \phi)(x_0) )$, a mapping from equivalence classes of loops in $X$ based at $x_0$ to the equivalence classes of loops in $Z$ based at $(\psi\circ \phi)(x_0)$. Let $[f]_X \in \pi_1(X,x_0)$.
+We then have that $(\psi \circ \phi)_\ast ([f]_X) = [(\psi \circ \phi)(f)]_Z$. Similarly, we note that $(\psi_\ast \circ \phi_\ast ) ([f]_X)  = \psi_\ast ([\phi\circ f]_Y) = [\psi \circ \phi \circ f ]_Z = [(\psi \circ \phi)(f) ]_Z$. 
+	\item Note that $i_\ast : \pi_1 (X,x_0) \to \pi_1 (X,x_0)$. Let $[f]_X \in \pi_1(X,x_0)$. Then $i_\ast ([f]_X) = [i(f)]_X = [f]_X$. 
+	\item We want to show that the following diagram commutes:
+
+$$
+\begin{CD}
+\pi_1(X,p) @>u_f>> \pi_1(X,q)\\
+@VV{\phi_\ast} V @VV{\phi_{\ast}}V\\
+\pi_1(Y,\phi(p)) @>u_{\phi(f)}>> \pi_1 (Y,\phi(q))
+\end{CD}
+$$
+
+Let $[g]_X\in \pi_1(X,p)$. Then note that
+\begin{eqnarray*}
+(\phi_\ast \circ u_f)([g]_X) &=& \phi_\ast ([\overline{f}\ast g \ast f]_X) \\
+&= &[ \phi \circ(\overline{f} \ast g \ast f) ]_Y\\
+&=& [(\phi\circ \overline{f}) \ast (\phi \circ g) \ast (\phi\circ f) ] _Y
+\end{eqnarray*}
+It is easy to show that $\phi \circ \overline{f} = \overline{\phi \circ f}$. To see this, note that
+$(\phi \circ \overline{f})(s) = \phi \circ \overline{f}(s) = \phi (f(1-s)) = (\phi \circ f) (1-s) = \overline{\phi \circ f}(s)$. So continuing the above expression, we have that:
+
+\begin{eqnarray*}[(\phi\circ \overline{f}) \ast (\phi \circ g) \ast (\phi\circ f) ] _Y&=& [ (\overline{\phi \circ f}) \ast (\phi \circ g) \ast (\phi \circ f) ] _Y \\
+&=& u_{\phi\circ f} ([\phi \circ g]_Y)\\
+& =& (u_{\phi(f)} \circ \phi_\ast )([g]_X)
+\end{eqnarray*}
+We then conclude that $\phi_\ast \circ u_f = u_{\phi(f)} \circ \phi_\ast$.
+\end{enumerate}
+\end{proof}
+\begin{Lemma}
+Suppose $X$ is path-connected, and $x_0 \in X$. Then $\pi_1(X,x_0) $ is trivial if and only if $\forall p,q\in X$ and paths $f,g$  in $X$ from $p$ to $q$, then $f\sim g$. 
+\end{Lemma}
+\begin{proof} \text{}\\
+$(\Rightarrow)$ Suppose that $\pi_1 (X,x_0) = \langle [e_{x_0} ] \rangle$. Let $p,q \in X$, and $f,g$ paths in $X$ from $p$ to $q$. Then $f\ast \overline{g}$ is a loop based at $p$. So it is trivial to see that $\pi_1 (X, p) \cong \pi_1 (X,x_0)$ by an earlier theorem, from which we can see that $f\ast \overline{g} \sim e_p$. Using our multiplication and inverse lemmas for path multiplication, we conclude that $f\sim g$. \\\\
+$(\Leftarrow)$ Suppose that $\forall p,q \in X$ and paths $f,g$ from $p$ to $q$, we have that $f\sim g$. Let $p=q=x_0$, let $f = e_{x_0}$, and let $g$ be a loop in $X$ based at $x_0$. Then $g\sim e_{x_0}$. Hence, $\pi_1(X,x_0) = \langle [e_{x_0}] \rangle$. 
+\end{proof}
+We'd next like to try to prove that spaces that are homotopy equivalent have isomorphic fundamental groups. First, we'll need a technical lemma.
+\begin{Lemma}[A Technical Theorem]
+Let $\phi, \psi : X \to Y$ be continuous, and $\phi\simeq \psi$ by a homotopy $F$. Let $x_0 \in X$, and  a path $f:I \to Y$ be given by $f(t) = F(x_0,t)$. 
+Then $u_f \circ \phi_\ast = \psi_\ast$. 
+\end{Lemma}
+\begin{proof}
+If $[g]\in \pi_1 (X,x_0)$, then $u_f \circ \phi_\ast \left( [g]_X\right) = u_f ( [\phi \circ g]_X) = [\overline{f} \ast (\phi \circ g) \ast f ]_Y$. We want to show that this equals $\psi_\ast ([g]_X)$. We'll prove this using the ``fishing rod'' $f$, which represents the image of the line $\{x_0\} \times I$. We ``reel in'' the fishing rod, and create the path homotopy between $\overline{f} \ast (\phi \circ g) \ast f$ and $g$. We'll do this next time!
+
+\end{proof}
+
+\end{document}
+

@@ -1,0 +1,258 @@
+\documentclass[reqno]{amsart}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%Reset Margins
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
+
+%set line spacing
+\linespread{1.3}
+
+%Define commands
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}{{}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\rtwo}{\mathbb{R}^{2}}
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\Q}{\rationals}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\algebraic}{\mathbb{A}}
+\newcommand{\cmplx}{\mathbb{C}}
+\newcommand{\xnot}{x_{0}}
+\newcommand{\seqlim}{\lim_{n\to\infty}}
+\newcommand{\torus}{\mathbb{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\half}[1]{\frac{#1}{2}}
+\newcommand{\ip}[2]{\langle #1,#2 \rangle}
+\newcommand{\norm}[1]{||#1||}
+\newcommand{\pdx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fracpart}[1]{\langle #1 \rangle}
+\newcommand{\matr}{\mathbb{M}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\zmodnz}[1]{\integers / #1 \integers}
+\newcommand{\inv}{^{-1}}
+\newcommand{\modu}[1]{(\text{mod }\,#1)}
+\newcommand{\cyc}[1]{\langle #1 \rangle}
+\newcommand{\nil}{\mathcal{N}}
+\newcommand{\polyz}[1]{\integers[#1]}
+\newcommand{\polyq}[1]{\rationals[#1]}
+\newcommand{\Z}{\integers}
+\newcommand{\Rx}{\reals[x]}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Fix}{\text{Fix}}
+\newcommand{\ord}{\text{ord}}
+\newcommand{\nottingham}{\mathcal{N}(K)}
+\newcommand{\nottinghamQuotient}{\mathcal{N}/\equiv_n}
+\newcommand{\depthMoreThanN}[1]{K_n(#1)}
+\newcommand{\nequiv}{\equiv_n}
+\newcommand{\numShrubs}{\widetilde{t_n}(h,l) = |S_n(h,l)|}
+\newcommand{\sumShrubWeights}{_A\Gamma_n(h,l)}
+\newcommand{\shrubCollection}{S_n(h,l)}
+\newcommand{\formalAut}{\mathcal{A}(K)}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{irrevquestion}[theorem]{Irrelevant Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+%Define environments
+\newcounter{probnum}
+\setcounter{probnum}{1}
+\newenvironment{problem}{\noindent\textbf{Problem} \arabic{probnum}: \\}{\addtocounter{probnum}{1}\bigskip}
+\newenvironment{solution}{\medskip\emph{Solution: }}{\medskip}
+
+\begin{document}
+\noindent Teddy Einstein\\Math 147\\
+\begin{center}
+Product Space Notes\\
+February 22, 2010 \\
+\end{center}
+\renewcommand{\labelenumi}{\roman{enumi}.}
+
+\medskip
+
+\section{The Product Topology}
+
+For the last few lectures, we have been building new topological spaces from old by using equivalence relations to form quotient spaces. Here, we will change directions and build new topological spaces from old by taking products of spaces. To that end, we wish to define the product of two sets:
+\begin{definition}
+Let $X,Y$ be sets. The product of $X$ and $Y$ is given by:
+\[X\times Y \equiv \{(x,y):\,x\in X,\,y\in Y\}\]
+\end{definition}
+This is a topology class, so our intrinsic urge is to find a natural topology for the product of two topological spaces. While our first instinct might be to take products of open sets in our original spaces, this approach will give unsatisfactory results:
+\begin{example}
+Consider the sets $A = (0,1)\times (0,1)$ and $B = (\half1,\half3)\times(\half1,\half3)$ as subsets of $\reals\times\reals = \reals^2$ with the usual topology. Then $A\cup B$ in $\reals^2$ is NOT a product of an open set in $\reals$ with an open set in $\reals$ as we would like. To intuitively see that this is not the case, draw a picture! On the other hand, $A\cup B$ is open in the usual topology on $\reals^2$.
+\end{example}
+\vspace{1.5in}
+
+Although products of open sets will not work because they are not closed under unions, we can use products of open sets to construct our topology. Define the following:
+\begin{definition}
+Let $(X,F_x)$ and $(Y,F_y)$ be topological spaces. Then the set $\beta_{X\times Y}$ is defined by:
+\[\beta_{X\times Y} = \{A\times B:\,A\in F_x,\,B\in F_y\}\]
+and define:
+\[F_{X\times Y} = \left\{\cup_{i\in I} U_i:\,I \text{ is some index set, and }U_i\in \beta_{X\times Y}\right\}\]
+\end{definition}
+In other words, $\beta_{X\times Y}$ is the set of products of an open set in $X$ and an open set in $Y$, and $F_{X\times Y}$ is the set of unions of elements in $\beta_{X\times Y}$. The motivation for defining our sets this way is that we want $F_{X\times Y}$ to be a topology on $X\times Y$ and for $\beta$ to be its basis. We will now verify this claim with the following \emph{small fact}:
+\begin{proposition}
+If $(X,F_x)$ and $(Y,F_y)$ are topological spaces, the space $(X\times Y,F_{X\times Y})$ is a topological space with basis $\beta_{X\times Y}$.
+
+\begin{proof}
+We will apply our basis theorem; i.e. we want to show that
+\begin{enumerate}
+\item $\bigcup_{U\in \beta_{X\times Y}} U = X \times Y$
+\item Given $B_1,B_2\in\beta_{X\times Y}$, for each $x\in B_1\cap B_2$, there exists $B_3\in B_{X\times Y}$ such that $x\in B_3\subseteq B_1\cap B_2$.
+\end{enumerate}
+
+For the first statement, we know that $X\in F_x$ and $Y\in F_y$ by definition of a topology so that $X\times Y\in \beta_{X\times Y}$. It follows then that because each $U\in \beta_{X\times Y}$ is  subset of $X\times Y$:
+\[X \times Y \subseteq \bigcup_{U\in \beta_{X\times Y}} U \subseteq X\times Y\]
+so that $X\times Y = \bigcup_{U\in \beta_{X\times Y}} U$, as desired.
+
+For the second statement, let $B_1,B_2\in \beta_{X\times Y}$ and let $(x,y)\in B_1\cap B_2$. Then by definition of $\beta_{X\times Y}$, there exist $U_1,U_2\in F_x$ and $V_1,V_2\in F_y$ such that $B_1\cap B_2 = (U_1\times V_1)\cap (U_2\times V_2)$. 
+
+Our aim is to find $B_3\in \beta_{X\times Y}$ such that $B_3$ contains $(x,y)$ and $B_3\subseteq B_1\cap B_2$, so define:
+\[B_3 = (U_1\cap U_2) \times (V_1\cap V_2).\]
+Thus $U_1,U_2\in F_x\Rightarrow U_1\cap U_2\in F_x$ by the closure of topologies under finite intersections and similarly, $V_1\cap V_2\in F_y,$ so $B_3\in \beta_{X\times Y}$.
+Since $(x,y)\in (U_1 \times V_1)\cap (U_2\times V_2)$, then $(x,y)\in (U_1\times V_1)$ and $(x,y)\in (U_2\times V_2)$. Therefore, $x\in U_1,U_2$ and $y\in V_1,V_2$, so $x\in U_1\cap U_2$, and $y\in V_1\cap V_2$. It immediately follows by the definition of the intersection of sets that:
+\[(x,y) \in (U_1\cap U_2)\times (V_1\cap V_2) = B_3\]
+
+The only thing left to show is that $B_3\subseteq B_1\cap B_2$. To that end, let $(a,b)\in B_3$. Then $a\in U_1\cap U_2$ and $b\in V_1\cap V_2$ by definition of $B_3$. It follows that:
+\[a\in U_1,U_2 \text{ and } b\in V_1,V_2 \Rightarrow (a,b)\in U_1\times V_1 \text{ and } (a,b)\in U_2 \times V_2 \Rightarrow a\in (U_1\times V_1)\cap (U_2\times V_2).\]
+Therefore, $(a,b)\in B_1\cap B_2$ so that $B_3\subseteq B_1\cap B_2$ because $(a,b)$ is an arbitrary element of $B_3$. 
+
+Therefore, $\beta_{X\times Y}$ satisfies the hypotheses of our basis theorem, so the set of unions of elements of $\beta_{X\times Y}$, $F_{X\times Y}$, is a topology for $X\times Y$ and $\beta_{X\times Y}$ is a basis for the topology $F_{X\times Y}$.
+\end{proof}
+\end{proposition}
+We have successfully devised a topology for product spaces as unions of products of open sets.
+
+\section{A Few Intuitive Examples of Product Spaces}
+
+Pictures are highly recommended!
+\begin{example}
+The set $S^1 \times [0,1]$ looks like a cylinder! What kinds of sets are open in the cylinder? A particular example is an open disc projected on the face of the cylinder and unions thereof.
+\end{example}
+
+\vspace{1.5in}
+
+\begin{example}
+The set $S^1 \times S^1$ looks like a torus! What kinds of sets are open in the torus? Similar to the previous example, open discs projected onto the torus surface are examples of open sets in $S^1\times S^1$.
+\end{example}
+
+\vspace{1.5in}
+
+\begin{example}
+The set $S^1 \times S^1 \times S^1$ is actually a three torus!
+\end{example}
+
+\vspace{1.5in}
+
+\begin{remark}
+Not every space is a product of more than one space. For example the sphere $S^2$ is not a product of more than one space. An intuitive (non-rigorous) justification is that the natural axes of a sphere are the great circles; however, every pair of distinct great circles intersect twice which makes it hard to define a coordinate system on the sphere.
+\end{remark}
+
+\section{The Product Projection Map}
+
+Now that we have a product topology to impose on product spaces, we want a way to relate the product topology to the topologies of the constituent spaces. In order to do so, we will define the projection maps as follows:
+\begin{definition}
+Let $(X,F_x)$ and $(Y,F_y)$ be topological spaces and create $X\times Y$ endowed with the product topology $F_{X\times Y}$. Define $\pi_X: (X\times Y,F_{X\times Y}) \to (X,F_x)$ and $\pi_Y:(X\times Y,F_{X\times Y}) \to (Y,F_y)$  by:
+\[\pi_X((x,y)) = x  \qquad \pi_Y((x,y)) = y.\]
+The map $\pi_X$ is the projection onto $X$ and $\pi_Y$ is the projection onto $Y$.
+\end{definition}
+
+A small fact which we will derive now is that the product projection maps are continuous:
+\begin{proposition}
+Let $(X,F_X)$ and $(Y,F_Y)$ be topological spaces and $(X\times Y,F_{X\times Y})$ be their product with the induced product topology. Then the projection maps $\pi_X$ and $\pi_Y$ onto $X$ and $Y$ are continuous. 
+
+\begin{proof}
+Suppose $O\subseteq X$ and $O\in F_x$. We see that $\pi\inv(O) = O\times Y \in F_{X\times Y}$. Therefore, the preimage of any open set in $X$ under $\pi_X$ is open in $X\times Y$ with the product topology. A similar argument shows that $\pi_Y$ is continuous. 
+\end{proof}
+\end{proposition}
+
+Recall that the quotient projection map is \emph{not necessarily} an open map. It turns out that the product projection map \emph{is} an open map. Accidentally assuming that the quotient map is open is a very common mistake that one should be aware of! We will now prove that the product projection map is open:
+\begin{proposition}
+Let $(X,F_X)$ and $(Y,F_Y)$ be topological spaces and $(X\times Y,F_{X\times Y})$ be their product with the induced product topology. Then the projection maps $\pi_X$ and $\pi_Y$ onto $X$ and $Y$ are open.
+
+\begin{proof}
+Let $O = U\times V$ such that $U \in F_x$ and $V\in F_y$ and $O\in \beta_{X\times Y}$. Therefore:
+\[\pi_X(O) = U\in F_x\]
+So if $C$ is some collection of sets in $\beta_{X\times Y}$, then:
+\[\bigcup_{V\in C}V\]
+is an arbitrary element of $F_{X\times Y}$ by the definition of a basis and:
+\[\pi_X\left( \bigcup_{V\in C}V \right) = \bigcup_{V\in C} \pi_X(V)\]
+which is open because the preceding statments indicate that $V\in \beta_{X\times Y} \Rightarrow \pi_X(V)\in F_X$. Consequently, the image of the arbitrary open set in $(X\times Y, F_{X\times Y})$ is a union of open sets in $(X,F_x)$ and is thus open.
+
+The proof is similar for $\pi_Y$. 
+\end{proof}
+\end{proposition}
+
+\section{Using Bases More Effectively}
+
+In metric spaces, open balls are bases for the metric topology. By proving properties about open balls, we were able to say they apply to the entire set. We would like to prove the following \emph{important tiny lemma} so that we can use bases in topological spaces like open balls in metric spaces:
+\begin{lemma}
+Let $(X,F_x)$ be a topological space with basis $\beta$. If $W\subseteq X$ then $W\in F_x$ if and only if for all $p\in W,$ there exists $B_p\in\beta$ such that $p\in B_p\subseteq W$. 
+
+\begin{proof}
+$(\Rightarrow)$
+
+Suppose $W\in F_x$. Let $p\in W$. Since $W\in F_x$, for some index set $I$:
+\[W = \bigcup_{i\in I}B_i \qquad \forall i\in I,\,B_i\in \beta\]
+because every element of a topology can be written as a union of basis elements.
+Therefore, by definition of the union, $p\in W$ implies that there exists $i_p\in I$ such that $p\in B_{i_p}$, and $B_{i_p}\subseteq W$. If we let $B_p = B_{i_p}$, we are finished.
+
+$(\Leftarrow)$
+
+Suppose that for all $p\in W$, there exists $B_p\in \beta$ such that $p\in B_p\subseteq W$. We want to show that $W\in F_x$. We see that:
+\[V = \bigcup_{p\in W}B_p\subseteq W\]
+because each of the constituent $B_p\subseteq W$, and every $p\in W$ is an element of $B_p$, so the union of $B_p$ over $p\in W$, contains every $p\in W$. Consequently, $V\subseteq W \Rightarrow V=W$. Since $\beta$ is a basis and $V$ is a union of basis elements, $V\in F_x \Rightarrow W\in F_x$. 
+\end{proof}
+\end{lemma}
+In other words, if we have a topological space with a basis, then every point in an open set $U$ is an element of a basis element contained in $U$, giving us a structure very similar to the metric topology.
+
+\section{Questions, Questions, Questions!}
+
+\begin{irrevquestion}
+Why are math professors so attached to chalk?
+
+\begin{itemize}
+\item Mathematicians write on the board so frequently that they are destined to mark their clothes every now and then. Chalk washes off. Marker doesn't.
+\item Professor Flapan hates the smell and suspects others do too.
+\item Markers are always running out of ink.
+\item Chalk comes in better colors. While some mathematicians can color to their satisfaction with just four colors, Professor Flapan prefers to have more colors.
+\item Not all mathematicians are slavishly devoted to chalk:
+\begin{example}
+Professor Flapan's husband had his office chalkboard replaced by a whiteboard to reduce dust in his office.
+\end{example}
+\end{itemize}
+\end{irrevquestion}
+
+\section{Finding and Constructing Continuous Maps to Product Spaces}
+
+Now that we have product spaces and have addressed their basic topological properties, we would like a way to easily find and construct continuous maps to the product space. To that end we introduce the following \emph{important lemma}:
+\begin{lemma}
+Let $(X,F_x),(Y,F_y)$ and $(A,F_A)$ be topological space and let $(X\times Y,F_{X\times Y})$ be the product space of $X,Y$ with the induced product topology. Suppose $f:A\to X$ and $g:A\to Y$ and define
+\[h:A\to(X\times Y) \qquad \text{ by } \qquad h(a) = (f(a),g(a)),\]
+then $h$ is continuous if and only if $f,g$ are continuous.
+
+$(\Rightarrow)$
+\begin{proof}
+Suppose $h$ is continuous: then we see that:
+\[f = \pi_X \circ h \qquad g = \pi_Y \circ h\]
+so $f,g$ are continuous because they are compositions of continuous functions.
+\end{proof}
+The remainder of the proof is postponed until the next lecture period.
+\end{lemma}
+The following example illustrates how this lemma makes it very easy to define continuous functions to the product space:
+\begin{example}
+Suppose $f:\reals\to\reals$ and $g:\reals\to\reals$ with $f(x) = x^2+3x$ and $g(x) = \sin(x)$. Then the map $h:\reals\to\reals^2$ defined by $h(x) = (x^2+3x, \sin(x))$ is continuous because $f,g$ are.
+\end{example}
+\end{document}

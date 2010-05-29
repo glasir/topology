@@ -1,0 +1,159 @@
+\documentclass{article}
+\usepackage{amsfonts} 
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{eurosym}
+
+%%  Renewed
+\renewcommand{\phi}{\varphi}
+\renewcommand{\Re}[1]{\operatorname{Re} #1 }
+\renewcommand{\Im}[1]{\operatorname{Im} #1}
+
+%% New Commands
+\newcommand{\dD}{\partial \mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\ran}{\operatorname{ran}}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\inner}[1]{\left< #1 \right>}
+\newcommand{\blf}{ {[\,\cdot\, , \,\cdot\,]} }
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\dom}{\mathcal{D}}
+\newcommand{\pc}{\perp_C}
+\newcommand{\vecspan}{\operatorname{span}}
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\tr}{\operatorname{tr}}
+%%%
+%%% Theorem Styles
+%%%
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Theorem}{Theorem}
+\newtheorem*{Thm}{Theorem}
+\newtheorem{Postulate}{Postulate}
+\newtheorem{Lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{Definition}{Definition}
+\newtheorem*{Example}{Example}
+\newtheorem*{Remark}{Remark}
+\newtheorem{Exercise}{Exercise}
+\newtheorem*{Question}{Question}
+\newtheorem*{Cor}{Corollary}
+\allowdisplaybreaks
+\begin{document}
+\title{Math 147  Notes}  % Declares the document's title.
+\author{CJ Verbeck}      % Declares the author's name.
+\date{March 31, 2010}
+\maketitle
+
+
+\section{Path-connected, continued}
+\begin{Theorem}
+The flea + comb is not path connected.
+\end{Theorem}
+\begin{proof}
+Recall that we're trying to prove that $f^{-1}(\{p\})$ is open. To this end, we took $y\in f^{-1}(p)$, which we want to prove is surrounded by an open ball in $f^{-1} (\{p\})$. We defined $B_{\epsilon}(y;I)\subseteq f^{-1} \left( B_{\frac{1}{2}} (p;X)\right)$, where $I = [0,1]$, which we'd like to show is contained in $f^{-1}\left(\{p\}\right)$. To show this, we let some $z\in B_{\epsilon}(y;I)$, and considered $f(z) \in B_{\frac{1}{2}} (p;X)$. Suppose toward a contradiction that $f(z) \neq p$.  We know that $f(z) \in Y_n - Y_0$  for some $n\in \N$. We're going to try and separate $B_{\epsilon}(y;I)$, which would be a contradiction (this is where we ended last time).\vspace{.3in}\\  
+There exists $r\in \R-\Q$ such that $0 < r < \frac{1}{n}$. Define sets $A, B\subseteq f\left( B_{\epsilon} (y;I) \right)$, as  
+$$A = \left\{ (x,y)\in f\left( B_{\epsilon} (y;I) \right) | x< r\right\} \hspace{.15in} \text{and} \hspace{.15in} B =  \left\{ (x,y)\in f\left( B_{\epsilon} (y;I) \right) | x> r\right\}$$
+We next show that $A$ and $B$ are a separation for $f\left( B_{\epsilon} (y;I) \right)$. To this end, we'll need to show that $A$ and $B$ are disjoint, proper and non-empty, that their union is the entire set, and that they're are both clopen.\\ \\
+ We note that $A\cap B = \emptyset$ by definition. We know that $f(z)\in B$, and $p\in A$, so neither set will be empty and both will be proper.\\ \\
+Next, we want to show that $A\cup B = f\left( B_\epsilon (y;I) \right)$. Certainly $A\cup B \subseteq f\left( B_{\epsilon} (y;I) \right)$. 
+Now let $(x, f(x)) \in f\left( B_{\epsilon} (y;I) \right)$. We know that $f(x) \neq 0$, and in fact $x = \frac{1}{m}$ for some $m\in \N$. Then $x\neq r$, so $x\in A\cup B$ and we're done. \\ \\
+Next we want to show that $A$ is open in $f(B_{\epsilon} (y;I))$. We know that $\{(x,y) | x<r \}$ is open in $\R^2$, the half plane to the left of $r$. It follows using the subspace topology that $A = \{ (x,y) | x< r \} \cap f\left( B_{\epsilon} (y;I) \right)$ is open in $f\left( B_{\epsilon} (y;I ) \right)$. Similarly, $B$ is open in $f\left( B_{\epsilon} (y;I ) \right)$. Since each is the other's compliment in $f\left( B_{\epsilon} (y;I ) \right)$, then both are also closed. \\ \\
+We've hence shown that $A$ and $B$ are a separation of $f\left( B_{\epsilon} (y;I ) \right)$. This is a contradiction, since $B_{\epsilon} (y;I)$ is connected and $f$ is continuous, and thus we've disconnected $B_{\epsilon}(y;I)$. We conclude that $f(z) = p$, for all such $z\in B_{\epsilon}(y;I)$. Therefore $B_{\epsilon} (y;I) \subseteq f^{-1}(\{ p\})$, so $f^{-1} (\{p\})$ is open. So $f^{-1}( \{ p \} )$ is a clopen, non-empty, proper subset of $I$. This is a contradiction, so we conclude that there does not exist a path in $X$ from $p$ to $(0,0)$ (or anywhere).
+\end{proof}
+
+The point of the whole example is to show that path-connected is stronger than connected. We knew already that connected implies path-connectedness, and now we see that  path-connectedness doesn't necessarily imply connectedness.
+
+\begin{Definition} 
+Let $f,g$ be paths in a topological space $(X,F_X)$ such that $f(1) = g(0)$. Then we define 
+$f\ast g : I \to X$ by 
+$$(f\ast g )(t) =
+\left\{ 
+\begin{array}{ccc} 
+f(2t) & \text{if} & 0 \leq t\leq \frac{1}{2} \\
+g(2t-1) & \text{if} & \frac{1}{2} \leq t \leq 1\\ \end{array} \right.$$
+\end{Definition}
+\text{}\\
+Intuitively what's happening is that we're connecting two paths while  speeding things up, creating a new single path parametrized from 0 to 1 from two paths which were parametrized from 0 to 1. \\ \\
+\textbf{Small Fact.}
+$f\ast g$ is a path from $f(0)$ to $g(1)$. 
+\begin{proof}
+By the Pasting Lemma\footnote{HW3 \#1, which states that if we have two continuous functions with closed sets as domains, and they agree over the intersection of these domains, then the combined functino is continuous}, since $[0,\frac{1}{2}]$ and $[\frac{1}{2},1]$ are closed subsets under $[0,1]$, and $f(2 (\frac{1}{2} )) = f(1) = g(0) = g(2 (\frac{1}{2}) - 1 )$, $f\ast g$ is continuous. So $f\ast g$ is a path. Since $(f\ast g)(0) = f(0)$ and $(f\ast g) (1) = g(1)$, then $f\ast g$ is a path from $f(0)$ to $f(1)$. 
+\end{proof}
+
+\begin{Thm}[Flower Lemma for Path-connected]
+Let $X = \cup_{i\in I} Y_i$ such that  $\forall i\in I$, $Y_i$ is path-connected, and $\cap_{i\in I} Y_i \neq \emptyset$. Then $X$ is path-connected.
+\end{Thm}
+\begin{proof}
+Let $a,b\in X$. If $\exists n\in I$ such that $a,b\in Y_n$, then there exists a path from $a$ to $b$ in $Y_n\subseteq X$. So without loss of generality, suppose that $a\in Y_n, b\in Y_m$, and $m\neq n$. Let $x\in \cap_{i\in I} Y_i$. Then there exists a path $f$ from $a$ to $x$ in $Y_n$, and a path $g$ from $x$ to $b$ in $Y_m$. So $f\ast g$ is a path in $X$ from $a \to b$, and we're done. 
+\end{proof}
+\begin{Question}
+What would Flapan have done if she wasn't a mathematician? 
+\end{Question} 
+\vspace{-.2in} \text{} \\
+\textit{Solution.} A CS professor. She minored in CS in undergraduate and graduate school, and liked carrying around stacks of code.
+
+\begin{Cor} 
+The product of path-connected spaces is path-connected.
+\end{Cor}
+\begin{proof}
+The proof is identical to the connected one; the key is the flower lemma.
+\end{proof}
+\begin{Definition}
+Let $(X,F_X)$ be a topological space, and $p\in X$. Let $\{C_j | j\in J\}$ be the set of all path-connected subspaces of $X$ containing $p$. Then $\cup_{j\in J} C_j$ is said to be the \textit{path-connected component} $C_p$. 
+\end{Definition}
+\vspace{-.2in} \text{}\\
+\textbf{Tiny facts about path-components.} Let $(X,F_X)$ be a topological space. Then,
+\begin{enumerate}
+	\item $\forall p\in X, C_p$ is path-connected
+	\item If $C_p, C_q$ are path-connected components, then either $C_p \cap C_q = \emptyset$, or $C_p = C_q$. In other words, path-connected components partition the set. 
+\end{enumerate}
+We'll omit this proof, as it is identical to the one presented on connectedness.
+\section{Geometric Topology}
+Flapan seems anxious to begin this section. 
+\begin{Definition}
+Let $f$ be a path in $(X,F_X)$, and define $\overline{f} : I \to X$ by $\overline{f} (t) = f(1-t)$. 
+\end{Definition}
+\begin{Remark}
+\text{}
+\begin{enumerate}
+	\item $\overline{f}$ is a path, because it is a composition of continuous functions.
+	\item $\overline{f}$ is a path from $f(1)$ to $f(0)$.
+	\item $f \ast \overline{f} \neq $ the ``identity''. We haven't created an inverse. 
+\end{enumerate}
+\end{Remark}
+\begin{Definition}
+Let $(X,F_X)$ be a topological space, and $a\in X$. We define $e_a: I\to X$ by $e_a (t) = a$ for all $t\in I$.
+\end{Definition}
+\begin{Remark}
+However, note that  $f\ast e_a \neq f$. This isn't  an identity.
+\end{Remark}
+
+\subsection*{Ch.13: Homotopy}
+
+\begin{Definition}
+Let $(X,F_X)$ and $(Y,F_Y)$ be top spaces, and let $f_0: X \to Y$ and $f_1:X\to Y$ be continuous. Then we say that $f_0$ is \textit{homotopic} to $f_1$ if there exists a function $F:X\times I \to Y$, continuous, such that $F(x,0)  = f_0 (x)$, and $F(x,1) = f_1(x)$. We say that $F$ is a \textit{homotopy} from $f_0$ to $f_1$, and we write $f_0 \simeq f_1$. 
+
+\end{Definition}
+
+
+
+\end{document}
+

@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\newtheorem{theorem}{Important Theorem}
+
+\title{Topology Notes - March 8, 2010}
+\author{Daniel Poore}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{theorem}
+(Bolzanno-Weierstrass Theorem).
+\\
+Let $(X,F_X)$ be a compact topological space.  Then for all infinite $S \subseteq X$, $\exists \ p \in X$ such that $\forall \ U \in F_X$ with $p \in U$, $U$ contains infinitely many points of $S$.
+\begin{proof}
+Suppose that for some such $S \subseteq X$, no such $p \in X$ exists.  Therefore, for all $p \in X$ there exists some $U_p \in F_X$ such that $p \in U_p$ and $|S \cap U_p|$ is finite.  So, as $\displaystyle{\bigcup_{p \in X} U_p = X}$, $\{U_p \mid p \in X\}$ is an open cover of $X$.  As $X$ is compact, there exists some finite subcover $\{U_{p_1},...,U_{p_n}\}$.  Hence, from the definition of a subcover, $\displaystyle{X = \bigcup_{i=1}^n U_{p_i}}$.  Intersecting both sides with $S$ gives that:
+$$S = \left(\bigcup_{i=1}^n U_{p_i}\right) \cap S = \bigcup_{i=1}^n (U_{p_i} \cap S)$$
+However, as $|U_p \cap S|$ is finite for all $p \in X$, $|U_{p_i} \cap S|$ is finite for $1 \leq i \leq n$.  The union of finite sets is finite, and therefore $\left|\bigcup_{i=1}^n (U_{p_i} \cap S)\right|$ is finite.  However, $S$ is infinite by assumption.  So this is a contradiction, and no such $S$ exists.
+\end{proof}
+\end{theorem}
+\newpage
+\begin{theorem} (Finite Tychonoff Theorem)
+\\
+Let $(X,F_X)$ and $(Y,F_Y)$ be compact topological spaces.  Then $(X \times Y, F_{X \times Y})$ is also a compact topological space.
+\begin{proof} (Comic book style)
+\begin{figure}[h]
+	\begin{center}
+	\subfigure[Consider some open cover.]{\includegraphics[height=2.4in]{notes-img-1.pdf}}
+	\subfigure[Restricted to some $\{x\} \times Y$, which is compact, so has a finite subcover.]{\includegraphics[height=2.4in]{notes-img-2.pdf}}
+	\end{center}
+	\begin{center}
+	\subfigure[So there is some open $U_x$ with $x \in U_x$ s.t. $U_x \times Y$ is contained in this subcover.]{\includegraphics[height=2.4in]{notes-img-3.pdf}}
+	\subfigure[So consider just the $U_x$, which are a cover of $X$, so have a finite subcover.]{\includegraphics[height=2.4in]{notes-img-4.pdf}}
+	\end{center}
+\end{figure}
+\\
+So the original sets that covered $\{x\} \times Y$ corresponding to the chosen $U_x$ for the desired finite cover of $X \times Y$.
+
+
+\end{proof}
+\newpage
+\begin{proof}
+Consider an open cover of $X \times Y$ consisting of basis elements, $\{U_i \times V_i \mid i \in I\}$, where $U_i \in F_X$ and $V_i \in F_Y$ for all $i \in I$.
+\\
+\\
+Let $x \in X$.  It is clear that $\{x\} \times Y \cong Y$, so $\{x\} \times Y$ is compact.  So the original open cover is a cover of $\{x\} \times Y$, and there exists some finite subcover $\{U_{i(x)} \times V_{i(x)} \mid i(x) \in K_x\}$ where $K_x \subseteq I$ and $K_x$ is finite.  If $x \notin U_{i(x)}$, removing the set $U_{i(x)} \times V_{i(x)}$ does not change the fact that the remaining set is a finite subcover of $\{x\} \times Y$.  Hence, without loss of generality, we assume that $x \in U_{i(x)}$ for all $i(x) \in K_x$.
+\\
+\\
+Next, define $\displaystyle{U_x = \bigcap_{i(x) \in K_x} U_{i(x)}}$.  As $U_{i(x)} \in F_X$ for all $i(x) \in K_x$, $U_x$ is the intersection of finitely many open sets, and so is open.  Additionally, as $x \in U_{i(x)}$ for all $i(x) \in K_x$, $x \in U_x$.
+\\
+\\
+Claim 1: $\{U_x \times V_{i(x)} \mid i(x) \in K_x\}$ is an open cover of $\{x\} \times Y$.
+\\
+Proof: Let $(x,y) \in \{x\} \times Y$.  Then for some $i(x) \in K_x$, $(x,y) \in U_{i(x)} \times V_{i(x)}$.  So $y \in V_{i(x)}$.  Then, as $x \in U_x$, $(x,y) \in U_x \times V_{i(x)}$.  As such an $i(x) \in K_x$ exists for all $(x,y) \in \{x\} \times Y$, $\{U_x \times V_{i(x)} \mid i(x) \in K_x\}$ is an open cover of $\{x\} \times Y$.
+\\
+\\
+Now, as $x \in U_x$ and $U_x \in F_X$ for all $x \in X$, $\{U_x \mid x \in X\}$ is an open cover of $X$.  As $X$ is compact, this must have a finite subcover, $\{U_x \mid x \in L\}$, where $L \subseteq X$ and $L$ is finite.
+\\
+\\
+Claim 2: $\{U_x \times V_{i(x)} \mid x \in L, i(x) \in K_x\}$ is a cover of $X \times Y$.
+\\
+Proof: Let $(x_0,y_0) \in X \times Y$.  As $\{U_x \mid x \in L\}$ covers $X$, there exists some $x \in L$ such that $x_0 \in U_x$.  As $\{U_x \times V_{i(x)} \mid i(x) \in K_x\}$ covers $\{x\} \times Y$, there exists some $i(x) \in K_x$ such that $(x,y_0) \in U_x \times V_{i(x)}$, so $y_0 \in V_{i(x)}$.  Hence $(x_0, y_0) \in U_x \times V_{i(x)}$, and $(x_0,y_0)$ is in the cover.  As this holds for all such $(x_0,y_0) \in X \times Y$, $\{U_x \times V_{i(x)} \mid x \in L, i(x) \in K_x\}$ is a cover of $X \times Y$.
+\\
+\\
+Claim 3: $\{U_{i(x)} \times V_{i(x)} \mid x \in L, i(x) \in K_x\}$ is a cover of $X \times Y$.
+\\
+Proof: Let $(x_0,y_0) \in X \times Y$.  As $\{U_x \times V_{i(x)} \mid x \in L, i(x) \in K_x\}$ is a cover of $X \times Y$, there exists some $x \in L$, $i(x) \in K_x$ such that $(x_0,y_0) \in U_x \times V_{i(x)}$.  From the definition of $U_x$, $U_x \subseteq U_{i(x)}$.  Therefore, as $x_0 \in U_x$, $x_0 \in U_{i(x)}$, and $(x_0, y_0) \in U_{i(x)} \times V_{i(x)}$.  As such a $x \in L$, $i(x) \in K_x$ exists for all $(x_0, y_0) \in X \times Y$, this is a cover of $X \times Y$.  
+\\
+\\
+Finally, let $J = \bigcup_{x \in L} K_x$.  As $L$ is finite, and $K_x$ is finite for all $x \in X$, $J$ is finite.  Additionally, as $K_x \subseteq I$ for all $x \in X$, $J \subseteq I$.  So $\{U_i \times V_i \mid i \in J\}$ is a finite subcover of $\{U_i \times V_i \mid i \in I\}$.  Also, as this has $\{U_i \times V_i \mid i \in J\} = \{U_{i(x)} \times V_{i(x)} \mid x \in L, i(x) \in K_x\}$, this is a cover of $X \times Y$.
+\\
+\\
+So $\{U_i \times V_i \mid i \in J\}$ is a finite subcover of $X \times Y$.  As such a subcover exists for any cover of basis elements, $X \times Y$ is compact.
+\end{proof}
+\end{theorem}
+
+\end{document}  

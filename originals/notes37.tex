@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\newtheorem{theorem}{Important Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{irrevquestion}[theorem]{Irrelevant Question}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\title{Topology Notes - May 5, 2010}
+\author{Daniel Poore}
+\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\begin{theorem} $\R^2 \not \cong \R^3$
+\begin{proof}
+First, recall the previous results from homework $\#10$ and last class:
+\\
+\indent $\R^{n+1} \setminus \{p\}$ is homotopy equivalent to $S^n$
+\\
+\indent $\pi_1(S^2, x_0)$ is trivial
+\\
+\indent $\pi_1(S^1, x_0) \cong \Z$
+\\
+\\
+Now suppose that $\R^2 \cong \R^3$.  Then there exists some homeomorphism $h : \R^2 \to \R^3$.  
+\\
+Let $p \in \R^2$ and $h(p) = q \in \R^3$.  Therefore $f = h|_{\R^2\setminus\{p\}} :\R^2\setminus\{p\} \to \R^3\setminus\{q\}$ is a homeomorphism.
+\\
+\\
+Also, from the previous results:
+\\
+\indent $\pi_1(\R^2 \setminus \{p\}, x_0) \cong \pi_1(S^1, y_0) \cong \Z$
+\\
+\indent $\pi_1(\R^3, \setminus \{q\}, z_0) \cong \pi_1(S^2, w_0) \cong \{1\}$
+\\
+\\
+But $f$ is a homeomorphism, so $f_* : \pi_1(\R^2 \setminus \{p\}, x_0) \to \pi_1(\R^3, \setminus \{q\}, z_0)$ is an isomorphism.  However, $\Z \not \cong \{1\}$, so this is a contradiction.  
+\\
+\\
+Therefore $\R^2 \not \cong \R^3$, as desired.
+\end{proof}
+
+\end{theorem}
+
+\begin{example} Not all Fundamental Groups are Abelian
+\\
+Let $X = S^1 \vee S^1$ with wedge point $x_0$.  Then $\pi_1(X, x_0)$ is not abelian.
+\begin{proof}
+Define $Y \subseteq \R^2$ as $Y = \{ (x,y) \mid x = 0 \text{ and/or } y = 0\}$.
+\\
+Define $\widetilde{X}$ as $Y$ with a copy of $S^1$ wedged at every $(z,0)$ and $(0,z)$ with $z \in \Z \setminus \{0\}$
+\\
+\newpage
+\noindent Define $p : \widetilde{X} \to X$ such that $(x,0)$ goes to the first copy of $S^1$ for all $x \in \R$, $(0,x)$ goes to the second, and $(z,0)$, $(0,z)$ goes to $x_0$ for all $z \in \Z$.  Copies of $S^1$ wedged at $(z,0)$ go with the usual projection to the second copy of $S^1$ in $X$, and the copies wedged at $(0,z)$ go the the first copy in $X$, as show in the image.
+\begin{figure}[htdp]
+\begin{center}
+\includegraphics[height=2in]{notes55img.pdf}
+\caption{Blue maps to the first circle, red to the second, and the black squares to $x_0$.}
+\end{center}
+\end{figure}
+\\
+\\
+Now define $\widetilde{f}(t) = (t,0)$, $\widetilde{g}(t) = (0,t)$, and $f = p \circ \widetilde{f}$, $g = p \circ \widetilde{g}$.  So $f$ is a single loop on the first circle and $g$ is a single loop on the second circle.
+\\
+\\
+Next, lift $f * g$ and $g * f$ at the origin.  The construction of $\widetilde{X}$ gives that $\widetilde{f * g}(1) = (1,0)$ and $\widetilde{g * f}(1) = (0,1)$.  So, by the Monodromy theorem, as this are lifts with the same fixed point, $f * g \not \sim g * f$.  Therefore $[f]$ and $[g]$ satisfy $[f],[g] \in \pi_1(X,x_0)$ and $[f][g] \neq [g][f]$, so $\pi_1(X,x_0)$ is not abelian, as desired.
+
+\end{proof}
+\end{example}
+
+
+
+
+
+\end{document}
