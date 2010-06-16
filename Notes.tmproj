@@ -3,66 +3,38 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Desktop/Notes/Notes.tex</string>
+	<string>tex_files/compactness.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>Notes.tex</string>
 			<key>lastUsed</key>
-			<date>2010-05-29T16:52:35Z</date>
-			<key>selected</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/compactness.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/connectedness.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/continuity_and_topology.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/continuity_etc.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/covering_spaces.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/fundamental_group.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/hausdorffness.tex</string>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/homotopy.tex</string>
+			<date>2010-06-16T03:15:32Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/intro_and_review.tex</string>
 			<key>lastUsed</key>
-			<date>2010-05-29T16:52:35Z</date>
+			<date>2010-06-13T06:53:17Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>tex_files/normalness.tex</string>
+			<string>tex_files/continuity_etc.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-13T06:53:25Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>tex_files/product_topology.tex</string>
+			<string>tex_files/topologies.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-13T06:20:12Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>tex_files/quotient_spaces.tex</string>
+			<string>tex_files/continuity_and_topology.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-13T08:03:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -70,50 +42,109 @@
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>tex_files/topologies.tex</string>
+			<string>tex_files/quotient_spaces.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-13T23:27:00Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/product_topology.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-16T03:01:02Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/compactness.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-16T03:15:32Z</date>
+			<key>selected</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/hausdorffness.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/normalness.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/connectedness.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/homotopy.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/fundamental_group.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/covering_spaces.tex</string>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Notes.pdf</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Desktop/Notes/Notes.tex</key>
+		<key>Notes.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>21</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>31</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>7</integer>
+			<integer>19</integer>
 		</dict>
-		<key>Desktop/Notes/tex_files/intro_and_review.tex</key>
+		<key>tex_files/compactness.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>19</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>145</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
+			<integer>146</integer>
+		</dict>
+		<key>tex_files/product_topology.tex</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>116</integer>
+				<key>line</key>
+				<integer>217</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
 			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>200</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Desktop/Notes/tex_files/intro_and_review.tex</string>
-		<string>Desktop/Notes/Notes.tex</string>
+		<string>Notes.tex</string>
+		<string>tex_files/product_topology.tex</string>
+		<string>tex_files/compactness.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{456, 20}, {725, 858}}</string>
+	<string>{{196, 20}, {724, 858}}</string>
 </dict>
 </plist>

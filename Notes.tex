@@ -4,12 +4,17 @@
 \usepackage{geometry} \geometry{letterpaper} 
 
 % Begin paragraphs with an empty line rather than an indent
+% This causes a warning from LaTeX.
 \usepackage[parfill]{parskip} 
 
 % Use strikethrough and underlines
 \usepackage{ulem} 
 
 \usepackage{graphicx} 
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
 
 % The AMS packages everyone uses.
 \usepackage{amssymb, amsfonts, amssymb, amsthm, amscd} 
@@ -18,11 +23,15 @@
 \usepackage{epstopdf} 
 
 % Used for one diagram.  'twill be fixed.
-\usepackage{pictexwd,dcpic} 
+%\usepackage{pictexwd,dcpic} 
 
 
 % I prefer this diagram package, but it doesn't work with dcpic.
-%\usepackage[all,2cell]{xy}	
+\usepackage[all,2cell]{xy}	
+
+\usepackage{subfigure}
+
+
 % Various useful environments.  Eventually I'll try to redefine them to look nice(r).
 % I'm also not sure whether all of these should be unnumbered like this.
 
@@ -43,6 +52,7 @@
 \newcommand{\Z}{\mathbb Z} 
 \newcommand{\Q}{\mathbb Q} 
 \newcommand{\N}{\mathbb N}
+\newcommand{\RP}{\mathbb{RP}}
 
 % A couple of useful shortcuts
 \newcommand{\interior}[1]{\overset{\circ}{#1}} 
@@ -53,8 +63,9 @@
 % The ulem package overrides \emph to be underline.  I don't like that.
 \renewcommand{\emph}[1]{\textit{#1}}
 
-% A nice placeholder image.  Well, it will be nicer eventually, when it is replace by real pictures.
-\newcommand{\placeholder}{\[\includegraphics[width=100pt]{images/placeholder.pdf}\]}
+% A nice placeholder image.  
+%Well, it will be nicer eventually, when it is replace by real pictures.
+\newcommand{\placeholder}{\[\includegraphics[width=100pt]{images/placeholder}\]}
 
 \title{\LARGE The \sout{Big} Little Book of Topology Notes} 
 \author{\Large The Students of Math 147\\

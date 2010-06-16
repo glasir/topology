@@ -122,27 +122,28 @@ As a corollary we have {\bf Topological Property 6: Compactness}.\\
 	\[S = \left(\bigcup_{i=1}^n U_{p_i}\right) \cap S = \bigcup_{i=1}^n (U_{p_i} \cap S)\]
 	However, as $|U_p \cap S|$ is finite for all $p \in X$, $|U_{p_i} \cap S|$ is finite for $1 \leq i \leq n$. The union of finite sets is finite, and therefore $\left|\bigcup_{i=1}^n (U_{p_i} \cap S)\right|$ is finite. However, $S$ is infinite by assumption. So this is a contradiction, and no such $S$ exists. 
 \end{proof}
+\newpage
 \begin{theorem}
 	(Finite Tychonoff Theorem) \\
 	Let $(X,F_X)$ and $(Y,F_Y)$ be compact topological spaces. Then $(X \times Y, F_{X \times Y})$ is also a compact topological space. 
 \end{theorem}
-\begin{proof}
-	(Comic book style) (various figures...) \placeholder
+\begin{proof}{Comic book style}  \mbox{ }\\
 	
-	%\begin{figure}[h]
-	%	\begin{center}
-	%	\subfigure[Consider some open cover.]{\includegraphics[height=2.4in]{images/placeholder.eps}%{notes-img-1.pdf}}
-	%	\subfigure[Restricted to some $\{x\} \times Y$, which is compact, so has a finite subcover.]{images/placeholder.eps}%{\includegraphics[height=2.4in]{notes-img-2.pdf}}
-	%	\end{center}
-	%	\begin{center}
-	%	\subfigure[So there is some open $U_x$ with $x \in U_x$ s.t. $U_x \times Y$ is contained in this subcover.]{\includegraphics[height=2.4in]{images/placeholder.eps}%{notes-img-3.pdf}}
-	%	\subfigure[So consider just the $U_x$, which are a cover of $X$, so have a finite subcover.]{\includegraphics[height=2.4in]{images/placeholder.eps}%{notes-img-4.pdf}}
-	%	\end{center}
-	%\end{figure}
+	\begin{figure}[h!]
+		\begin{center}
+		\subfigure[Consider some open cover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_1}}
+		\subfigure[Restrict to some $\{x\} \times Y$, which is compact, so has a finite subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_2}}
+		\end{center}
+		\begin{center}
+		\subfigure[So there is some open $U_x$ with $x \in U_x$ s.t. $U_x \times Y$ is contained in this subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_3}}
+		\subfigure[So consider just the $U_x$, which are a cover of $X$, so have a finite subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_4}}
+		\end{center}
+	\end{figure}
+	
 	So the original sets that covered $\{x\} \times Y$ corresponding to the chosen $U_x$ for the desired finite cover of $X \times Y$. 
 \end{proof}
 Now let's do a real proof. 
-\begin{proof}
+\begin{proof}{Real}
 	Consider an open cover of $X \times Y$ consisting of basis elements, $\{U_i \times V_i \mid i \in I\}$, where $U_i \in F_X$ and $V_i \in F_Y$ for all $i \in I$.
 	
 	Let $x \in X$. It is clear that $\{x\} \times Y \cong Y$, so $\{x\} \times Y$ is compact. So the original open cover is a cover of $\{x\} \times Y$, and there exists some finite subcover $\{U_{i(x)} \times V_{i(x)} \mid i(x) \in K_x\}$ where $K_x \subseteq I$ and $K_x$ is finite. If $x \notin U_{i(x)}$, removing the set $U_{i(x)} \times V_{i(x)}$ does not change the fact that the remaining set is a finite subcover of $\{x\} \times Y$. Hence, without loss of generality, we assume that $x \in U_{i(x)}$ for all $i(x) \in K_x$.

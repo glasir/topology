@@ -8,15 +8,15 @@
 
 {\bf Topology versus Geometry:} Objects that have the same topology do not necessarily have the same geometry. For instance, a square and a triangle have different geometries but the same topology.
 \[ 
-\includegraphics[width=150pt]{images/notes1/square_and_triangle.eps} \]
+\includegraphics[width=150pt]{images/intro_and_review/square_and_triangle.eps} \]
 
 {\bf Motivation:} Our goal is to understand the shape of our universe. Consider the following examples of two-dimensional universes: a plane, a sphere, a torus, and planes connected by tubes.
 \[ 
-\includegraphics[width=300pt]{images/notes1/various_shapes.eps} \]
+\includegraphics[width=300pt]{images/intro_and_review/various_shapes.eps} \]
 
 \noindent These are topologically distinct universes. Intuitively, we can see that their ``holes'' distinguish them. Hence we seek a mathematical way to describe the holes; one familiar concept we will use is continuity, which is related to a lack of holes.
 
-\section{Some Review from Analysis}
+\section{Some Review from Analysis} 
 \begin{definition}
 	Let $f : \mathbb{R} \rightarrow \mathbb{R}$ and $a \in \mathbb{R}$. We say $f$ is continuous at $a$ if $\forall \epsilon > 0$ $\exists$ $\delta > 0$ such that if $|x-a|<\delta$, then $|f(x)-f(a)|<\epsilon$. 
 \end{definition}
@@ -55,12 +55,12 @@ The discrete metric can be useful for testing conjectures as it does not rely on
 
 \pagebreak 
 \begin{example}
-	{The Comb Metric for $\mathbb{R}^2$.}
+	{The Comb Metric for $\mathbb{R}^2$.} 
 \end{example}
 
 Let $X_0 = \{ 0 \} \times [0,1]$, $Y_0 = [0,1] \times \{ 0 \}$; and $\forall n \in \mathbb{N}$, let $X_n = \{ \frac{1}{n} \} \times [0,1]$. Let $M = (\cup_{n=0}^\infty X_n) \cup Y_0$. The distance is the distance measured along the comb in $\mathbb{R}^2$.
 \[ 
-\includegraphics[width=300pt]{images/notes1/comb_space.eps} \]
+\includegraphics[width=300pt]{images/intro_and_review/comb_space.eps} \]
 
 \noindent Using the comb metric, 
 \begin{itemize}
@@ -70,7 +70,7 @@ Let $X_0 = \{ 0 \} \times [0,1]$, $Y_0 = [0,1] \times \{ 0 \}$; and $\forall n \
 \begin{example}
 	{A Non-Example of a Metric Space.} 
 \end{example}
-Consider the line of real numbers with $d(a,b) = a-b$. Clearly, $d(a,b)=0$ only when $a=b$, satisfying the first property (nondegeneracy). However, the second property (triangle inequality) is not satisfied: if $a=0$, $b=1$, and $c=-1$, then $2=d(b,c) \nleq d(a,b)+d(a,c)=-1+1=0$. Notice that this non-example also fails to satisfy the other two properties listed in the usual definition of a metric, positivity and symmetry.
+Consider the line of real numbers with $d(a,b) = a-b$. Clearly, $d(a,b)=0$ only when $a=b$, satisfying the first property (nondegeneracy). However, the second property (triangle inequality) is not satisfied: if $a=0$, $b=1$, and $c=-1$, then $2=d(b,c) \nleq d(a,b)+d(a,c)=-1+1=0$. Notice that this non-example also fails to satisfy the other two properties listed in the usual definition of a metric, positivity and symmetry. 
 \begin{example}
 	Let $M$ be a set and $d:M\times M\to \R$ a function which satisfies property $2$ but not property $1$ in the definition of a metric space. Then
 	\[d(a,b) = 0 \quad \forall a,b \in M\]

@@ -10,10 +10,10 @@ For the past several pages, we've been building new topological spaces from old 
 \end{definition}
 This is a topology class, so our intrinsic urge is to find a natural topology for the product of two topological spaces. While our first instinct might be to take products of open sets in our original spaces, this approach will give unsatisfactory results: 
 \begin{example}
-	Consider the sets $A = (0,1)\times (0,1)$ and $B = (1/2,3/2)\times(1/2,3/2)$ as subsets of $\R\times\R = \R^2$ with the usual topology. Then $A\cup B$ in $\R^2$ is NOT a product of an open set in $\R$ with an open set in $\R$ as we would like. To intuitively see that this is not the case, see a picture! On the other hand, $A\cup B$ is open in the usual topology on $\R^2$. 
+	Consider the sets $A = (0,1)\times (0,1)$ and $B = (1/2,3/2)\times(1/2,3/2)$ as subsets of $\R\times\R = \R^2$ with the usual topology. Then $A\cup B$ in $\R^2$ is NOT a product of an open set in $\R$ with an open set in $\R$ as we would like. To intuitively see that this is not the case, see the picture! On the other hand, $A\cup B$ is open in the usual topology on $\R^2$. 
 \end{example}
 
-\placeholder
+\[\includegraphics[width=200pt]{images/product_topology/product_sets_r}\]
 
 Although products of open sets will not work because they are not closed under unions, we can use products of open sets to construct our topology. Define the following: 
 \begin{definition}
@@ -57,18 +57,17 @@ We have successfully devised a topology for product spaces as unions of products
 \begin{example}
 	The set $S^1 \times [0,1]$ looks like a cylinder! What kinds of sets are open in the cylinder? A particular example is an open disc projected on the face of the cylinder and unions thereof. 
 \end{example}
+\[\includegraphics[width=100pt]{images/product_topology/s1_times_i}\]
 
-\placeholder
 \begin{example}
-	The set $S^1 \times S^1$ looks like a torus! What kinds of sets are open in the torus? Similar to the previous example, open discs projected onto the torus surface are examples of open sets in $S^1\times S^1$. 
+	The set $S^1 \times S^1$ looks like a torus! What kinds of sets are open in the torus? Similar to the previous example, open discs projected onto the torus surface are examples of open sets in $S^1\times S^1$.  In the picture, one copy of $S^1$ is red and one is green; they determine a torus.
 \end{example}
 
-\placeholder
-\begin{example}
-	The set $S^1 \times S^1 \times S^1$ is actually a three torus! 
-\end{example}
+\[\includegraphics[width=160pt]{images/product_topology/s1_times_s1}\]
 
-\placeholder
+\begin{example}
+	The set $S^1 \times S^1 \times S^1$ is actually a 3-torus! 
+\end{example}
 
 Not every space is a product of more than one space. For example the sphere $S^2$ is not a product of more than one space. An intuitive (non-rigorous) justification is that the natural axes of a sphere are the great circles; however, every pair of distinct great circles intersect twice which makes it hard to define a coordinate system on the sphere.
 
@@ -185,7 +184,11 @@ This means that we can either look at $A\times B$ as a subspace of $X\times Y$, 
 
 \subsection{Products and Quotient Spaces} Taking products and quotients does not ``commute'' in the same way that taking products and subspaces does. We demonstrate a (lengthy) counterexample to this idea.
 
-Consider $\R$ with the usual topology, with $x\sim Y$ iff $x=y$ or $x,y\in \N$. This looks something like a ``sideways infinite flower.'' \placeholder If a set open in $\R/\sim$ contains a (``the'') natural number, then its preimage must contain every natural number, so it must contain an open interval about ``the'' natural number in every direction (all infinity of them). 
+Consider $\R$ with the usual topology, with $x\sim Y$ iff $x=y$ or $x,y\in \N$. This looks something like a ``sideways infinite flower.'' 
+
+\[\includegraphics[width=200pt]{images/product_topology/sideways_infinite_flower}\]
+
+ If a set open in $\R/\sim$ contains a (``the'') natural number, then its preimage must contain every natural number, so it must contain an open interval about ``the'' natural number in every direction (all infinity of them). 
 
 More formally, let $\pi:\R\to\R/\sim$ be the projection map. Let $id_\Q:\Q\to\Q$ be the identity map, where each copy of $\Q$ has the usual topology. Note that $id_\Q$ is a quotient map (where $\sim$ is `='). 
 
@@ -199,7 +202,8 @@ So $\forall n \in \N, \{n\}\times \Q \subseteq U_n$. Observe that $\forall n\in 
 
 Let $\bigcup_{n \in\N} U_n \in F_{\R\times\Q} \qquad$ (also open in $\R\times\Q$ because it is a union).
 
-Let $U' = (\pi \times i)(U).$ This will glue together the strips along the vertical lines with $\R$ coordinates in $\N$. This can be pictured as a fan. \placeholder
+Let $U' = (\pi \times i)(U).$ This will glue together the strips along the vertical lines with $\R$ coordinates in $\N$. This can be pictured as a fan.
+\[\includegraphics[width=100pt]{images/product_topology/sideways_infinite_fan}\]
 
 Claim: $U' \in F_{\pi \times i}$
 
