@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tex_files/quotient_spaces.tex</string>
+	<string>tex_files/product_topology.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -44,13 +44,13 @@
 			<key>filename</key>
 			<string>tex_files/quotient_spaces.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-18T04:19:30Z</date>
+			<date>2010-06-19T02:51:38Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/product_topology.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-16T03:01:02Z</date>
+			<date>2010-06-19T06:12:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -80,7 +80,7 @@
 			<key>filename</key>
 			<string>tex_files/homotopy.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-18T02:01:04Z</date>
+			<date>2010-06-19T06:12:02Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -99,6 +99,12 @@
 			<string>Notes.pdf</string>
 			<key>selected</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>remove_pdfs.sh</string>
+			<key>lastUsed</key>
+			<date>2010-06-19T03:21:55Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -119,6 +125,20 @@
 			<key>firstVisibleLine</key>
 			<integer>51</integer>
 		</dict>
+		<key>remove_pdfs.sh</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>tex_files/covering_spaces.tex</key>
 		<dict>
 			<key>caret</key>
@@ -138,39 +158,25 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>116</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>217</integer>
+				<integer>188</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>200</integer>
-		</dict>
-		<key>tex_files/quotient_spaces.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>144</integer>
-				<key>line</key>
-				<integer>60</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>52</integer>
+			<integer>183</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>Notes.tex</string>
-		<string>tex_files/covering_spaces.tex</string>
-		<string>tex_files/quotient_spaces.tex</string>
+		<string>tex_files/product_topology.tex</string>
+		<string>remove_pdfs.sh</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{173, -71}, {741, 858}}</string>
+	<string>{{173, 0}, {741, 858}}</string>
 </dict>
 </plist>
