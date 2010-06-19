@@ -1,7 +1,7 @@
 
 
 %!TEX root = ../Notes.tex
-\section{Loops} We have shown that the product of two path homotopy classes is well defined. For the purposes of defining a group of path homotopy classes, we would like a set of paths whose products have the same endpoints as the original paths. This simplification motivates the two definitions which follow: 
+\section{Loops and the Fundamental Group} We have shown that the product of two path homotopy classes is well defined. For the purposes of defining a group of path homotopy classes, we would like a set of paths whose products have the same endpoints as the original paths. This simplification motivates the two definitions which follow: 
 \begin{definition}
 	Let $f$ be a path in $X$ such that $f(0) = f(1) = x_0\in X$. Then $f$ is a \textbf{loop} in $X$ based at $x_0$. 
 \end{definition}
@@ -58,12 +58,9 @@ Next, we will show that path homotopy path products of loops based at a point ar
 	\end{cases}
 	\]
 	
-	We need to construct a homotopy from $(f*g)*h$ to $f*(h*g)$. 
-	\begin{figure}[ht!]
-	    \centering
-	    \includegraphics[width=150pt]{images/fundamental_group/fgh_diagram}
-	    \caption{The homotopy diagram for this proof.}
-    \end{figure}
+	We need to construct a homotopy from $(f*g)*h$ to $f*(h*g)$.
+	\[ 
+	\includegraphics[width=150pt]{images/fundamental_group/fgh_diagram} \]
 	
 	Based on our formulas for $(f*g)*h$ and $f*(g*h)$, we parameterize the function $F:I\times I \to X$ by:
 	\[F(s,t) = 
@@ -288,7 +285,7 @@ Keep in mind that our overall goal is to show that the fundamental group is a to
 \begin{definition}
 	Let $\phi:X\to Y$ be continuous, and $\phi(x_0)=y_0$. Define $\phi_*: \pi_1(X,x_0)\to \pi_1(X,y_0)$ by $\phi_*([f]_X)=[\phi(f)]_Y.$
 	
-	We say that $\phi_*$ is \underline{induced} by $\phi$. 
+	We say that $\phi_*$ is \emph{induced} by $\phi$. 
 \end{definition}
 \begin{smallfact}
 	[about induced maps] Let $\phi:X\to Y$ and $\phi(x_0)=y_0$. Then $\phi_*$ is well defined. 

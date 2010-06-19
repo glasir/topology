@@ -14,33 +14,27 @@
 
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-
-
 % The AMS packages everyone uses.
 \usepackage{amssymb, amsfonts, amssymb, amsthm, amscd} 
 
 % Allow us to use .eps figures
 \usepackage{epstopdf} 
 
-% Used for one diagram.  'twill be fixed.
-%\usepackage{pictexwd,dcpic} 
-
-
-% I prefer this diagram package, but it doesn't work with dcpic.
-\usepackage[all,2cell]{xy}	
+% A nice package for commutative diagrams, among other things.
+\usepackage[all,2cell]{xy} 
 
 \usepackage{subfigure}
 
+% Various useful environments.  
+% I'm not sure which of these should be unnumbered.
 
-% Various useful environments.  Eventually I'll try to redefine them to look nice(r).
-% I'm also not sure whether all of these should be unnumbered like this.
-
-% the default style
+% Use the default style
 \theoremstyle{plain} 
 \newtheorem{theorem}{Theorem} 
 \newtheorem*{lemma}{Lemma} 
 \newtheorem*{corollary}{Corollary}
 
+% A plainer style - no italics or anything.
 \theoremstyle{definition} 
 \newtheorem*{example}{Example} 
 \newtheorem*{definition}{Definition} 
@@ -51,7 +45,7 @@
 \newcommand{\R}{\mathbb R} 
 \newcommand{\Z}{\mathbb Z} 
 \newcommand{\Q}{\mathbb Q} 
-\newcommand{\N}{\mathbb N}
+\newcommand{\N}{\mathbb N} 
 \newcommand{\RP}{\mathbb{RP}}
 
 % A couple of useful shortcuts
@@ -63,11 +57,7 @@
 % The ulem package overrides \emph to be underline.  I don't like that.
 \renewcommand{\emph}[1]{\textit{#1}}
 
-% A nice placeholder image.  
-%Well, it will be nicer eventually, when it is replace by real pictures.
-\newcommand{\placeholder}{\[\includegraphics[width=100pt]{images/placeholder}\]}
-
-\title{\LARGE The \sout{Big} Little Book of Topology Notes} 
+\title{\LARGE The \sout{Little} Big Book of Topology Notes} 
 \author{\Large The Students of Math 147\\
 Spring 2010 \\\mbox{ }\\
 {\Small Compiled by Daniel Moore}}
@@ -77,19 +67,6 @@ Spring 2010 \\\mbox{ }\\
 
 % To avoid having a 180KB, 3000-line .tex file in which it's impossible to find anything, I split up the text into several smaller files.  
 % \input is used because it doesn't use \clearpage and so doesn't make lots of empty pages.
-\input{tex_files/intro_and_review} 
-\input{tex_files/continuity_etc} 
-\input{tex_files/topologies} 
-\input{tex_files/continuity_and_topology} 
-\input{tex_files/subspaces_and_bases} 
-\input{tex_files/quotient_spaces} 
-\input{tex_files/product_topology} 
-\input{tex_files/compactness} 
-\input{tex_files/hausdorffness} 
-\input{tex_files/normalness} 
-\input{tex_files/connectedness} 
-\input{tex_files/homotopy} 
-\input{tex_files/fundamental_group} 
-\input{tex_files/covering_spaces}
+\input{tex_files/intro_and_review} \input{tex_files/continuity_etc} \input{tex_files/topologies} \input{tex_files/continuity_and_topology} \input{tex_files/subspaces_and_bases} \input{tex_files/quotient_spaces} \input{tex_files/product_topology} \input{tex_files/compactness} \input{tex_files/hausdorffness} \input{tex_files/normalness} \input{tex_files/connectedness} \input{tex_files/homotopy} \input{tex_files/fundamental_group} \input{tex_files/covering_spaces}
 
 \end{document} 

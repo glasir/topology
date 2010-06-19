@@ -3,10 +3,10 @@
 %!TEX root = ../Notes.tex
 \chapter{Distinguishing Spaces} 
 \begin{definition}
-	A {\bf topological property} (or `top. prop.') is a property of a topological spaces that is preserved by homeomorphisms. 
+	A \textbf{topological property} (or `top. prop.') is a property of a topological spaces that is preserved by homeomorphisms. 
 \end{definition}
 \begin{center}
-	{\bf List of Topological Properties thus Far} 
+	\textbf{List of Topological Properties thus Far} 
 \end{center}
 \begin{enumerate}
 	\item Cardinality of $X$ 
@@ -16,15 +16,13 @@
 	\item Indiscreteness 
 \end{enumerate}
 \begin{lemma}
-	{\bf (Rachel's Lemma)}\\
-	Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be an open bijection. If $F_X$ is the discrete topology, then $F_Y$ is the discrete topology. 
+	[Rachel's Lemma] Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be an open bijection. If $F_X$ is the discrete topology, then $F_Y$ is the discrete topology. 
 \end{lemma}
 \begin{proof}
 	Let $y \in Y$. Since $f$ is surjective, there exists $x \in X$ such that $f(x) = y$. Since $\{x\} \in F_X$ and $f$ open, $f(\{x\}) \in F_Y$. Thus all singletons in are elements of $F_Y$ and all sets in $Y$ are unions of singletons and hence elements of $F_Y$, so every set is an open set and $F_Y$ is the discrete topology. 
 \end{proof}
 \begin{lemma}
-	{\bf (Daniel's Lemma)}\\
-	Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be a continuous bijection. If $F_X$ is the indiscrete topology, then $F_Y$ is the indiscrete topology. 
+	[Daniel's Lemma] Let $(X, F_X) $ and $(Y, F_Y)$ be topological spaces and $f: X \rightarrow Y$ be a continuous bijection. If $F_X$ is the indiscrete topology, then $F_Y$ is the indiscrete topology. 
 \end{lemma}
 \begin{proof}
 	Let $U \in F_Y$. WTS $U = Y$ or $U = \emptyset$. Since $f$ is continuous, $f^{-1}(U) \in F_X$. Therefore $f^{-1}(U) = X$ or $\emptyset$. \\
@@ -32,28 +30,28 @@
 	Suppose $f^{-1}(U) = \emptyset$. Then $U = \emptyset$. Therefore $F_Y$ is the indiscrete topology. 
 \end{proof}
 
-{\bf Corollaries} If $(X, F_X) $ and $(Y, F_Y)$ topological spaces and $f: X \rightarrow Y$ a homeomorphism, then 
+Corollaries: If $(X, F_X) $ and $(Y, F_Y)$ topological spaces and $f: X \rightarrow Y$ a homeomorphism, then 
 \begin{enumerate}
 	\item $F_X$ the discrete topology $\Longrightarrow$ $F_Y$ the discrete topology 
 	\item $F_X$ the indiscrete topology $\Longrightarrow$ $F_Y$ the indiscrete topology 
 \end{enumerate}
 
-Unfortunately, even with these five lovely Topological Properties, we can't yet distinguish a circle from a line. Clearly there is more work to do.
-\begin{example}[a non-example]
-	Distance is not a topological property. A big circle \emph{is} homeomorphic to a little circle. 
+Unfortunately, even with these five lovely Topological Properties, we can't yet distinguish a circle from a line. Clearly there is more work to do. 
+\begin{example}
+	[a non-example] Distance is not a topological property. A big circle \emph{is} homeomorphic to a little circle. 
 \end{example}
 
-\section{Compactness}
+\section{Compactness} 
 \begin{definition}
 	Let $(X, F_X)$ be a topological space and $S \subseteq X$.\\
 	We say $\{U_j : j \in J\}$ is an $\mathbf{open \ cover}$ of $S$ if for all $j \in J$, $U_j \in F_X$ and $S \subseteq \bigcup_{j \in J}U_j$.\\
-	We say $\{U_j : j \in K\}$ is a {\bf subcover} if $K \subseteq J$ and $S \subseteq \bigcup_{j \in K} U_j$.
+	We say $\{U_j : j \in K\}$ is a \textbf{subcover} if $K \subseteq J$ and $S \subseteq \bigcup_{j \in K} U_j$.
 	
-	We say $S$ is {\bf compact} if every open cover of $S$ has a finite subcover. 
+	We say $S$ is \textbf{compact} if every open cover of $S$ has a finite subcover. 
 \end{definition}
 
-{\bf IMPORTANT WARNING!}\\
-We learned in Math 131 that in $\R^{n}$, a set if compact $\Longleftrightarrow$ it is closed and bounded. THIS IS NOT TRUE IN TOPOLOGICAL SPACES. DO NOT TRY TO USE IT.
+\textbf{IMPORTANT WARNING!}\\
+We learned in Math 131 that in $\R^{n}$, a set if compact $\Longleftrightarrow$ it is closed and bounded. THIS IS NOT TRUE IN TOPOLOGICAL SPACES. DO NOT TRY TO USE IT. 
 \begin{example}
 	Is the set $(0,1)$ compact in 
 	\begin{enumerate}
@@ -70,8 +68,7 @@ Answers:
 	\item Yes. Suppose we have a cover of $(0,1)$. Take any element of the cover, say $U_{47}$. $U_{47}$ is missing at most finitely may elements of $(0,1)$ since its complement is finite. For each element $x \in \R \setminus U_{47}$, select one $U_{j_x}$ containing $x$. The set $\{U_{47}\} \cup \{U_{j_x}: x \in \R \setminus U_{47}\}$ is a finite open subcover. 
 \end{enumerate}
 \begin{theorem}
-	(analogous to a theorem from 131)\\
-	Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces, $S \subseteq X$, and $f : X \rightarrow Y$ continuous. If $S$ is compact then $f(S)$ is compact. 
+	[analogous to a theorem from 131] Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces, $S \subseteq X$, and $f : X \rightarrow Y$ continuous. If $S$ is compact then $f(S)$ is compact. 
 \end{theorem}
 \begin{proof}
 	\begin{enumerate}
@@ -82,7 +79,7 @@ Answers:
 	\end{enumerate}
 \end{proof}
 
-As a corollary we have {\bf Topological Property 6: Compactness}.\\
+As a corollary we have \textbf{Topological Property 6: Compactness}.\\
 \begin{theorem}
 	Any closed subset of a compact space is compact. 
 \end{theorem}
@@ -95,8 +92,7 @@ As a corollary we have {\bf Topological Property 6: Compactness}.\\
 	\end{enumerate}
 \end{proof}
 \begin{theorem}
-	(also analagous to a 131 theorem)\\
-	Let $(X, F_X)$ be compact and $f : X \rightarrow \R$ be continuous. Then $f$ has a max value and a min value. 
+	[also analagous to a 131 theorem] Let $(X, F_X)$ be compact and $f : X \rightarrow \R$ be continuous. Then $f$ has a max value and a min value. 
 \end{theorem}
 \begin{proof}
 	\begin{enumerate}
@@ -114,37 +110,41 @@ As a corollary we have {\bf Topological Property 6: Compactness}.\\
 	and $\{U_j : j\in K\}$ is a finite subcover. 
 \end{proof}
 \begin{theorem}
-	(Bolzanno-Weierstrass Theorem).\\
-	Let $(X,F_X)$ be a compact topological space. Then for all infinite $S \subseteq X$, $\exists \ p \in X$ such that $\forall \ U \in F_X$ with $p \in U$, $U$ contains infinitely many points of $S$. 
+	[Bolzano-Weierstrass Theorem] Let $(X,F_X)$ be a compact topological space. Then for all infinite $S \subseteq X$, $\exists \ p \in X$ such that $\forall \ U \in F_X$ with $p \in U$, $U$ contains infinitely many points of $S$. 
 \end{theorem}
 \begin{proof}
 	Suppose that for some such $S \subseteq X$, no such $p \in X$ exists. Therefore, for all $p \in X$ there exists some $U_p \in F_X$ such that $p \in U_p$ and $|S \cap U_p|$ is finite. So, as $\displaystyle{\bigcup_{p \in X} U_p = X}$, $\{U_p \mid p \in X\}$ is an open cover of $X$. As $X$ is compact, there exists some finite subcover $\{U_{p_1},...,U_{p_n}\}$. Hence, from the definition of a subcover, $\displaystyle{X = \bigcup_{i=1}^n U_{p_i}}$. Intersecting both sides with $S$ gives that:
 	\[S = \left(\bigcup_{i=1}^n U_{p_i}\right) \cap S = \bigcup_{i=1}^n (U_{p_i} \cap S)\]
 	However, as $|U_p \cap S|$ is finite for all $p \in X$, $|U_{p_i} \cap S|$ is finite for $1 \leq i \leq n$. The union of finite sets is finite, and therefore $\left|\bigcup_{i=1}^n (U_{p_i} \cap S)\right|$ is finite. However, $S$ is infinite by assumption. So this is a contradiction, and no such $S$ exists. 
 \end{proof}
-\newpage
 \begin{theorem}
-	(Finite Tychonoff Theorem) \\
-	Let $(X,F_X)$ and $(Y,F_Y)$ be compact topological spaces. Then $(X \times Y, F_{X \times Y})$ is also a compact topological space. 
+	[Finite Tychonoff Theorem] Let $(X,F_X)$ and $(Y,F_Y)$ be compact topological spaces. Then $(X \times Y, F_{X \times Y})$ is also a compact topological space. 
 \end{theorem}
-\begin{proof}{Comic book style}  \mbox{ }\\
-	
-	\begin{figure}[h!]
+\begin{proof}
+	{(Comic book style)}
+	\begin{figure}
+		[h!] 
 		\begin{center}
-		\subfigure[Consider some open cover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_1}}
-		\subfigure[Restrict to some $\{x\} \times Y$, which is compact, so has a finite subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_2}}
+			\subfigure[Consider some open cover.]{
+			\includegraphics[width=190pt]{images/compactness/tychonoff_comic_1}} \subfigure[Restrict to some $\{x\} \times Y$, which is compact, so has a finite subcover.]{
+			\includegraphics[width=190pt]{images/compactness/tychonoff_comic_2}} 
 		\end{center}
+	\end{figure}
+	\pagebreak 
+	\begin{figure}
+		[h!] 
 		\begin{center}
-		\subfigure[So there is some open $U_x$ with $x \in U_x$ s.t. $U_x \times Y$ is contained in this subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_3}}
-		\subfigure[So consider just the $U_x$, which are a cover of $X$, so have a finite subcover.]{\includegraphics[width=180pt]{images/compactness/tychonoff_comic_4}}
+			\subfigure[So there is some open $U_x$ with $x \in U_x$ s.t. $U_x \times Y$ is contained in this subcover.]{
+			\includegraphics[width=190pt]{images/compactness/tychonoff_comic_3}} \subfigure[So consider just the $U_x$, which are a cover of $X$, so have a finite subcover.]{
+			\includegraphics[width=190pt]{images/compactness/tychonoff_comic_4}} 
 		\end{center}
 	\end{figure}
 	
 	So the original sets that covered $\{x\} \times Y$ corresponding to the chosen $U_x$ for the desired finite cover of $X \times Y$. 
 \end{proof}
 Now let's do a real proof. 
-\begin{proof}{Real}
-	Consider an open cover of $X \times Y$ consisting of basis elements, $\{U_i \times V_i \mid i \in I\}$, where $U_i \in F_X$ and $V_i \in F_Y$ for all $i \in I$.
+\begin{proof}
+	{(Real)} Consider an open cover of $X \times Y$ consisting of basis elements, $\{U_i \times V_i \mid i \in I\}$, where $U_i \in F_X$ and $V_i \in F_Y$ for all $i \in I$.
 	
 	Let $x \in X$. It is clear that $\{x\} \times Y \cong Y$, so $\{x\} \times Y$ is compact. So the original open cover is a cover of $\{x\} \times Y$, and there exists some finite subcover $\{U_{i(x)} \times V_{i(x)} \mid i(x) \in K_x\}$ where $K_x \subseteq I$ and $K_x$ is finite. If $x \notin U_{i(x)}$, removing the set $U_{i(x)} \times V_{i(x)}$ does not change the fact that the remaining set is a finite subcover of $\{x\} \times Y$. Hence, without loss of generality, we assume that $x \in U_{i(x)}$ for all $i(x) \in K_x$.
 	

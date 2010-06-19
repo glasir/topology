@@ -49,13 +49,9 @@ We now have an Important Lemma about Flowers.
 	Suppose \{$y_j \mid j \in J$\} is a collection of connected subspaces of $X = \displaystyle{\bigcup_{j \in J} y_j}$, and $\displaystyle{\bigcap_{j \in J} y_j} \neq \emptyset$. Then $X$ is connected. 
 \end{lemma}
 \begin{proof}
-	Suppose that $X$ is \textit{dis}connected. Then $X$ has a separation, $U, V$. 
-	\begin{figure}
-		[ht!] 
-		\begin{center}
-			\includegraphics[width=200pt]{images/connectedness/flower} 
-		\end{center}
-	\end{figure}
+	Suppose that $X$ is \textit{dis}connected. Then $X$ has a separation, $U, V$.
+	\[ 
+	\includegraphics[width=200pt]{images/connectedness/flower} \]
 	
 	Let $j_0 \in J$. We know that 
 	\begin{itemize}
@@ -70,18 +66,17 @@ We now have an Important Lemma about Flowers.
 	
 	Since $X = \displaystyle{\bigcup_{j \in J} y_j} \subseteq V$, $U, V$ is not a separation of $X$. Thus, $X$ is connected. 
 \end{proof}
-\newpage
 \begin{theorem}
 	Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces. Then $(X\times Y, F_{X\times Y})$ is connected if and only if both $X$ and $Y$ are connected. 
 \end{theorem}
 \begin{proof}
 	\begin{itemize}
 		\item[$(\Rightarrow)$] $\pi_X: X\times Y \longrightarrow X$ and $\pi_Y: X\times Y \longrightarrow Y$ are continuous surjections. Continuous functions preserve connectedness, so $X$ and $Y$ are connected. 
-		\item[$(\Leftarrow)$] First, a picture proof. 
-		\begin{figure*}[ht!] \centering 
-			\includegraphics[width=0.9\textwidth]{images/connectedness/XxYconnected_comic}
-			\caption{The axes are connected, because $X$ and $Y$ are connected. If we make a copy of the axes, shifted over a little bit, that copy is connected too. The union of these shifted axis crosses will be the entirety of $X\times Y$, and their intersection will be nonempty, so $X\times Y$ is connected.} 
-		\end{figure*}
+		\item[$(\Leftarrow)$] First, a picture proof.
+		\[ 
+		\includegraphics[width=0.9 
+		\textwidth]{images/connectedness/XxYconnected_comic}\]
+		The axes are connected, because $X$ and $Y$ are connected. If we make a copy of the axes, shifted over a little bit, that copy is connected too. The union of these shifted axis crosses will be the entirety of $X\times Y$, and their intersection will be nonempty, so $X\times Y$ is connected.
 		
 		Now for the actual proof. Let $(x_0, y_0) \in X\times Y.$ Since $\{x_0\}\times Y \cong Y$, it is connected (as connectedness is a top. prop.). Similarly, $\{y_0\} \times X$ is connected.
 		
@@ -89,11 +84,15 @@ We now have an Important Lemma about Flowers.
 		
 		Note that $(X\times \{y_0\}) \subseteq \displaystyle{\bigcap_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}$.
 		
-		\textbf{Claim.} $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} = X\times Y$ \textbf{Proof of claim.}
+		\textbf{Claim:} $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} = X\times Y$. 
 		
-		$(\subseteq)$ Clearly $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} \subseteq X\times Y$ because $X\times Y$ is the entire space. 
-		
-		$(\supseteq)$ Let $(x_1, y_1) \in X\times Y$. Then $(x_1, y_1) \in (\{x_1\}\times Y)$. Thus, $\forall x\in X$ and $y\in Y$, $(x,y) \in (\{x\} \times Y) \subseteq {\displaystyle\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}$.
+		\textbf{Proof of claim:} 
+		\begin{itemize}
+			
+			\item[$(\subseteq)$] Clearly $\displaystyle{\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)} \subseteq X\times Y$ because $X\times Y$ is the entire space. 
+			
+			\item[$(\supseteq)$] Let $(x_1, y_1) \in X\times Y$. Then $(x_1, y_1) \in (\{x_1\}\times Y)$. Thus, $\forall x\in X$ and $y\in Y$, $(x,y) \in (\{x\} \times Y) \subseteq {\displaystyle\bigcup_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}$. 
+		\end{itemize}
 		
 		Since $(X\times \{y_0\}) \cup (\{x\} \times Y)$ is connected $\forall x\in X$, and $\displaystyle{\bigcap_{x \in X}(X\times \{y_0\}) \cup (\{x\} \times Y)}\neq \emptyset$, $X\times Y$ is connected by the Important Flower Lemma. 
 	\end{itemize}
@@ -113,7 +112,7 @@ And now, a series of tiny facts about connected components.
 	\end{enumerate}
 \begin {proof} 
 \begin{enumerate}
-	\item $p\in {\cap_{j\in J} C_j}$, so $C_p = {\cup_{j\in J} C_j}$ is connected by the lemma above.
+	\item $p\in {\cap_{j\in J} C_j}$, so $C_p = {\cup_{j\in J} C_j}$ is connected by the lemma above. 
 	\item Suppose $C_p \cap C_q \neq \emptyset$ and let $x\in C_p \cap C_q$. Then $C_p \cup C_q$ is connected by the lemma above.
 	
 	$p\in C_p \cup C_q$, so $C_p \cup C_q \in \{C_j\mid j\in J\}$. Also, $C_p \cup C_q \subseteq C_p$, since $C_p = {\cup_{j\in J} C_j}$. So, $C_q \subseteq C_p$. Similarly, $C_p \subseteq C_q$. 
@@ -123,12 +122,9 @@ Thus $C_p = C_q$, so we can say $X$ is partitioned by its connected components.
 \end{smallfact}
 \begin{example}
 Let $X = \R^2$ with the dictionary topology. Connected components are vertical lines. (Proof is an exercise.) Define $x\sim y$ ($x, y \in \R^2$) if $x$ and $y$ are in the same connected component. Then $X/\sim$ = $\R$ with the discrete topology. 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=300pt]{images/connectedness/dictionary_sim}
-    \caption{Connected components in $X$ are vertical lines.}
-\end{figure}
 
+\[ 
+\includegraphics[width=300pt]{images/connectedness/dictionary_sim}\]
 \end{example}
 
 Connectedness is not always intuitive, though. Here's a large example showing this.
@@ -143,7 +139,9 @@ Define the Comb, the Flea, and the space $X$ as follows.
 $X$ is connected. 
 \end{example}
 \begin{proof}
-First, we claim that the Comb is connected. Proof: 
+First, we claim that the Comb is connected. 
+
+Proof: 
 
 $\forall n \in \{0\} \cup \N$, $y_n$ is connected because $y_n \cong [0,1]$. Also, $\forall n \in \N$, $y_0 \cap y_n \neq \emptyset$ (because $(1/n, 0)$ is in both), so $y_0 \cup y_n$ is connected. 
 
@@ -165,7 +163,7 @@ Let $(X, F_X)$ be a topological space. If $\forall p$, $q \in X$, there exists a
 \begin{example}
 $\R^n$ is path-connected:
 
-Let $a$, $b \in \R^n$ be given. Let $f: I \rightarrow \mathbb{R}^n$ be $f(t) = (1-t)a + bt$. Then $f(0) = a$, and $f(1) = b$. $f$ can be shown to be continuous by performing an involved $\epsilon$-$\delta$ proof. 
+Let $a$, $b \in \R^n$ be given. Let $f: I \rightarrow \R^n$ be $f(t) = (1-t)a + bt$. Then $f(0) = a$, and $f(1) = b$. $f$ can be shown to be continuous by performing an involved $\epsilon$-$\delta$ proof. 
 \end{example}
 
 Some remarks: 
@@ -202,15 +200,13 @@ We'd like to show that $f^{-1}(\{p\})$ is open, since then it would be a nontriv
 
 Let $y \in f^{-1}(\{p\})$ be given. 
 
-%\\ \emph{WTS:} $\exists \epsilon > 0$ s.t. $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(\{p\})$.
 Observe that $B_{\frac{1}{2}}(p; X)$ is open in $X$. Since $f$ is a path, $f$ is continuous, so $f^{-1}(B_{\frac{1}{2}}(p; X))$ is open in $[0,1]$. Since $y \in f^{-1}(\{p\})$, $f(y) = p \in B_{\frac{1}{2}}(p; X) \Rightarrow y \in f^{-1}(B_{\frac{1}{2}}(p; X))$. Thus, since $f^{-1}(B_{\frac{1}{2}}(p; X))$ is open in $[0,1]$, $\exists \epsilon > 0$ s.t. $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(B_{\frac{1}{2}}(p; X))$.
 
-%\\ \emph{WTS:} $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(\{p\})$.
 Let $z \in B_{\epsilon}(y; [0,1])$. If $f(z) = p$, then $B_{\epsilon}(y; [0,1]) \subseteq f^{-1}(p)$ and so $f^{-1}(p)$ is open, completing the proof.
 
-Suppose $f(z) \neq p$. Since $z \in B_{\epsilon}(y; [0,1])$, $z \in f^{-1}(B_{\frac{1}{2}}(p; X))$, so $f(z) \in B_{\frac{1}{2}}(p; X)$ (so $d(f(z), p) < \frac{1}{2}$). Since $Y_0 = [0,1] \times \{0\}$, for each $q \in Y_0$, $d(p,q) \geq 1 \Rightarrow q \not\in B_{\frac{1}{2}}(p; X)$. Thus, $f(z) \not\in Y_0$. Thus since $f(z) \neq p$, $\exists n \in \mathbb{N}$ s.t. $f(z) \in Y_n$.
+Suppose $f(z) \neq p$. Since $z \in B_{\epsilon}(y; [0,1])$, $z \in f^{-1}(B_{\frac{1}{2}}(p; X))$, so $f(z) \in B_{\frac{1}{2}}(p; X)$ (so $d(f(z), p) < \frac{1}{2}$). Since $Y_0 = [0,1] \times \{0\}$, for each $q \in Y_0$, $d(p,q) \geq 1 \Rightarrow q \not\in B_{\frac{1}{2}}(p; X)$. Thus, $f(z) \not\in Y_0$. Thus since $f(z) \neq p$, $\exists n \in \N$ s.t. $f(z) \in Y_n$.
 
-There exists $r\in \R-\Q$ such that $0 < r < \frac{1}{n}$. Define sets $A, B\subseteq f\left( B_{\epsilon} (y;[0,1]) \right)$, as
+There exists $r\in \R\setminus\Q$ such that $0 < r < \frac{1}{n}$. Define sets $A, B\subseteq f\left( B_{\epsilon} (y;[0,1]) \right)$, as
 \[A = \left\{ (x,y)\in f\left( B_{\epsilon} (y;[0,1]) \right) | x< r\right\} \hspace{.15in} \text{and} \hspace{.15in} B = \left\{ (x,y)\in f\left( B_{\epsilon} (y;[0,1]) \right) | x> r\right\}\]
 We next show that $A$ and $B$ are a separation for $f\left( B_{\epsilon} (y;[0,1]) \right)$. To this end, we'll need to show that $A$ and $B$ are disjoint, proper and non-empty, that their union is the entire set, and that they're are both clopen.
 
@@ -218,7 +214,7 @@ We note that $A\cap B = \emptyset$ by definition. We know that $f(z)\in B$, and 
 
 Next, we want to show that $A\cup B = f\left( B_\epsilon (y;[0,1]) \right)$. Certainly $A\cup B \subseteq f\left( B_{\epsilon} (y;[0,1]) \right)$. Now let $(x, f(x)) \in f\left( B_{\epsilon} (y;[0,1]) \right)$. We know that $f(x) \neq 0$, and in fact $x = \frac{1}{m}$ for some $m\in \N$. Then $x\neq r$, so $x\in A\cup B$ and we're done.
 
-Next we want to show that $A$ is open in $f(B_{\epsilon} (y;[0,1]))$. We know that $\{(x,y) | x<r \}$ is open in $\R^2$, the half plane to the left of $r$. It follows using the subspace topology that $A = \{ (x,y) | x< r \} \cap f\left( B_{\epsilon} (y;[0,1]) \right)$ is open in $f\left( B_{\epsilon} (y;[0,1] ) \right)$. Similarly, $B$ is open in $f\left( B_{\epsilon} (y;[0,1] ) \right)$. Since each is the other's compliment in $f\left( B_{\epsilon} (y;[0,1] ) \right)$, then both are also closed.
+Next we want to show that $A$ is open in $f(B_{\epsilon} (y;[0,1]))$. We know that $\{(x,y) | x<r \}$ is open in $\R^2$, the half plane to the left of $r$. It follows using the subspace topology that $A = \{ (x,y) | x< r \} \cap f\left( B_{\epsilon} (y;[0,1]) \right)$ is open in $f\left( B_{\epsilon} (y;[0,1] ) \right)$. Similarly, $B$ is open in $f\left( B_{\epsilon} (y;[0,1] ) \right)$. Since each is the other's complement in $f\left( B_{\epsilon} (y;[0,1] ) \right)$, then both are also closed.
 
 We've hence shown that $A$ and $B$ are a separation of $f\left( B_{\epsilon} (y;[0,1] ) \right)$. This is a contradiction, since $B_{\epsilon} (y;[0,1])$ is connected and $f$ is continuous, and thus we've disconnected $B_{\epsilon}(y;[0,1])$. We conclude that $f(z) = p$, for all such $z\in B_{\epsilon}(y;[0,1])$. 
 
@@ -227,7 +223,7 @@ Therefore $B_{\epsilon} (y;[0,1]) \subseteq f^{-1}(\{ p\})$, so $f^{-1} (\{p\})$
 
 The point of the whole example is to show that path-connected is stronger than connected. We knew already that path-connected implies connected, and now we see that connected doesn't necessarily imply path-connected.
 
-It turns out that it's useful to have a way to combine paths. 
+\subsection{Combining paths} It turns out that it's useful to have a way to combine paths. 
 \begin{definition}
 Let $f,g$ be paths in a topological space $(X,F_X)$ such that $f(1) = g(0)$. Then we define $f\ast g : I \to X$ by
 \[ (f\ast g )(t) = 

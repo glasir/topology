@@ -1,7 +1,7 @@
 
 
 %!TEX root = ../Notes.tex
-\section{Subspaces}
+\section{Subspaces} 
 \begin{definition}
 	Let $(X, F_X)$ be a topological space, and let $Y\subseteq X$. Let $F_Y = \{U \cap Y | U\in F_X\}$. Then $F_Y$ is the {\bf subspace topology} or {\bf induced topology} on $Y$. 
 \end{definition}
@@ -11,8 +11,9 @@
 
 Q: What are the open sets in the subspace $\Z \times \Z$?\\
 A: All sets are open. We can draw a small open interval about any point, so the set of any one point is open, and any set is the union of such sets. Because of all sets are open, we can consider this topology the discrete topology on $\Z \times \Z$.
-
-Example: consider $\Z \times \Z$ as a subspace of $\R^2$, but this time with the usual topology. Again, all sets are open, as we can construct an open ball of radius $\frac12$ about any point that doesn't intersect any others in the same way that we can construct an open interval.
+\begin{example}
+	Consider $\Z \times \Z$ as a subspace of $\R^2$, but this time with the usual topology. Again, all sets are open, as we can construct an open ball of radius $\frac12$ about any point that doesn't intersect any others in the same way that we can construct an open interval. 
+\end{example}
 
 Small facts about subspaces:
 
@@ -23,29 +24,29 @@ Let $(X, F_X)$ and $(Y, F_Y)$ be topological subspaces with $(S, F_S)$ a subspac
 	\item Suppose $f:X\to Y$ is continuous. Then $f\ |\ S : S \to Y$ is continuous. 
 	\item Suppose $f:X\to Y$ is continuous and $f(X) \subseteq T$. Let $g:X\to T$ be such that $g(x) = f(x) $ for every $x\in X$. Then $g$ is continuous. 
 \end{enumerate}
+\begin{proof}
+	\begin{enumerate}
+		\item If $S \in F_X$, then $S$ is open in $X$. By definition $F_S = \{ U\cap S : U\in F_X\}$ 
+		\item 
+		\begin{itemize}
+			\item [($\Rightarrow$)] Let $C\subseteq S$ be closed. Because $S\setminus C \in F_S$, there is some $U\in F_S$ such that $U\cap S = S\setminus C$. Since $U$ is open in $X$, we know that $X\setminus U$ is closed in $X$. We claim that the closed set we desire is $X\setminus U$. Note that
+			\[ X\setminus (U\cap S) = (X\cap S)\setminus (U\cap S) = S\setminus (U\cap S) = S\setminus (S\setminus C) = C\]
+			and so we are done 
+			\item [($\Leftarrow$)] Suppose that there is a closed set $A\subseteq X$ such that $C = A\cap S$. Then $X\setminus A \in F_X$, so $(X\setminus A)\cap S \in F_S$. But $X\setminus (A\cap S) = (X\cap S)\setminus (A\cap S) = S\setminus C$ is open in $SS$, so $C$ is closed in $S$. 
+		\end{itemize}
+		\item Let $U\in F_Y$. Since $f$ is continuous, $f^{-1}(U)\in F_X$. Because $(f|S)^{-1}(U) = f^{-1}(U)\cap S$, $(f|S)^{-1}(U)$ is the intersection of an open set with $S$ and so is open. Therefore, $f|S$ is continuous. 
+		\item Let $U\in F_T$. Then there is some $V\in F_Y$ such that $U = V\cap T$. Because $f:X\to Y$, $f^{-1}(V)\in F_X$. Since $f(X)\subseteq T$,
+		\[ f^{-1}(U) = f^{-1}(V)\cap T = f^{-1}(V\cap T) = f^{-1}(V) \]
+		Therefore, $f^{-1}(U)$ is open in $X$. But $f^{-1}(U) = g^{-1}(U)$, so $g^{-1}(U)$ is open and so $g$ is continuous. 
+	\end{enumerate}
+\end{proof}
 
-Proofs: 
-\begin{enumerate}
-	\item If $S \in F_X$, then $S$ is open in $X$. By definition $F_S = \{ U\cap S : U\in F_X\}$ 
-	\item 
-	\begin{itemize}
-		\item [($\Rightarrow$)] Let $C\subseteq S$ be closed. Because $S\setminus C \in F_S$, there is some $U\in F_S$ such that $U\cap S = S\setminus C$. Since $U$ is open in $X$, we know that $X\setminus U$ is closed in $X$. We claim that the closed set we desire is $X\setminus U$. Note that
-		\[ X\setminus (U\cap S) = (X\cap S)\setminus (U\cap S) = S\setminus (U\cap S) = S\setminus (S\setminus C) = C\]
-		and so we are done 
-		\item [($\Leftarrow$)] Suppose that there is a closed set $A\subseteq X$ such that $C = A\cap S$. Then $X\setminus A \in F_X$, so $(X\setminus A)\cap S \in F_S$. But $X\setminus (A\cap S) = (X\cap S)\setminus (A\cap S) = S\setminus C$ is open in $SS$, so $C$ is closed in $S$. 
-	\end{itemize}
-	\item Let $U\in F_Y$. Since $f$ is continuous, $f^{-1}(U)\in F_X$. Because $(f|S)^{-1}(U) = f^{-1}(U)\cap S$, $(f|S)^{-1}(U)$ is the intersection of an open set with $S$ and so is open. Therefore, $f|S$ is continuous. 
-	\item Let $U\in F_T$. Then there is some $V\in F_Y$ such that $U = V\cap T$. Because $f:X\to Y$, $f^{-1}(V)\in F_X$. Since $f(X)\subseteq T$,
-	\[ f^{-1}(U) = f^{-1}(V)\cap T = f^{-1}(V\cap T) = f^{-1}(V) \]
-	Therefore, $f^{-1}(U)$ is open in $X$. But $f^{-1}(U) = g^{-1}(U)$, so $g^{-1}(U)$ is open and so $g$ is continuous. 
-\end{enumerate}
-
-\section{Bases} You may have noticed that, in metric spaces, the idea of open sets was quite useful. We'd like to extend this idea to more general topological spaces.
+\section{Bases} You may have noticed that, in metric spaces, the idea of open sets was quite useful. We'd like to extend this idea to more general topological spaces. 
 \begin{definition}
 	Let $(X,F)$ be a topological space and $\beta\subseteq F$ such that for every $U\in F$, $U$ is a union of elements in $\beta$. Then we say that $\beta$ is a {\bf basis} for $F$. 
 \end{definition}
 
-Note that this basis is not necessarily minimal (like the basis of a vector space), but it {\it is} more useful the more specific it is.
+Note that this basis is not necessarily minimal (like the basis of a vector space), but it {\it is} more useful the more specific it is. 
 \begin{example}
 	$\R$ with the half-open interval topology was {\it defined} by the basis $\big\{ [a, b)\ |\ a < b\big\}$. 
 \end{example}
@@ -57,9 +58,10 @@ Note that this basis is not necessarily minimal (like the basis of a vector spac
 	\begin{enumerate}
 		\item $X = \bigcup_{B\in \beta} B$ 
 		\item $\forall B_1, B_2$, if $x\in B_1\cap B_2$, then there is some $B_3\in\beta$ such that $x\in B_3\subseteq B_1\cap B_2$. 
-		\item Let $F$ = collection of elements of $\beta$. Then $F$ is a topology on $X$ with basis $\beta$. 
 	\end{enumerate}
+	Let $F$ = collection of elements of $\beta$. Then $F$ is a topology on $X$ with basis $\beta$. 
 \end{theorem}
+The proof is left as an exercise.
 \begin{theorem}
 	Let $X$ be a set and $\beta$ a collection of subsets of $X$ such that 
 	\begin{enumerate}

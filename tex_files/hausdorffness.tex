@@ -1,25 +1,25 @@
 
 
 %!TEX root = ../Notes.tex
-\section{Hausdorffness}
+\section{Hausdorffness} 
 \begin{definition}
-	Let $(X, F _X)$ be a topological space. We say that X is {\bf Hausdorff} if $\forall$ $p, q \in X$ such that $p \neq q$, $\exists$ disjoint sets $U, V \in F_X$ such that $p \in U$, $q \in V$. 
+	Let $(X, F _X)$ be a topological space. We say that X is \textbf{Hausdorff} if $\forall$ $p, q \in X$ such that $p \neq q$, $\exists$ disjoint sets $U, V \in F_X$ such that $p \in U$, $q \in V$. 
 \end{definition}
 \begin{example}
 	Metric spaces \textbf{are} Hausdorff. 
 \end{example}
 \begin{example}
-	(a non-example) Any space containing at least two points under the indiscrete topology is \textbf{not} Hausdorff. 
+	[a non-example] Any space containing at least two points under the indiscrete topology is \textbf{not} Hausdorff. 
 \end{example}
 
 Hausdorff is important because any ``reasonable'' space/any space that we want to be in will be Hausdorff.
 
-\textbf{Note:} Continuous functions \emph{may not} preserve Hausdorff-ness.
+\textbf{Note:} Continuous functions \emph{may not} preserve Hausdorff-ness. 
 \begin{example}
 	Define $f\colon(\R,\text{ discrete})\to (\R,\text{ indiscrete})$ by the identity map. 
 \end{example}
 
-This is continuous because the domain has the discrete topology, but the domain is Hausdorff while the range clearly is not.
+This is continuous because the domain has the discrete topology, but the domain is Hausdorff while the range clearly is not. 
 \begin{smallfact}
 	Suppose $f \colon (X, F_X)$ $\to$ $(Y, F_Y)$ is a homeomorphism and $(X, F_X)$ is Hausdorff. Then $(Y, F_Y)$ is also Hausdorff. 
 \end{smallfact}
@@ -49,19 +49,14 @@ We are now interested in how Hausdorff-ness and compactness are related.\\
 	Let $U = \bigcap_{i=1}^{n} U_{a_i}$. $U \in F_X$ since it is a finite intersection of elements of $F_X$ and $p \in U$ since $p \in U_{a_i}$ $\forall$ $i=1, 2, ...,$ $n$.
 	
 	\textbf{Claim:} $U \subseteq X-A$\\
-	\emph{Proof.} $\forall$ $i=1, 2, ...$ $n$, $U_{a_i} \cap V_{a_i} = \emptyset$
-	
-	$A \subseteq \bigcup_{i=1}^{n} V_{a_i}$
-	
-	$U \cap A$ $\subseteq$ $U \cap \bigcup_{i=1}^{n} V_{a_i}$
+	\emph{Proof.} $\forall$ $i=1, 2, ...$ $n$, we have $U_{a_i} \cap V_{a_i} = \emptyset$. Also, $A \subseteq \bigcup_{i=1}^{n} V_{a_i}$ and $U \cap A$ $\subseteq$ $U \cap \bigcup_{i=1}^{n} V_{a_i}$.
 	
 	However, $U \cap \bigcup_{i=1}^{n} V_{a_i} = \emptyset$ because if $\exists$ $x \in U \cap \bigcup_{i=1}^{n} V_{a_i}$, then $\exists$ $i_o$ such that $x \in V_{a_{i_o}} \cap U_{a_{i_o}}$. But, by definition, $V_{a_{i_o}} \cap U_{a_{i_o}} = \emptyset$, so no such $x$ exists. Thus,
 	
-	$U \cap A$ $\subseteq$ $U \cap \bigcup_{i=1}^{n} V_{a_i} = \emptyset$, meaning $U \cap A = \emptyset$. So, because $U \subseteq X$ but $U \cap A = \emptyset$, $U \subseteq X-A$
+	\[U \cap A\subseteq U \cap \bigcup_{i=1}^{n} V_{a_i} = \emptyset,\]
+	meaning $U \cap A = \emptyset$. So, because $U \subseteq X$ but $U \cap A = \emptyset$, $U \subseteq X-A$
 	
-	Thus, we have found $U \in F_X$ such that $p \in U$, $U \subseteq X-A$. Thus, $X-A$ is open.
-	
-	Thus, \textbf{A is closed}. 
+	Thus, we have found $U \in F_X$ such that $p \in U$, $U \subseteq X-A$. Thus, $X-A$ is open. Thus, \textbf{A is closed}. 
 \end{proof}
 \begin{corollary}
 	In any Hausdorff space, (finite sets of) points are closed sets. 
@@ -72,8 +67,7 @@ We are now interested in how Hausdorff-ness and compactness are related.\\
 	Thus, by Theorem above, $\{ p\}$ is closed. 
 \end{proof}
 \begin{lemma}
-	(it's {\bf important!})\\
-	Let $f : (X, F_X) \to (Y, F_Y)$ be continuous. Let $X$ be compact, and $Y$ be Hausdorff. Then $f$ is a homeomorphism if and only if it is a bijection. 
+	[it's \textbf{important!}] Let $f : (X, F_X) \to (Y, F_Y)$ be continuous. Let $X$ be compact, and $Y$ be Hausdorff. Then $f$ is a homeomorphism if and only if it is a bijection. 
 \end{lemma}
 \begin{proof}
 	\begin{itemize}
@@ -90,15 +84,17 @@ We are now interested in how Hausdorff-ness and compactness are related.\\
 \begin{example}
 	Let $X=[0,1]\times[0,1]$, and let $(a,b)\sim(c,d)$ if either $(a,b)=(c,d)$ or $b=d\neq 0.$
 	
-	\[\includegraphics[width=280pt]{images/hausdorffness/IxInonexample}\]
-    Points of the same color are identified.  Points on the $x$-axis are not separable, so this is a Hausdorff space $X$ and an equivalence relation $\sim$ such that $X/\sim$ is not Hausdorff. 
+	\[
+	\includegraphics[width=280pt]{images/hausdorffness/IxInonexample}\]
+	Points of the same color are identified. Points on the $x$-axis are not separable, so this is a Hausdorff space $X$ and an equivalence relation $\sim$ such that $X/\sim$ is not Hausdorff. 
 \end{example}
 \begin{example}
 	Let $X=\R,$ and set $x \sim y$ if and only if $x=y$ or $x,y>0.$ 
 	
-	\[\includegraphics[width=360pt]{images/hausdorffness/r_nonexample}\]
+	\[
+	\includegraphics[width=360pt]{images/hausdorffness/r_nonexample}\]
 	
 	Let $p>0.$ Then $[p],[0]\in X/\sim$. Let $U \subseteq X/\sim$ be an open set containing $[0].$ We claim that $[p]\in U$. To see why, note that $\pi^{-1}(U)$ is an open subset of $\R$ containing $0$. Hence, there exists $q \in \pi^{-1}(U)$ such that $q>0.$ Therefore, $q \sim p \Rightarrow [q]=[p]\in U$, and $X/\sim$ is not Hausdorff. 
 \end{example}
 
-Note: this proves that the continuous images of a Hausdorff space need not be Hausdorff!
+Note: this proves that the continuous images of a Hausdorff space need not be Hausdorff! 

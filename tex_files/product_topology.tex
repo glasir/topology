@@ -13,7 +13,8 @@ This is a topology class, so our intrinsic urge is to find a natural topology fo
 	Consider the sets $A = (0,1)\times (0,1)$ and $B = (1/2,3/2)\times(1/2,3/2)$ as subsets of $\R\times\R = \R^2$ with the usual topology. Then $A\cup B$ in $\R^2$ is NOT a product of an open set in $\R$ with an open set in $\R$ as we would like. To intuitively see that this is not the case, see the picture! On the other hand, $A\cup B$ is open in the usual topology on $\R^2$. 
 \end{example}
 
-\[\includegraphics[width=200pt]{images/product_topology/product_sets_r}\]
+\[
+\includegraphics[width=200pt]{images/product_topology/product_sets_r}\]
 
 Although products of open sets will not work because they are not closed under unions, we can use products of open sets to construct our topology. Define the following: 
 \begin{definition}
@@ -53,18 +54,18 @@ In other words, $\beta_{X\times Y}$ is the set of products of an open set in $X$
 
 We have successfully devised a topology for product spaces as unions of products of open sets.
 
-\subsection{Examples}
+\subsection{Examples} 
 \begin{example}
 	The set $S^1 \times [0,1]$ looks like a cylinder! What kinds of sets are open in the cylinder? A particular example is an open disc projected on the face of the cylinder and unions thereof. 
 \end{example}
-\[\includegraphics[width=100pt]{images/product_topology/s1_times_i}\]
-
+\[
+\includegraphics[width=100pt]{images/product_topology/s1_times_i}\]
 \begin{example}
-	The set $S^1 \times S^1$ looks like a torus! What kinds of sets are open in the torus? Similar to the previous example, open discs projected onto the torus surface are examples of open sets in $S^1\times S^1$.  In the picture, one copy of $S^1$ is red and one is green; they determine a torus.
+	The set $S^1 \times S^1$ looks like a torus! What kinds of sets are open in the torus? Similar to the previous example, open discs projected onto the torus surface are examples of open sets in $S^1\times S^1$. In the picture, one copy of $S^1$ is red and one is green; they determine a torus. 
 \end{example}
 
-\[\includegraphics[width=160pt]{images/product_topology/s1_times_s1}\]
-
+\[
+\includegraphics[width=160pt]{images/product_topology/s1_times_s1}\]
 \begin{example}
 	The set $S^1 \times S^1 \times S^1$ is actually a 3-torus! 
 \end{example}
@@ -106,7 +107,7 @@ Recall that the quotient projection map is \emph{not necessarily} an open map. I
 
 \subsection{Using Bases More Effectively}
 
-In metric spaces, open balls are bases for the metric topology. By proving properties about open balls, we were able to say they apply to the entire set. We would like to prove the following \emph{important tiny lemma} so that we can use bases in topological spaces like open balls in metric spaces: 
+In metric spaces, open balls are bases for the metric topology. By proving properties about open balls, we were able to say they apply to the entire set. We would like to prove the following \emph{important yet tiny lemma} so that we can use bases in topological spaces like open balls in metric spaces: 
 \begin{lemma}
 	Let $(X,F_x)$ be a topological space with basis $\beta$. If $W\subseteq X$ then $W\in F_x$ if and only if for all $p\in W,$ there exists $B_p\in\beta$ such that $p\in B_p\subseteq W$. 
 \end{lemma}
@@ -186,9 +187,10 @@ This means that we can either look at $A\times B$ as a subspace of $X\times Y$, 
 
 Consider $\R$ with the usual topology, with $x\sim Y$ iff $x=y$ or $x,y\in \N$. This looks something like a ``sideways infinite flower.'' 
 
-\[\includegraphics[width=300pt]{images/product_topology/sideways_infinite_flower}\]
+\[
+\includegraphics[width=300pt]{images/product_topology/sideways_infinite_flower}\]
 
- If a set open in $\R/\sim$ contains a (``the'') natural number, then its preimage must contain every natural number, so it must contain an open interval about ``the'' natural number in every direction (all infinity of them). 
+If a set open in $\R/\sim$ contains a (``the'') natural number, then its preimage must contain every natural number, so it must contain an open interval about ``the'' natural number in every direction (all infinity of them). 
 
 More formally, let $\pi:\R\to\R/\sim$ be the projection map. Let $id_\Q:\Q\to\Q$ be the identity map, where each copy of $\Q$ has the usual topology. Note that $id_\Q$ is a quotient map (where $\sim$ is `='). 
 
@@ -203,7 +205,8 @@ So $\forall n \in \N, \{n\}\times \Q \subseteq U_n$. Observe that $\forall n\in 
 Let $\bigcup_{n \in\N} U_n \in F_{\R\times\Q} \qquad$ (also open in $\R\times\Q$ because it is a union).
 
 Let $U' = (\pi \times i)(U).$ This will glue together the strips along the vertical lines with $\R$ coordinates in $\N$. This can be pictured as a fan.
-\[\includegraphics[width=400pt]{images/product_topology/sideways_infinite_fan}\]
+\[
+\includegraphics[width=400pt]{images/product_topology/sideways_infinite_fan}\]
 
 Claim: $U' \in F_{\pi \times i}$
 
@@ -241,7 +244,7 @@ $\therefore U' \notin F_{(\R/\sim)\times \Q}$
 
 So we have shown that $F_{\pi\times i} \neq F_{(\R/\sim) \times \Q}$.
 
-\subsection{Infinite Products} We would of course like to be able to generalize this to deal with infinite products. Initially, we may simply want to define such products as follows: $X_1$x$X_2$x...$=\{(x_1,x_2,...)|x_i \in X_i \forall i \in \N \}$. However, such a definition limits us to countable products, so we look more generally.
+\subsection{Infinite Products} We would of course like to be able to generalize this to deal with infinite products. Initially, we may simply want to define such products as follows: $X_1$x$X_2$x...$=\{(x_1,x_2,...)|x_i \in X_i \forall i \in \N \}$. However, such a definition limits us to countable products, so we look more generally. 
 \begin{definition}
 	$j \in J$, let $X_j$ be a set. Define the product $\Pi_{j \in J} X_j = \{f:J \rightarrow \cup_{j \in J}X_j|f(j) \in X_j\}.$ We refer to $f(j)$ as the $j^{th}$ coordinate of the point $f$. 
 \end{definition}
@@ -258,7 +261,7 @@ Now we wish to define a topology on these products which, as in example $1$, agr
 	
 	$F_{\Box} = \{$Unions of elements of $\beta_{\Box}\}.$ 
 \end{center}
-This topology is not what we desire, but is a topology, aptly named the box topology on the product.
+This topology is not what we desire, but is a topology, aptly named the box topology on the product. 
 \begin{example}
 	The product topology on $\Pi_{j \in J}X_j$ is given by the basis $\beta_{\Pi} = \{\Pi_{j \in J}U_j|U_j = X_j$ for all but finitely many $j$ and $\forall j \in J, U_j \in F_j \}$. 
 \end{example}

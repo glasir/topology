@@ -3,7 +3,7 @@
 %!TEX root = ../Notes.tex
 \section{Continuity in Topological Spaces} 
 \begin{definition}
-	Let $(X_1,F_1)$ and $(X_2,F_2)$ be topological spaces and $f: X_1 \to X_2$. We say $f$ is {\bf continuous} if and only if for every $U \in F_2$, $f^{-1}(U)\in F_1$. 
+	Let $(X_1,F_1)$ and $(X_2,F_2)$ be topological spaces and $f: X_1 \to X_2$. We say $f$ is \textbf{continuous} if and only if for every $U \in F_2$, $f^{-1}(U)\in F_1$. 
 \end{definition}
 \begin{smallfact}
 	Let $(X_1,F_1)$ and $(X_2,F_2)$ and $(X_3,F_3)$ be topological spaces, $f: X_1 \to X_2$ and $f: X_2 \to X_3$ be continuous functions. Then $g \circ f: X_1 \to X_3$ is continuous. 
@@ -14,17 +14,19 @@
 \begin{theorem}
 	Let $X$, $Y$ be topological spaces and $f: X \to Y$. Then $f$ is continuous if and only if for every closed set C in Y, $f^{-1}(C)$ is closed in X. 
 \end{theorem}
-\begin{itemize}
-	\item [$(\Rightarrow)$] Suppose $C$ is closed in $Y$. Then $Y\setminus C$ is open, implying that $f^{-1}(Y\setminus C)$ is open in $X$. Since $f^{-1}(Y\setminus C)= \{ x \in X\ |\ f(x) \in Y\setminus C\} = \{ x \in X\ |\ f(x) \notin C \}$ and $X\setminus f^{-1}(C)= \{ x \in X\ |\ f(x) \notin C \}$, we have the desired results. 
-	\item [$\Leftarrow$] This is exactly like the analogous proof for open sets. 
-\end{itemize}
+\begin{proof}
+	\begin{itemize}
+		\item [$(\Rightarrow)$] Suppose $C$ is closed in $Y$. Then $Y\setminus C$ is open, implying that $f^{-1}(Y\setminus C)$ is open in $X$. Since $f^{-1}(Y\setminus C)= \{ x \in X\ |\ f(x) \in Y\setminus C\} = \{ x \in X\ |\ f(x) \notin C \}$ and $X\setminus f^{-1}(C)= \{ x \in X\ |\ f(x) \notin C \}$, we have the desired results. 
+		\item [$(\Leftarrow)$] This is exactly like the analogous proof for open sets. 
+	\end{itemize}
+\end{proof}
 
 This is nice, because sometimes it's easier to work with closed sets than with open sets. 
 \begin{definition}
 	Let $X$ and $Y$ be topological spaces, and let $f:X\to Y$. 
 	\begin{enumerate}
-		\item If for every open set $U\subseteq X$, $f(U)$ is open in $Y$, then $f$ is {\bf open}. 
-		\item If for every closed set $U\subseteq X$, $f(U)$ is closed in $Y$, then $f$ is {\bf closed}. 
+		\item If for every open set $U\subseteq X$, $f(U)$ is open in $Y$, then $f$ is \textbf{open}. 
+		\item If for every closed set $U\subseteq X$, $f(U)$ is closed in $Y$, then $f$ is \textbf{closed}. 
 	\end{enumerate}
 \end{definition}
 
@@ -43,7 +45,7 @@ Example time!
 
 \section{Homeomorphisms} Let's define a notion of equivalency for topological spaces. 
 \begin{definition}
-	Let $(X_1,F_1)$ and $(X_2,F_2)$ be topological spaces, and let $f:X_1\to X_2$ be continuous, bijective, and open. Then $f$ is a {\bf homeomorphism}, and $X_1$ and $X_2$ are {\bf homeomorphic} (denoted by $X_1 \cong X_2$). 
+	Let $(X_1,F_1)$ and $(X_2,F_2)$ be topological spaces, and let $f:X_1\to X_2$ be continuous, bijective, and open. Then $f$ is a \textbf{homeomorphism}, and $X_1$ and $X_2$ are \textbf{homeomorphic} (denoted by $X_1 \cong X_2$). 
 \end{definition}
 \begin{example}
 	Let $I = [0,1]$ and $X = I\times I\subset\R^2$, under the usual metric for $\R^2$. Let \nobreak{$Y = \{ (x,y)\in\R^2 | x^2+y^2\le 1\} = D^2$} be the unit disk in $\R^2$. Question: Are $X$ and $Y$ homeomorphic? 
@@ -52,7 +54,8 @@ Example time!
 \end{example}
 
 Define the centers of $X$ and $Y$ to be $x$ and $y$, respectively. Fix some point $a$ on the boundary of $X$, and some $b$ on the boundary of $Y$ (that is, $a\in 
-\partial X$ and $b\in\partial Y$).
+\partial X$ and $b\in
+\partial Y$).
 
 Define a function $f$ as follows: 
 \begin{itemize}
