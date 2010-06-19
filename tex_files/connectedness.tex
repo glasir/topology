@@ -9,7 +9,7 @@
 	Equivalently, $X$ is disconnected if there exist nonempty, disjoint $A,B \in F_X$ such that $A \cup B = X$. $A$ and $B$ are called a separation of $X$. 
 \end{definition}
 
-Recall from Math 131 that $A \subseteq \R$ is connected iff $A$ is an interval.
+Recall from Math 131 that $A \subseteq \R$ is connected iff $A$ is an interval. 
 \begin{theorem}
 	Let $f : (X,F_X) \to (Y,F_Y)$ be continuous. Then $X$ is connected only if $f(X)$ is connected. 
 \end{theorem}
@@ -37,7 +37,7 @@ We can also define (dis)connectedness for subsets of a topological space.
 		\[f(x) = \left\{ 
 		\begin{array}{cc}
 			0 & x \in A \\
-			1 & x \in B
+			1 & x \in B 
 		\end{array}
 		\right.\]
 		Then, as $f^{-1}(\{0\}) = A \in F_X$, $f^{-1}(\{1\}) = B \in F_X$, $f^{-1}(\emptyset) = \emptyset \in F_X$ and $f^{-1}(Y) = X \in F_X$, $f^{-1}(U) \in F_X$ for all $U \subseteq Y$ such that $U$ is open. So $f$ is continuous. Furthermore, as $A,B \neq \emptyset$, there exist $a \in A$ and $b \in B$, so $f(a) = 0$ and $f(b) = 1$. Hence $f$ is not constant. Therefore $f : X \to Y$ is a continuous function from $X$ to a space with the discrete topology that is not constant. This contradicts the initial assumption, so $X$ is connected. 
@@ -49,7 +49,13 @@ We now have an Important Lemma about Flowers.
 	Suppose \{$y_j \mid j \in J$\} is a collection of connected subspaces of $X = \displaystyle{\bigcup_{j \in J} y_j}$, and $\displaystyle{\bigcap_{j \in J} y_j} \neq \emptyset$. Then $X$ is connected. 
 \end{lemma}
 \begin{proof}
-	Suppose that $X$ is \textit{dis}connected. Then $X$ has a separation, $U, V$. \placeholder (draw a flower)
+	Suppose that $X$ is \textit{dis}connected. Then $X$ has a separation, $U, V$. 
+	\begin{figure}
+		[ht!] 
+		\begin{center}
+			\includegraphics[width=200pt]{images/connectedness/flower} 
+		\end{center}
+	\end{figure}
 	
 	Let $j_0 \in J$. We know that 
 	\begin{itemize}
@@ -64,13 +70,18 @@ We now have an Important Lemma about Flowers.
 	
 	Since $X = \displaystyle{\bigcup_{j \in J} y_j} \subseteq V$, $U, V$ is not a separation of $X$. Thus, $X$ is connected. 
 \end{proof}
+\newpage
 \begin{theorem}
 	Let $(X, F_X)$ and $(Y, F_Y)$ be topological spaces. Then $(X\times Y, F_{X\times Y})$ is connected if and only if both $X$ and $Y$ are connected. 
 \end{theorem}
 \begin{proof}
 	\begin{itemize}
 		\item[$(\Rightarrow)$] $\pi_X: X\times Y \longrightarrow X$ and $\pi_Y: X\times Y \longrightarrow Y$ are continuous surjections. Continuous functions preserve connectedness, so $X$ and $Y$ are connected. 
-		\item[$(\Leftarrow)$] First, a picture proof. \placeholder The axes are connected, because $X$ and $Y$ are connected. If we make a copy of the axes, shifted over a little bit, that copy is connected too. The union of these shifted axis crosses will be the entirety of $X\times Y$, and their intersection will be nonempty, so $X\times Y$ is connected.
+		\item[$(\Leftarrow)$] First, a picture proof. 
+		\begin{figure*}[ht!] \centering 
+			\includegraphics[width=0.9\textwidth]{images/connectedness/XxYconnected_comic}
+			\caption{The axes are connected, because $X$ and $Y$ are connected. If we make a copy of the axes, shifted over a little bit, that copy is connected too. The union of these shifted axis crosses will be the entirety of $X\times Y$, and their intersection will be nonempty, so $X\times Y$ is connected.} 
+		\end{figure*}
 		
 		Now for the actual proof. Let $(x_0, y_0) \in X\times Y.$ Since $\{x_0\}\times Y \cong Y$, it is connected (as connectedness is a top. prop.). Similarly, $\{y_0\} \times X$ is connected.
 		
@@ -90,7 +101,7 @@ We now have an Important Lemma about Flowers.
 
 \subsection{Connected Components} 
 \begin{definition}
-	Let $(X, F_X)$ be a topological space and let $p\in X$. Let $\{C_j\mid j\in J\}$ be the set of all connected subspaces of $X$ containing $p$. Then ${\displaystyle\bigcup_{j\in J}C_j}$ is said to be the \textbf{connected component}, $C_p$, of $p$. 
+	Let $(X, F_X)$ be a topological space and let $p\in X$. Let $\{C_j\mid j\in J\}$ be the set of all connected subspaces of $X$ containing $p$. Then ${\cup_{j\in J}C_j}$ is said to be the \textbf{connected component}, $C_p$, of $p$. 
 \end{definition}
 
 And now, a series of tiny facts about connected components. 
@@ -100,24 +111,27 @@ And now, a series of tiny facts about connected components.
 		\item $\forall p \in X$, $C_p$ is connected. 
 		\item If $C_p$ and $C_q$ are connected components, then either $C_p\cap C_q = \emptyset$ or $C_p = C_q$. (That is, connected components partition a space.) 
 	\end{enumerate}
-	
 \begin {proof} 
 \begin{enumerate}
-	\item $p\in {\displaystyle\bigcap_{j\in J} C_j}$, so $C_p = {\displaystyle\bigcup_{j\in J} C_j}$ is connected by the Important Flower Lemma. 
-	\item Suppose $C_p \cap C_q \neq \emptyset$ and let $x\in C_p \cap C_q$. Then $C_p \cup C_q$ is connected by the Important Flower Lemma.
+	\item $p\in {\cap_{j\in J} C_j}$, so $C_p = {\cup_{j\in J} C_j}$ is connected by the lemma above.
+	\item Suppose $C_p \cap C_q \neq \emptyset$ and let $x\in C_p \cap C_q$. Then $C_p \cup C_q$ is connected by the lemma above.
 	
-	$p\in C_p \cup C_q$, so $C_p \cup C_q \in \{C_j\mid j\in J\}$. Also, $C_p \cup C_q \subseteq C_p$, since $C_p = {\displaystyle\bigcup_{j\in J} C_j}$. So, $C_q \subseteq C_p$. Similarly, $C_p \subseteq C_q$. 
+	$p\in C_p \cup C_q$, so $C_p \cup C_q \in \{C_j\mid j\in J\}$. Also, $C_p \cup C_q \subseteq C_p$, since $C_p = {\cup_{j\in J} C_j}$. So, $C_q \subseteq C_p$. Similarly, $C_p \subseteq C_q$. 
 \end{enumerate}
 Thus $C_p = C_q$, so we can say $X$ is partitioned by its connected components. 
 \end{proof}
 \end{smallfact}
 \begin{example}
-Let $X = \R^2$ with the dictionary topology. Connected components are vertical lines. (Proof is an exercise.) Define $x\backsim y$ ($x, y \in \R^2$) if $x$ and $y$ are in the same connected component. Then $X/\backsim$ = $\R$ with the discrete topology. \\
-(Draw your dictionary topology components and $X/\backsim$ here!)\\
-\placeholder 
+Let $X = \R^2$ with the dictionary topology. Connected components are vertical lines. (Proof is an exercise.) Define $x\sim y$ ($x, y \in \R^2$) if $x$ and $y$ are in the same connected component. Then $X/\sim$ = $\R$ with the discrete topology. 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=300pt]{images/connectedness/dictionary_sim}
+    \caption{Connected components in $X$ are vertical lines.}
+\end{figure}
+
 \end{example}
 
-Connectedness is not always intuitive, though. Here's a large example showing that: \textbf{The Flea and the Comb}.
+Connectedness is not always intuitive, though. Here's a large example showing this.
 
 Define the Comb, the Flea, and the space $X$ as follows. 
 \begin{itemize}
@@ -135,7 +149,7 @@ $\forall n \in \{0\} \cup \N$, $y_n$ is connected because $y_n \cong [0,1]$. Als
 
 Thus ${\displaystyle\bigcap_{n\in \N}y_0 \cup y_n} \neq \emptyset$, so ${\displaystyle\bigcup_{n=0}^{\infty}y_0 \cup y_n} = {\displaystyle\bigcup_{n=0}^{\infty}y_n} $ and so the Comb is connected by the Important Flower Lemma. 
 \begin{flushright}
-$\Box$
+$\Box$ 
 \end{flushright}
 
 Now we want to show that $X$ is connected. Suppose $U$, $V$ are a separation of $X$. Since the Comb is connected, we can say, WLOG, that Comb $\subseteq U$. Then it must be that Flea $\subseteq V$ because $U$, $V$ are a separation. $V$ is open in $X$, so $\exists \epsilon > 0$ s.t. $B_{\epsilon}((0,1); X) \subseteq V$. Let $n \in \N$ s.t. $n > \frac{1}{\epsilon}$. Then $d((\frac{1}{n}, 1), (0, 1)) = \frac{1}{n} < \epsilon \Rightarrow (1/n, 1) \in B_{\epsilon}((0,1); X) \subseteq V$. Observe that since $Y_n = \{1/n\} \times [0,1]$, $(1/n, 1) \in Y_n$. Thus, $(1/n, 1) \in V \cap Y_n \subseteq V \cap Y \subseteq V \cap U \Rightarrow V \cap U \neq \emptyset$. But this is a contradiction, since we assumed that $U$, $V$ was a separation of $X$. Thus, $X$ is connected. 
@@ -224,7 +238,7 @@ g(2t-1) & \frac{1}{2} \leq t \leq 1
 \]
 \end{definition}
 
-Intuitively what's happening is that we're connecting two paths while speeding things up, creating a new single path parametrized from 0 to 1 from two paths which were parametrized from 0 to 1.
+Intuitively what's happening is that we're connecting two paths while speeding things up, creating a new single path parametrized from 0 to 1 from two paths which were parametrized from 0 to 1. 
 \begin{smallfact}
 $f\ast g$ is a path from $f(0)$ to $g(1)$. 
 \end{smallfact}

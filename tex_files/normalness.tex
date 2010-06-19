@@ -9,17 +9,38 @@
 On Homework 2, we proved that metric spaces are normal.
 \begin{example}
 	Consider $\R$ with a topology $F$ defined by a basis of all sets of the form $(a,b)$ plus all sets of the form $(a,b)\cap \Q.$ This is known as the \textbf{rational topology}, and it is finer than the usual topology. As an exercise, you can prove that that this collection of sets really form the basis of a topology. (Use the basis lemma.) 
-\end{example}
 
 We want to show that $(\R,F)$ is Hausdorff. This is easy, because $F$ contains the usual topology on on $\R$, which is Hausdorff. 
 
-Next, we will show that $(\R,F)$ is not normal. To see why, let $A=\R\setminus\Q.$ Then $A$ is closed, because $\Q$ is contained in $F$. Let $B=\{47\}.$ Suppose there exist $U,V \in F$ such that $A \subseteq U,$ and $B \subseteq V$. Then there exists $\epsilon>0$ such that $(47-\epsilon,47+\epsilon)\cap Q \subseteq V$. Let $p \in (47-\epsilon,47+\epsilon)$ such that $p \not\in \Q.$ Then $p \in U$ because $p \not\in \Q$. So, there exists $\delta>0$ such that $(p-\delta,p+\delta) \subseteq U$. Now, there must exist a point in $x \in (p-\delta,p+\delta)\cap((47-\epsilon,47+\epsilon)\cap \Q).$ But then $x \in U \cap V$, and so $U \cap V \neq \emptyset$. This proves that $(\R,F)$ is not a normal space.
+Next, we will show that $(\R,F)$ is not normal. To see why, let $A=\R\setminus\Q.$ Then $A$ is closed, because $\Q$ is contained in $F$. Let $B=\{47\}.$ Suppose there exist $U,V \in F$ such that $A \subseteq U,$ and $B \subseteq V$. Then there exists $\epsilon>0$ such that $(47-\epsilon,47+\epsilon)\cap Q \subseteq V$. 
 
-In particular, we have shown that a space can be Hausdorff but not normal. 
+Let $p \in (47-\epsilon,47+\epsilon)$ such that $p \not\in \Q.$ Then $p \in U$ because $p \not\in \Q$. So, there exists $\delta>0$ such that $(p-\delta,p+\delta) \subseteq U$. 
+
+Now, there must exist a point in $x \in (p-\delta,p+\delta)\cap((47-\epsilon,47+\epsilon) \cap \Q).$ But then $x \in U \cap V$, and so $U \cap V \neq \emptyset$. This proves that $(\R,F)$ is not a normal space.
+\end{example}
+
+In particular, we have shown that a space can be Hausdorff but not normal. Under what conditions \emph{must} a Hausdorff space be normal?
+
 \begin{lemma}
 	If $(X,F_x)$ is Hausdorff and compact, then $X$ is normal. 
 \end{lemma}
-\placeholder (This is a comic-book type proof above)
+\setcounter{subfigure}{0}
+\begin{proof}{Comic-book style}
+    \begin{figure}[h!]
+		\begin{center}
+		\subfigure[Let $A$ and $B$ be closed and disjoint sets.  Let $a\in A$.] {\includegraphics[width=210pt]{images/hausdorffness/hausdorff_comic_1}}
+		\subfigure[Each point in $B$ can be separated from $a$ by an open set.  This forms an open cover.  Take a finite subcover.] {\includegraphics[width=210pt]{images/hausdorffness/hausdorff_comic_2}}
+		\end{center}
+    \end{figure}
+    \begin{figure}
+		\begin{center}
+		\subfigure[Repeat for each $a\in A$.  This makes an open cover of $A$ and a lot of finite open covers of $B$.] {\includegraphics[width=210pt]{images/hausdorffness/hausdorff_comic_3}}
+		\subfigure[Take the intersection of all of the covers of $B$.  It's disjoint from the cover of $A$, so $A$ and $B$ are separated by open sets, so $X$ is normal.] {\includegraphics[width=210pt]{images/hausdorffness/hausdorff_comic_4}}
+		\end{center}
+	\end{figure}
+	\newpage
+\end{proof}
+\vskip1cm
 
 Now for the real proof.
 \begin{proof}
@@ -37,7 +58,7 @@ Now for the real proof.
 	Let $(X,F_X)$ be a compact and Hausdorff topological space. If $(Y,F_Y)$ is a topological space and $f : X \to Y$ is continuous, onto, and closed, then $(Y,F_Y)$ is compact and Hausdorff. 
 \end{theorem}
 \begin{proof}
-	From previous notes, as $f$ is continuous and $X$ is compact, $Y$ is compact.
+	From previous notes, since $f$ is continuous and $X$ is compact, $Y$ is compact.
 	
 	So now consider Hausdorff:
 	

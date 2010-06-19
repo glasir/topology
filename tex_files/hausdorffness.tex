@@ -88,16 +88,17 @@ We are now interested in how Hausdorff-ness and compactness are related.\\
 	\end{itemize}
 \end{proof}
 \begin{example}
-	Let $X=[0,1]\times[0,1]$, and let $(a,b)\sim(c,d)$ if either $(a,b)=(c,d)$ or $b=d\neq 0.$ (See Homework $4$, Problem $3$.) Points on the $x$-axis are not separable.
+	Let $X=[0,1]\times[0,1]$, and let $(a,b)\sim(c,d)$ if either $(a,b)=(c,d)$ or $b=d\neq 0.$
 	
-	\placeholder So this is a Hausdorff space $X$ and an equivalence relation $\sim$ such that $X/\sim$ is not Hausdorff. 
+	\[\includegraphics[width=280pt]{images/hausdorffness/IxInonexample}\]
+    Points of the same color are identified.  Points on the $x$-axis are not separable, so this is a Hausdorff space $X$ and an equivalence relation $\sim$ such that $X/\sim$ is not Hausdorff. 
 \end{example}
 \begin{example}
-	Let $X=\mathbb{R},$ and set $x \sim y$ if and only if $x=y$ of $x,y>0.$ 
+	Let $X=\R,$ and set $x \sim y$ if and only if $x=y$ or $x,y>0.$ 
 	
-	\placeholder
+	\[\includegraphics[width=360pt]{images/hausdorffness/r_nonexample}\]
 	
-	Let $p>0.$ The $[p],[0]\in X/\sim$. Let $U \subseteq X/\sim$ be an open set containing $[0].$ We claim that $[p]\in U$. Too see why, note that $\pi^{-1}(U)$ is an open subset of $\R$ containing $0$. Hence, there exists $q \in \pi^{-1}(U)$ such that $q>0.$ Therefore, $q \sim p \Rightarrow [q]=[p]\in U$, and $X/\sim$ is not Hausdorff. 
+	Let $p>0.$ Then $[p],[0]\in X/\sim$. Let $U \subseteq X/\sim$ be an open set containing $[0].$ We claim that $[p]\in U$. To see why, note that $\pi^{-1}(U)$ is an open subset of $\R$ containing $0$. Hence, there exists $q \in \pi^{-1}(U)$ such that $q>0.$ Therefore, $q \sim p \Rightarrow [q]=[p]\in U$, and $X/\sim$ is not Hausdorff. 
 \end{example}
 
 Note: this proves that the continuous images of a Hausdorff space need not be Hausdorff!

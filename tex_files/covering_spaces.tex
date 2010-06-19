@@ -10,10 +10,12 @@ In this case, we say that each $V_{\alpha}$ is a \textbf{sheet} covering $U$.
 
 
 \begin{example}
- Let $X=D^2$ with the usual topology, and $\tilde{X}=D^2 \times \N$ with the usual product topology.  Define $p:\tilde{X} \rightarrow X$ by $p(x,n)=x.$  We can take $U$ to be any open set in $X$; $\displaystyle p^{-1}(U)=\bigcup_{i=1}^{\infty}p^{-1}{U}\cap V_i$, where $V_i=D^2 \times i$.
+ Let $X=D^2$ with the usual topology, and $\tilde{X}=D^2 \times \N$ with the usual product topology.  Define $p:\tilde{X} \rightarrow X$ by $p(x,n)=x.$  We can take $U$ to be any open set in $X$; $\displaystyle p^{-1}(U)=\bigcup_{i=1}^{\infty}p^{-1}(U)\cap V_i$, where $V_i=D^2 \times i$.
 
-(Draw a picture here!)
-\placeholder
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=150pt]{images/covering_spaces/D2xN}
+\end{figure}
 \end{example}
 
 \begin{example}[a non-example]
@@ -28,9 +30,7 @@ The answer is no.  To see why, note that $p^{-1}(U)=V_1 \cup V_2,$ where $V_1,V_
 \end{definition}
 
 \begin{example}[another non-example]
-Let $\tilde{X}=\R^2,$ $X=\R,$ and $P:\R^2\rightarrow \R$ be defined by $p(x,y)=x$.  Then for each open $U \subseteq X,$ $p^{-1}(U)=\cup_{\alpha \in A}V_{\alpha}.$  (We can think of $p^{-1}(U)$ as a horizontal stack of uncountably many copies of $U$).  For each $\alpha \in A,$ $p \mid V_{\alpha}: V_{\alpha} \rightarrow U$ is a homeomorphism.  However, each $V_{alpha}$ is not open in $\tilde{X}$.  
-
-\placeholder
+Let $\tilde{X}=\R^2,$ $X=\R,$ and $P:\R^2\rightarrow \R$ be defined by $p(x,y)=x$.  Then for each open $U \subseteq X,$ $p^{-1}(U)=\cup_{\alpha \in A}V_{\alpha}.$  (We can think of $p^{-1}(U)$ as a horizontal stack of uncountably many copies of $U$).  For each $\alpha \in A,$ $p \mid V_{\alpha}: V_{\alpha} \rightarrow U$ is a homeomorphism.  However, each $V_{\alpha}$ is not open in $\tilde{X}$.
 \end{example}
 
 \begin{lemma}[Important Lemma on Covering Maps]
@@ -45,8 +45,10 @@ The take-home message is that in a covering space, points in the pre-image of a 
 
 \begin{example}[Important] Let $p:\R \rightarrow S^1$ be defined by $p(x)=(\cos(2 \pi x), \sin(2 \pi x))$.  (The ``slinky" space.)
 
-(Draw a picture, and you will win fortune and fame!)
-\placeholder
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=330pt]{images/covering_spaces/slinky}
+\end{figure}
 
 For each $s \in S^1,$ an ``open interval" around $s$ is evenly covered, and so $\R$ is a covering space.  
 \end{example}
@@ -54,7 +56,10 @@ For each $s \in S^1,$ an ``open interval" around $s$ is evenly covered, and so $
 \begin{example}
 $\tilde{X}=S^1,$ $X=S^1$ by $p:\tilde{X} \rightarrow X$ is $p((\cos(2 \pi x), \sin(\pi x))=(\cos(4 \pi x), \sin(4 \pi x)).$  
 
-\placeholder
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=330pt]{images/covering_spaces/s1_to_s1}
+\end{figure}
 \end{example}
 
 Not all quotient maps are covering maps.  But we will prove that all covering maps are quotient maps.  (Remember our important example?)
@@ -86,6 +91,7 @@ $F_X = \{U\subseteq X \mid p^{-1}(U)\in F_X\}$, so $p$ is a quotient map and $X$
 
 \end{proof}
 
+\newpage
 \subsection{Lifts}
 \begin{definition}
 Let $p:\widetilde{X}\rightarrow X$ be a covering map and $f:Y\rightarrow X$ be continuous. We define a \textit{lift} of $f$ to be any continuous function $\widetilde{f}:Y\rightarrow X$ such that $p\circ \widetilde{f}=f$.
@@ -93,7 +99,12 @@ Let $p:\widetilde{X}\rightarrow X$ be a covering map and $f:Y\rightarrow X$ be c
 
 \begin{example}
 Let $\widetilde{X}=\R$, $X=S^1$ and $p(x)=\left(\cos(2\pi x),\sin(2\pi x)\right)$. Let $f:I\rightarrow S^1$ by $f(x)=\left(\cos(\pi x),\sin(\pi x)\right)$. Define $\widetilde{f}:I\rightarrow \R$ by $f(x)=\frac{x}{2}$.
-\placeholder
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=300pt]{images/covering_spaces/s1_lift}
+\end{figure}
+
 \end{example}
 
 \begin{lemma}
@@ -254,7 +265,11 @@ Let $p\colon S^2\to \mathbb{R}P^2$ be the quotient map. Then $p$ is a covering m
 \end{theorem}
 \begin{proof}
 Recall that the equivalence relation for this quotient map was defined as $x\sim y$ iff $x=\pm y$. We use one of the most powerful proof techniques known to mathematics here: proof by picture. Consider any open ball in $\mathbb{R}P^2$ containing some point. Then its pre image will be a pair of disjoint balls such that $p$ restricted to the balls will be a homeomorphism. Just think about it... or look at the pictures below.
-\placeholder
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=300pt]{images/covering_spaces/rp2_quotient}
+\end{figure}
 \end{proof}
 
 $\mathbb{R}P^2$ provides us with another example of a space with a nontrivial fundamental group. From one of our theorems, we know that given $x_0\in \mathbb{R}P^2$ there is a bijection from $\pi_1(\mathbb{R}P^2,x_0)$ to $p^{-1}(\left\{x_0\right\})$ (since $\mathbb{R}P^2$ is simply connected), and we know that $p^{-1}(\left\{x_0\right\})$ has precisely two elements, so $\pi_1(\mathbb{R}P^2,x_0)\cong \mathbb{Z}_2$ (alternatively written by algebraists as $\mathbb{Z}/ 2\mathbb{Z}$).
@@ -292,13 +307,13 @@ Define $Y \subseteq \R^2$ as $Y = \{ (x,y) \mid x = 0 \text{ and/or } y = 0\}$.
 Define $\widetilde{X}$ as $Y$ with a copy of $S^1$ wedged at every $(z,0)$ and $(0,z)$ with $z \in \Z \setminus \{0\}$
 
 Define $p : \widetilde{X} \to X$ such that $(x,0)$ goes to the first copy of $S^1$ for all $x \in \R$, $(0,x)$ goes to the second, and $(z,0)$, $(0,z)$ goes to $x_0$ for all $z \in \Z$.  Copies of $S^1$ wedged at $(z,0)$ go with the usual projection to the second copy of $S^1$ in $X$, and the copies wedged at $(0,z)$ go the the first copy in $X$, as show in the image.
-\placeholder
-%\begin{figure}[htdp]
-%\begin{center}
-%\includegraphics[height=2in]{notes55img.pdf}
-%\caption{Blue maps to the first circle, red to the second, and the black squares to $x_0$.}
-%\end{center}
-%\end{figure}
+
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[width=240pt]{images/covering_spaces/nonabelian}
+\caption{Blue maps to the first circle, red to the second, and the black squares to $x_0$.}
+\end{center}
+\end{figure}
 
 Now define $\widetilde{f}(t) = (t,0)$, $\widetilde{g}(t) = (0,t)$, and $f = p \circ \widetilde{f}$, $g = p \circ \widetilde{g}$.  So $f$ is a single loop on the first circle and $g$ is a single loop on the second circle.
 
