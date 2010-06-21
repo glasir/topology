@@ -3,180 +3,132 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tex_files/product_topology.tex</string>
+	<string>tex_files/normalness.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>Notes.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-18T02:38:10Z</date>
+			<date>2010-06-21T03:52:48Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/intro_and_review.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-13T06:53:17Z</date>
+			<date>2010-06-19T23:20:27Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/continuity_etc.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-13T06:53:25Z</date>
+			<date>2010-06-19T23:20:33Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/topologies.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-13T06:20:12Z</date>
+			<date>2010-06-19T23:20:36Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/continuity_and_topology.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-13T08:03:05Z</date>
+			<date>2010-06-19T23:20:39Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/subspaces_and_bases.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-19T23:20:43Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/quotient_spaces.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-19T02:51:38Z</date>
+			<date>2010-06-19T23:20:46Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/product_topology.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-19T06:12:02Z</date>
+			<date>2010-06-19T23:20:53Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/compactness.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-17T01:53:33Z</date>
+			<date>2010-06-19T23:20:50Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/hausdorffness.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-17T01:53:25Z</date>
+			<date>2010-06-19T23:20:57Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>tex_files/normalness.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-17T03:40:06Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/connectedness.tex</string>
-			<key>lastUsed</key>
-			<date>2010-06-17T03:40:04Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/homotopy.tex</string>
-			<key>lastUsed</key>
-			<date>2010-06-19T06:12:02Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/fundamental_group.tex</string>
-			<key>lastUsed</key>
-			<date>2010-06-18T02:38:09Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>tex_files/covering_spaces.tex</string>
-			<key>lastUsed</key>
-			<date>2010-06-18T04:19:30Z</date>
-		</dict>
-		<dict>
-			<key>filename</key>
-			<string>Notes.pdf</string>
+			<date>2010-06-21T03:56:36Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
-			<string>remove_pdfs.sh</string>
+			<string>tex_files/connectedness.tex</string>
 			<key>lastUsed</key>
-			<date>2010-06-19T03:21:55Z</date>
+			<date>2010-06-19T23:21:03Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/homotopy.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-19T23:21:06Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/fundamental_group.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-19T23:21:09Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>tex_files/covering_spaces.tex</string>
+			<key>lastUsed</key>
+			<date>2010-06-19T23:22:54Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>Notes.pdf</string>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Notes.tex</key>
+		<key>tex_files/normalness.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>94</integer>
+				<integer>27</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>51</integer>
-		</dict>
-		<key>remove_pdfs.sh</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>tex_files/covering_spaces.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>305</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>294</integer>
-		</dict>
-		<key>tex_files/product_topology.tex</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>188</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>183</integer>
+			<integer>14</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Notes.tex</string>
-		<string>tex_files/product_topology.tex</string>
-		<string>remove_pdfs.sh</string>
+		<string>tex_files/normalness.tex</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{173, 0}, {741, 858}}</string>
+	<string>{{32, 20}, {741, 858}}</string>
 </dict>
 </plist>
